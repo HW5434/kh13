@@ -13,7 +13,7 @@ public class Test01 {
 		System.out.println(2023-12-05); //식의 결과를 출력
 		
 		//(Q) 식권이 한장에 7000원 일때 식권 10장은 얼마?
-		//System.out.println(70000);//나의 재롱잔치
+		//System.out.println(70000);//나의 재롱잔치 ㅋ
 		System.out.println(7000*10);//컴퓨터에게 시킨것
 	}
 }
