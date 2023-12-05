@@ -1,6 +1,6 @@
 package DATA;
 
-public class Test03 {
+public class Test03영화관 {
 
 	public static void main(String[] args) {
 		//가격

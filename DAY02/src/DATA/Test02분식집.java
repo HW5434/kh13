@@ -1,6 +1,6 @@
 package DATA;
 
-public class Test02 {
+public class Test02분식집 {
 	public static void main(String[] args) {
 		//[1] 내가 다 계산하고 결과만 출력
 		//System.out.println(18000);
