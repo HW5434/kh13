@@ -25,7 +25,7 @@ public class Test03영화관 {
 		//[필기] 입력 , 계산 , 출력 
 		
 	    //입력 : 문제에서 주어진 값들을 변수에 저장
-		//         [테스트 할때 주어짐] 대문자 알파벳은 다른 어절을 표현
+		//         [테스트 할때 주어짐] 대문자 알파벳은 다른 [어절?]을 표현
 		//         [ex] adult , teen , student
 
 		//계산 : [ex] adultPrice , adultCount
