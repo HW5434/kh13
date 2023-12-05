@@ -3,7 +3,7 @@ package DATA;
 public class Test01 {
 	public static void main(String[] args) {
 		//데이터(data)
-		//- 측정된 값(수치)
+		//- 측정된 값(*수치*)
 		//- (ex)영등포구 당산동 미세먼지 농도
 		//정보(Information)
 		//- 데이터를 가공해서 만든 결과물
@@ -16,7 +16,6 @@ public class Test01 {
 		//System.out.println(70000);//나의 재롱잔치
 		System.out.println(7000*10);//컴퓨터에게 시킨것
 	}
-
 }
 
 
