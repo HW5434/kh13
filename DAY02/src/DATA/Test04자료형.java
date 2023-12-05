@@ -21,12 +21,12 @@ public class Test04자료형 {
 	   long c= 1234567L * 1234567L;
 	   System.out.println(c);
 	   
-	   //(중요) 정수의 계산 결과는 정수가 나온다 [나눗셈에서도]
+	   //(중요) 정수의 계산 결과는 정수가 나온다 [나눗셈]
 	   int d = 10;
 	   int e = 3;
 	   System.out.println(d / e);//몫
 	   System.out.println(d % e);//나머지
-	}
+	} 
 	
 
 }
