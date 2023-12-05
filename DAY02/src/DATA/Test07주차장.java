@@ -16,12 +16,12 @@ public class Test07주차장 {
 		int intime = inhour * 60 + inminute;
 		int outtime = outhour * 60 + outminute;
 		int totaltime = outtime - intime;
-		
+		//최종 시간 ,분
 		int totalHour = totaltime / 60;
 		int totalMinute = totaltime % 60;
-		
 		System.out.println(totalHour);	
 		System.out.println(totalMinute);
+		//지출된 요금
 		int parkingtimepay = (totaltime / 10) * pay;
 		System.out.println(parkingtimepay);
 	}
