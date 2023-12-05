@@ -24,6 +24,7 @@ public class Test07주차장 {
 		//지출된 요금
 		int parkingtimepay = (totaltime / 10) * pay;
 		System.out.println(parkingtimepay);
+		//질문
 	}
 
 }
