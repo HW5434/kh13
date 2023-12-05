@@ -26,14 +26,14 @@ public class Test02분식집 {
 		int fried = 2000;
 		int ddeokbokiCount = 4;
 		int friedCount = 2;
-		//문제
+		//문제부
 		int ddeobokiTotal = ddeokboki * ddeokbokiCount;
 		int friedTotal = fried * friedCount;
 		int total = ddeobokiTotal + friedTotal;
-		//계산
+		//계산부
 		System.out.println(ddeobokiTotal);
 		System.out.println(friedTotal);
 		System.out.println(total);
-		//출력
+		//출력부
 	}	
 }
