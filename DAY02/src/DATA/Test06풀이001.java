@@ -1,6 +1,6 @@
 package DATA;
 
-public class Test06풀이1 {
+public class Test06풀이001 {
 
 	public static void main(String[] args) {
 

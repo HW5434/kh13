@@ -10,8 +10,8 @@ public class Test07주차장 {
 		int inhour = 11;
 		int inminute = 50;
 		//나갈때
-		int outhour =12;
-		int outminute = 0;
+		int outhour =17;
+		int outminute = 25;
 		//분으로 바꾸기
 		int intime = inhour * 60 + inminute;
 		int outtime = outhour * 60 + outminute;
