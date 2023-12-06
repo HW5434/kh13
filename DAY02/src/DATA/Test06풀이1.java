@@ -5,7 +5,7 @@ public class Test06풀이1 {
 	public static void main(String[] args) {
 
 // 답지
-//%는 나누었을때 나머지
+// %는 나누었을때 나머지
 
 //입력
 	int yesterdayHour = 2, yesterdayMinute = 45;
