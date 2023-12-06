@@ -16,7 +16,7 @@ public class Test08나눗셈 {
 		System.out.println(number2 / 100);
 		int number02 = number2 % 100;
 		System.out.println(number02 / 10);
-		System.out.println(number2 / 10 % 10);
+		//System.out.println(number2 / 10 % 10);
 		System.out.println(number02 % 10);
 		
 		
