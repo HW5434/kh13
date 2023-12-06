@@ -10,8 +10,8 @@ public class Test07주차장 {
 		int inhour = 11;
 		int inminute = 50;
 		//나갈때
-		int outhour =17;
-		int outminute = 25;
+		int outhour =12;
+		int outminute = 0;
 		//분으로 바꾸기
 		int intime = inhour * 60 + inminute;
 		int outtime = outhour * 60 + outminute;
@@ -24,7 +24,8 @@ public class Test07주차장 {
 		//지출된 요금
 		int parkingtimepay = (totaltime / 10) * pay;
 		System.out.println(parkingtimepay);
-		//질문
+
+		//검토 		
 	}
 
 }
