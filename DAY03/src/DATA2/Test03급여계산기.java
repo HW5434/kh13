@@ -1,4 +1,4 @@
-package DATA;
+package DATA2;
 
 public class Test03급여계산기 {
 

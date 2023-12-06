@@ -1,4 +1,4 @@
-package DATA;
+package DATA2;
 
 public class Test05PC방계산기 {
 
@@ -58,6 +58,7 @@ public class Test05PC방계산기 {
 		result = result / 10 * 10;
 		//10원단위 버림 
 		System.out.println(result);
+		System.out.println(hour + "시간" + minute + "분");
 		
 	}
 

@@ -1,4 +1,4 @@
-package DATA;
+package DATA2;
 
 public class Test04변환연산 {
 

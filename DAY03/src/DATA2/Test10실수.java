@@ -1,4 +1,4 @@
-package DATA;
+package DATA2;
 
 public class Test10실수 {
 	public static void main(String[] args) {
