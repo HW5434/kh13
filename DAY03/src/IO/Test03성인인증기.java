@@ -17,5 +17,5 @@ public class Test03성인인증기 {
 		System.out.println("나이 = " + age);
 		System.out.println("성인 = " + adult);
 	}
-
+ 
 }
