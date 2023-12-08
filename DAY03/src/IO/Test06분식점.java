@@ -13,7 +13,7 @@ public class Test06분식점 {
 		Scanner sc = new Scanner(System.in);
 		
 		int tteokbokki = 3000;
-		int fried = 5000;
+		int fried = 500;
 		int sundae = 2000;
 
 		System.out.print("떡볶이의 수량을 입력하세요. : ");
