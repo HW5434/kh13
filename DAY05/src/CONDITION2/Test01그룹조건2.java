@@ -28,6 +28,5 @@ public class Test01그룹조건2 {
 		else {
 			System.out.println("강사에게 전화를 합니다,");
 		}
-
 	}
 }
