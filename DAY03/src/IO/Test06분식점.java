@@ -32,7 +32,7 @@ public class Test06분식점 {
 		
 		//System.out.println(total);
 		//System.out.println(sale);
-		
+		//꿀팁 ALT + 방향키는 줄 정리할때 많이씀
 	}
 
 }
