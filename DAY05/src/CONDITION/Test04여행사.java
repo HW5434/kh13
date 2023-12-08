@@ -15,7 +15,7 @@ public class Test04여행사 {
 		//int summerPay = 
 				//여름이 아니면 10만원 * 인원
 		if(summer) {
-			int total = pay * (100 - 20) / 100;
+			int total = pay * (100 - 20) / 100; 
 				System.out.println("총 금액은 " + total + " 입니다.");// 나머지 계절
 		}
 			
