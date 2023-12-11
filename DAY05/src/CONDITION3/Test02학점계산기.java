@@ -8,7 +8,6 @@ public class Test02학점계산기 {
 		System.out.println("당신의 과목 점수를 작성하세요. : ");
 		Scanner sc = new Scanner(System.in);
 		System.out.println();
-		
 		//계산
 		
 		int number = sc.nextInt();
