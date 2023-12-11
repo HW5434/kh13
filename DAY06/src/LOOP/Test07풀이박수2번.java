@@ -4,7 +4,8 @@ public class Test07풀이박수2번 {
 
 	public static void main(String[] args) {
 		
-		for(int i = 1; i <= 99; i++) {
+		int N = 10 * 10;
+		for(int i = 1; i <= N; i++) {
 			int ten = i / 10;
 			int one = i % 10;
 			
