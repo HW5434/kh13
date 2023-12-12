@@ -17,6 +17,7 @@ public class Test01카운트세기 {
 			if(i % 2 == 0) {
 				//System.out.println(i); 확인용
 				count++;
+				System.out.println(i);
 			}
 		}
 		
