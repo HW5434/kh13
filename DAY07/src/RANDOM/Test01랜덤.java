@@ -20,7 +20,7 @@ public static void main(String[] arg) {
 	//(주의) 사람과 컴퓨터의 범위 개념이 다르다
 	// 사람은 주사위 범위를 1~6"까지" 라고 생각한다
 	// 자바는 주사위 범위를 1부터 6"개"라고 생각한다
-	
+
 	int dice = r.nextInt(6) + 1; //1부터 6개 일떄
 	System.out.println("주사위 = " + dice);
 	}
