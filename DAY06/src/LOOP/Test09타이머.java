@@ -23,10 +23,10 @@ public class Test09타이머 {
 		*/
 		
 		//입력
-		Scanner sc = new Scanner(System.in);
-		System.out.print("\"분\"을 입력하세요 : ");
+			Scanner sc = new Scanner(System.in);
+			System.out.print("\"분\"을 입력하세요 : ");
 		int minute = sc.nextInt();
-		System.out.print("\"초\"을 입력하세요 : ");
+			System.out.print("\"초\"을 입력하세요 : ");
 		int second = sc.nextInt();
 		
 		int minuteTotal = (minute * 60) + second;

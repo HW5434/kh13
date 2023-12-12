@@ -4,33 +4,43 @@ import java.util.Scanner;
 
 public class Test10구구단3 {
 	public static void main(String[] args) {
-	
 		
 		Scanner sc = new Scanner(System.in);
-		System.out.print("구구단의 단을 입력하세요. : ");		
-		int Number = sc.nextInt();
-		System.out.println();
+		//입력 및 계산
+			System.out.println("* 어서오세요! 구구단월드에 오신 것을 환영합니다 *");
+			System.out.println();
+			System.out.print("공부하고 싶은 \"단\" 을 입력하세요! : ");
+		    int danNumber = sc.nextInt(); //단 입력
+		    System.out.println("3초 후 시작합니다.");
+		//복습 [타이머] 	           	
+		try     {
+		        Thread.sleep(3000);} 
+				
+		catch (InterruptedException e){
+		        e.printStackTrace();
+		        }				
 		
-		//계산
-		int N = Number * 9;		
-		for(int i = Number; i <= N; i = i +3) {
-		int count = i / Number;		
-		//식 출력
+			System.out.println();
+		for(int i = 1; i <=9; i = i + 1) {
+			System.out.print(danNumber + " X " + i + " = " );
+			int answer = sc.nextInt(); //정답 작성
+			
+		if(answer == danNumber * i){	
+			System.out.println(answer + " 정답 입니다!");
+			System.out.println();
+			}
+			
+		else    {
+			System.out.println(answer + " 오답 입니다;");
+			System.out.println("[" +"정답 : " +  danNumber * i + "]");
+			System.out.println();			
+			}							
+		}	
 		
-		System.out.print(Number + "X" + count + "=");
-		int chat1 = sc.nextInt();
-		if(chat1 == Number * count) {
-			System.out.print("정답!");		
-			System.out.println();
-			System.out.println();
-		}
-		else {
-			System.out.print("오답!");
-			System.out.println();
-		}
-
-		}
-	}						
-}
-	
-
+		//최종출력
+		
+			System.out.println(); 
+			System.out.println("게임 끝!" );
+			System.out.println("고생하셨습니다~!" );
+		}	
+	}

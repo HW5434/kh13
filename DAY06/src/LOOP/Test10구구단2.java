@@ -23,8 +23,8 @@ public class Test10구구단2 {
 		System.out.println("정답!");
 		if(chat1 != i); {
 			System.out.println("오답!");
-		}
-		}					
+				}
+			}					
 		}				
 	}
 }
