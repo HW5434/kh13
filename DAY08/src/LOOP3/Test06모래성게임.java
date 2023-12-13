@@ -26,7 +26,7 @@ public class Test06모래성게임 {
 		
 		Scanner sc = new Scanner(System.in);
 		
-		int count = 1000;
+		int count = 100;
 		while(true) {
 			System.out.println("남은 숫자 : " + count);
 			System.out.print("가져갈 숫자(1 ~ 9) 입력 : ");

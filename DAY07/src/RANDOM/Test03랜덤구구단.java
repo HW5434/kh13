@@ -15,10 +15,12 @@ public static void main(String [] arg) {
 //		사용자가 획득한 점수를 누적합산하여 출력
 	
 	Scanner sc = new Scanner(System.in);
+	
 	int count = 0;
 	int scoreA = 0;
 	int scoreB = 0;
 	int dan = sc.nextInt();
+	
 	for(int i = 1; i <= 9; i++) {
 		System.out.println(dan + " X " +i + " = ");
 		int answer = sc.nextInt();
