@@ -18,6 +18,7 @@ public class Test07확률뽑기풀이 {
 		int choice = r.nextInt(10); // 0부터 10개
 		System.out.println("p = " + choice);
 		
+		
 		int choice2;
 		if(choice < gold) {
 			choice2 = 0;
