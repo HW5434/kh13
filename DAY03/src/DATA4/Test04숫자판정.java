@@ -14,9 +14,9 @@ public class Test04숫자판정 {
 		int numTens = number / 10;
 		int numUnits = number % 10;
 		
-		boolean order = num
-		Tens ==7 || numUnits == 7;
-		System.out.println(order);
+		//		boolean order = num
+		//		Tens ==7 || numUnits == 7;
+		//		System.out.println(order);
 		// 문제 자릿수가 바뀌었을때 변환되는
 		//-논리에서는 말이 되는 것이 중요하다
 		// 10의자리가 7 또는 1의자리가 7
