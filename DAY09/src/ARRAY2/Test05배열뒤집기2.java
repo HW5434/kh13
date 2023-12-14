@@ -22,6 +22,7 @@ public class Test05배열뒤집기2 {
 		데이터 n개     교체 n/2번	     numbers[0] -> numbers[n-1]
 												 numbers[1] -> numbers[n-2]	
 		 */
+		
 		int left = 0;
 		int right = numbers2.length-1;
 		for(int i=1; i <= numbers2.length/2; i++) {
