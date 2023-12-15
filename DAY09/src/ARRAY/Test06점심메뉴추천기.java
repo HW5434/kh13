@@ -18,6 +18,7 @@ public class Test06점심메뉴추천기 {
 		//범위 설정
 		for(int i = 0; i < menu.length;i++) {
 			menu[i] = sc.next();			
+
 		}
 			System.out.println(menu[position]);
 		}
