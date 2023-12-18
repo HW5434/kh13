@@ -5,15 +5,16 @@ public class Test01통신사요금제정보 {
 		
 		// 객체 생성
 		
-		NewsAgency a = new NewsAgency();
-		NewsAgency b = new NewsAgency();
-		NewsAgency c = new NewsAgency();
+		plan a = new plan();
+		plan b = new plan();
+		plan c = new plan();
 		
 		// 초기화
 		
 		a.List("SK" , "5G언택트 52" , 52000 , 200 , 1000 , 2000);
 		b.List("KT" , "5G세이브" , 45000 , 100 , 900 , 1500);
 		c.List("LG" , "5G시그니처" , 130000 , 500 , 2000 , 2500);
+		
 		
 		// 출력
 		
@@ -22,5 +23,4 @@ public class Test01통신사요금제정보 {
 		c.information();
 		
 	}
-	
 }
