@@ -1,4 +1,4 @@
-package oop.constructor3;
+package oop.constructor3.copy;
 
 import java.util.Scanner;
 

@@ -1,4 +1,4 @@
-package oop.constructor3;
+package oop.constructor3.copy;
 
 import java.util.Scanner;
 
@@ -31,25 +31,14 @@ public class Player {
 		this.name = name;	
 	}
 	void setJob(String job) { 
-		//if(job == "전사" || .....)
-		switch(job) {
-		case "전사":
-		case "궁수":
-		case "도적":
-		case "마법사":
-		this.job = job;	
+		this.job = job;
 		}
 		
-	}
 	void setLevel(int level) { 
 		this.level = level;	
-		if(level < 1)return;
-		this.level = level;
 	}
 	void setMoney(int money) {
 		this.money = money;	
-		if(money < 0)return;
-		this.money= money;
 	}
 	
 	Player(String name , String job , int level , int money) {
