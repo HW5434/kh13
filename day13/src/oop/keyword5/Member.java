@@ -25,8 +25,8 @@ public class Member {
 		return id;
 	}
 	//final 필드는 setter 메소드 생성이 불가능하다
-	public void setid(String id) {
-		this.id = id;
+	//	public void setid(String id) {
+	//		this.id = id;
 	}
 	
-}
+
