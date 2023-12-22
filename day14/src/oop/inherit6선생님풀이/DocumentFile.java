@@ -35,3 +35,4 @@ public class DocumentFile extends File{
 		super(filename, filesize);
 		this.setPageSize(pageSize);
 }
+}

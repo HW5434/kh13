@@ -9,5 +9,6 @@ public class Test01추상클래스 {
 		p.setNumber("010-1212-3434");
 		p.call();
 		p.sms();
+		
 	}
 }
