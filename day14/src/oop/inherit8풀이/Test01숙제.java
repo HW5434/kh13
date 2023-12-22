@@ -1,9 +1,4 @@
-package oop.inherit8;
-
-import oop.inherit8풀이.Galaxy23FE;
-import oop.inherit8풀이.GalaxyFold5;
-import oop.inherit8풀이.IPhone14;
-import oop.inherit8풀이.IPhone15;
+package oop.inherit8풀이;
 
 public class Test01숙제 {
 	public static void main(String [] args) {

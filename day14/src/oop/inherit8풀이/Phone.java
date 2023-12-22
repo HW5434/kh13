@@ -1,4 +1,4 @@
-package oop.inherit8;
+package oop.inherit8풀이;
 
 public abstract class Phone {
 	private String number;
