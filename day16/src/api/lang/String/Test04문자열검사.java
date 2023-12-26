@@ -30,5 +30,6 @@ public class Test04문자열검사 {
 		//특정위치의 글자를 추출하면?
 		char ch = url.charAt(11);
 		System.out.print("+11 위치의 글자 = " + url.charAt(11));
+		System.out.println();
 	}
 }

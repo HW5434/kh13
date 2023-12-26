@@ -14,7 +14,7 @@ public class Test01객체생성문제 {
 //		System.out.println("b = " + b);
 		
 		//글자 수 출력
-		System.out.println("a의 글자수 = " + b.length());
+		System.out.println("a의 글자수 = " + a.length());
 		System.out.println("b의 글자수 = " + b.length());
 		
 		a.append("java");//스트링
