@@ -1,44 +1,51 @@
 package api.lang.String;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class Test06공포의쿵쿵따 {
-
-	public static void main(String[] args) {
-
+	public static void main (String[] args) {
+//	요구사항
+//	첫 번째 제시어를 바나나로 설정해두고 사용자에게 단어를 입력받아서 쿵쿵따 게임을 진행하세요
+//	사용자가 입력한 단어는 제시어와 이어져야 합니다.
+//	사용자가 입력한 단어는 반드시 3글자여야 합니다.
+//	위 조건을 만족하지 않을 경우 게임오버가 되며 프로그램이 종료됩니다.
+//	단어를 정상적으로 입력한 경우 제시어가 입력한 단어로 바뀝니다.
+//	위 작업을 반복적으로 진행합니다.
+//	아래 예시에서 ( )로 감싸진 부분이 사용자가 입력하는 부분입니다.
+		
 		Scanner sc = new Scanner(System.in);
-		//(Q) 제시어가 변수로 있어도 검사가 되나?
+		Random rd = new Random();
 		
-		String given = "바나나";
-		String input = "나트륨";
-//		char last = given.charAt(2);
-		char last = given.charAt(given.length()-1); //마지막 글자
-		char first = input.charAt(0);
-		System.out.println(first == last); //원시형이라서 비교연산으로 비교
+		String[] words = {"바나나", "너구리", "오징어", "산기슭", "기찻길"};
+		String a = words[rd.nextInt(5)];
 		
-		
+		int count = 1;
+		while(true) {
+			System.out.println(a + "! 쿵쿵따!");
+			String user = sc.next();
 			
-//		boolean Text = questions.charAt(3).contentEquals(answers.charAt(1));
-		
-		//추출한 글자끼리 비교할수 있는 명령
-
-		
-//		if(answers.length() == 3) { // 글자가 3개일때
-//			System.out.println("정답");
-//			
-//		}
-//		else {
-//			System.out.println("오답");
-//		}
-		//1. 바나나가 아닌 글자가 3개이며 상대방이 말한 단어의 마지막 글자 이 조건이 아니면 떙
-		
-		//2. 바나나 라고 했을때 대답이 바나나의 3번째 글짜와 같으면 되는조건
-		//검사
-	
-
-		
+			boolean isKorean = true;
+			for (int i = 0; i < user.length(); i++) {
+				if ('가' <= user.charAt(i) && user.charAt(i) <= '힣') {
+					continue;
+				}else {
+					isKorean = false;
+					break;
+				}
+			}
 			
+			boolean isLengthOk = user.length() == 3;
+			boolean isWordOk = user.charAt(0) == a.charAt(2);
+			 
+			if (!(isLengthOk) || !(isWordOk) || !(isKorean)) {
+				System.out.println("땡! 게임오버!");
+				break;
+			}
+			a = user;
+			count++;
 		}
-	
+		System.out.println("진행 된 라운드 수 : " + count + "회");
+	}
 }
 
