@@ -1,37 +1,55 @@
 package api.lang.string2;
 
+import java.util.Scanner;
+
 public class Test07이메일검사 {
 
 	public static void main(String[] args) {
-		//PNG 올리기
+		Scanner sc = new Scanner(System.in); 
+
+		/*시작*/System.out.print("이메일 : ");	
+		String email = sc.next();
+		String regex = "^[a-zA-Z0-9_\\-]{4,19}\\@[a-z]{3,20}\\.(com|co\\.kr|net|org|dev)$";
 		
-		//반드시 '@' 한개
-		// @ 앞부분과 뒷부분에 글자가 있어야 한다
-		// @ 앞부분은 아이디와 동일한 형식으로 네이버 아이디 검사코드 참조
-		// "5~20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용이 가능합니다"
-		
-		// @ 뒷부분은 기관 주소가 들어온다
-		// 기관 명칭이 우선나오고 확장자가 등장한다 ex 삼성이면 ooooo@samsung.com
-		// 기관 명칭은 소문자 3글자 ~ 20글자 사이로 설정가능
-		// 확장자는 다음 중 하나만 가능
-		// co.kr		.com		.net		.org		.dev
-		//
-		
-		String id = "qwer1234";
+		if(email.matches(regex)) {
+			System.out.println("이메일 생성완료!");	
+			System.out.println("---------------");
+			System.out.println("비밀번호 생성 : ");
 				
-		String regex = "^[a-z0-9][_\\-a-z0-9]{4,19}$";
-		if(id.matches(regex)) {
-			System.out.println("기관 명칭을 입력해주세요");
-		}
+			}
 		else {
-			System.out.println("처음으로 돌아갑니다.");
-		}
+			System.out.println("이메일 형식을 확인해주세요");
+			System.out.println("EX : qwer1234@samsung.com");
+			//질문
+			}
 		
-		String midle = "samsung";
+		String pw = sc.next();
+		String regexPw = "^(?=(.*?)[0-9]+)(?=(.*?)[!@#$]+)[A-Za-z0-9!@#$]{8,16}$";
 		
-		String regex2 = "^[a-z]{3,20}$";
-		if(midle.matches(regex2)) {
-			System.out.println("당신의 이메일은"+ regex + "@" + midle);
+		
+		if(pw.matches(regexPw)) {
+			System.out.println("비밀번호 생성완료!");
+			System.out.println("로그인 창으로 이동합니다.");
+			System.out.println("---------------");
+			}
+		else {
+			System.out.println("비밀번호 형식을 확인해주세요");
+			System.out.println("Ex : 12345678@!");
+			//질문
+			}
+		
+			System.out.println("ID : ");
+			String loginEmail = sc.next();
+			System.out.println("PW : ");
+			String loginPw = sc.next();
+			
+		boolean correct = pw.equals(loginPw) && email.equals(loginEmail);
+			if(correct) {
+				System.out.println("로그인에 성공했습니다!");
+			}
+			else {
+				System.out.println("입력정보를 다시 확인해주세요.");
+		
+			}
 		}
 	}
-}
