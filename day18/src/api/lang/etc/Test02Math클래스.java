@@ -20,7 +20,7 @@ public class Test02Math클래스 {
 //		
 //		System.out.println(Math.sqrt(9)); //루트 9
 //		System.out.println(Math.pow(2, 5)); //2의 5승
-//		
+
 		int a = 3, b = 4;
 		
 		double powC = Math.pow(a, 2) + Math.pow(b, 2);
