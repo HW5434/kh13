@@ -27,7 +27,7 @@ public class Test06문자열편집 {
 		System.out.println("치환 = " + text.replace("피자" , "자바"));
 		
 		//문자열 분리 - split()
-		String[] parts = text.split(" "); //배열로 결과물 주기
+		String[] parts = text.split(" "); // 띄어쓰기로 짤라라
 		System.out.println(parts);
 		for(int i = 0; i < parts.length; i++) { //배열인거 주의 length에 괄호 글자수가 달라져도 상관없게
 			System.out.println("분리 = " + parts[i]);
