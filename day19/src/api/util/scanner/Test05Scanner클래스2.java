@@ -1,4 +1,4 @@
-package api.util.time;
+package api.util.scanner;
 
 import java.util.Scanner;
 
