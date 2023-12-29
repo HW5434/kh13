@@ -2,7 +2,7 @@ package api.util.scanner;
 
 import java.util.Scanner;
 
-public class Test05Scanner클래스 {
+public class Test01Scanner클래스 {
 	public static void main(String[] args) {
 
 		String song = "노는게 제일좋아 친구들 모여라\n언제나 즐거워\n 뽀롱뽀롱";

@@ -2,7 +2,7 @@ package api.util.scanner;
 
 import java.util.Scanner;
 
-public class Test05Scanner클래스2 {
+public class Test01Scanner클래스2 {
 	public static void main(String[] args) {
 
 		//Scanner 클래스
