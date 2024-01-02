@@ -28,3 +28,4 @@ public class Test02시드활용2 {
 	}
 
 }
+//123
