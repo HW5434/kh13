@@ -2,13 +2,15 @@ package api.lang.String;
 
 import java.util.Scanner;
 
-public class Test06공포의쿵쿵따43 {
+public class Test06공포의쿵쿵따3 {
 
 	public static void main(String[] args) {
 
 		//판정 추가
 		Scanner sc = new Scanner(System.in);
 	
+		while(true) {
+			
 		
 		String given = "바나나";
 		System.out.println(given + "! 쿵쿵따! ");
@@ -20,12 +22,16 @@ public class Test06공포의쿵쿵따43 {
 		
 		boolean isLengthOk = input.length() == 3;
 		boolean isConnect = first == last;
-		System.out.println("글자수 = " + isLengthOk);
-		System.out.println("연결 = " + isConnect);
-
-		
+		boolean isOk = isLengthOk && isConnect;
+		if(isOk) {
 			
 		}
-	
+		else {
+			break;
+		}
+	}
+		//게임오버처리
+		System.out.println("게임 끝!");
+	}	
 }
 
