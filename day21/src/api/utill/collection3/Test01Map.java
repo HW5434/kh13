@@ -37,7 +37,7 @@ public class Test01Map {
 		System.out.println(people.size());
 		
 		//데이터 추출 - .get()
-		System.out.println(people.get("유재석")); //열쇠로 땄을때 50
+		System.out.println(people.get("유재석")); //열쇠로 땄을때  50
 		System.out.println(people.get("노홍철")); //열쇠로 땄을때 없어[null]
 		
 		//출력
