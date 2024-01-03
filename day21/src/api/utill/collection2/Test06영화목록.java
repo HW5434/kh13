@@ -15,13 +15,13 @@ public class Test06영화목록 {
 		System.out.println(c);
 		
 		//마리오만 본 영화
-		Set<String> d =new TreeSet<>();
+		Set<String> d = new TreeSet<>();
 		d.addAll(mario);
 		d.removeAll(Luigi);
 		System.out.println(d);
 		
 		//루이지만 본 영화
-		Set<String> e =new TreeSet<>();
+		Set<String> e = new TreeSet<>();
 		e.addAll(Luigi);
 		e.removeAll(mario);
 		System.out.println(e);
