@@ -1,21 +1,55 @@
 package api.utill.collection3;
 
-import java.util.Map;
-import java.util.Set;
+import java.util.Scanner;
 
 public class Test04Map전체출력 {
 
 	public static void main(String[] args) {
-		//Map 역시 전체 데이터 출력이 가능하다
-				Map<String, Integer> votes = Map.of(
-					"피카츄", 30, "라이츄", 25, "꼬부기", 12, "뮤츠", 99
-				);
-				
-				//Map의 Key 부분만 보면 Set과 같은 구조이므로 변환하여 출력
-				Set<String> names = votes.keySet();
-				for(String name : names) {
-					System.out.println("이름 : " + name);
-					System.out.println("득표 : " + votes.get(name));
-				}
-			}
+		Scanner sc = new Scanner(System.in); 
+
+	/*시작*/System.out.print("이메일 : ");	
+	String email = sc.next();
+	String regex = "^[a-zA-Z0-9_\\-]{4,19}\\@[a-z]{3,20}\\.(com|co\\.kr|net|org|dev)$";
+	
+	if(email.matches(regex)) {
+		System.out.println("이메일 생성완료!");	
+		System.out.println("---------------");
+		System.out.println("비밀번호 생성 : ");
+			
 		}
+	else {
+		System.out.println("이메일 형식을 확인해주세요");
+		System.out.println("EX : qwer1234@samsung.com");
+		//질문
+		}
+	
+	String pw = sc.next();
+	String regexPw = "^(?=(.*?)[0-9]+)(?=(.*?)[!@#$]+)[A-Za-z0-9!@#$]{8,16}$";
+	
+	
+	if(pw.matches(regexPw)) {
+		System.out.println("비밀번호 생성완료!");
+		System.out.println("로그인 창으로 이동합니다.");
+		System.out.println("---------------");
+		}
+	else {
+		System.out.println("비밀번호 형식을 확인해주세요");
+		System.out.println("Ex : 12345678@!");
+		//질문
+		}
+	
+		System.out.println("ID : ");
+		String loginEmail = sc.next();
+		String loginPw = sc.next();
+		System.out.println("PW : ");
+		
+	boolean correct = pw.equals(loginPw) && email.equals(loginEmail);
+		if(correct) {
+			System.out.println("로그인에 성공했습니다!");
+		}
+		else {
+			System.out.println("입력정보를 다시 확인해주세요.");
+	
+		}
+	}
+}

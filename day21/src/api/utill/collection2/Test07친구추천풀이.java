@@ -15,7 +15,7 @@ public class Test07친구추천풀이 {
 		Set<String> recommand = new TreeSet<>();
 		recommand.addAll(f1);
 		recommand.addAll(f2);
-		recommand.remove("피카츄");
+		recommand.remove("파이리");
 		
 		System.out.println("<친구 추천 목록>" + recommand.size() + "명");
 		for(String name : recommand) {
