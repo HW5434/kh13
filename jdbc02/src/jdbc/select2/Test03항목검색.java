@@ -7,7 +7,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import jdbc.select.MenuDto;
 import jdbc.select.MenuMapper;
 import jdbc.utill.JdbcHelper;
-
+ 
 public class Test03항목검색 {
 	public static void main(String[] args) {
 		//메뉴를 검색하는데...
@@ -21,9 +21,9 @@ public class Test03항목검색 {
 		MenuMapper mapper = new MenuMapper(); //조회결과 처리객체
 		
 		// - 위치 홀더는 데이터 자리에 사용하는 것(자료형에 맞게 따옴표 등 처리)
-		//String sql = "select * from menu where 'menu_name_kor' like '아메' || '%'";
+		//String sql = "select * from menu where 'menu_name_kor' like '아메' || '%'";		
+		//String sql = "select * from menu where "+column+" like ? || '%'"; //홀더1
 		
-//		String sql = "select * from menu where "+column+" like ? || '%'"; //홀더1
 		String sql = "select * from menu where instr("+column+" , ?) > 0";
 		Object[] data = {keyword};
 		
@@ -37,6 +37,5 @@ public class Test03항목검색 {
 				System.out.println(dto.getMenuType());
 			}
 		}
-		
 	}
 }
