@@ -44,5 +44,4 @@ public class MenuDao {
 		Object[] data = {menuNo};
 		return jdbcTemplate.update(sql, data) > 0;
 	}
-
 }
