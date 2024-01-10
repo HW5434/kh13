@@ -46,6 +46,13 @@ public class PocketmonDao {
 	}
 	
 	//삭제 메소드
+	public boolean delete(int pocketmonNo) {
+		JdbcTemplate jdbcTemplate = JdbcHelper.getJdbcTemplate();
+		String sql = "delete pocketmon where pocketmon_no=?"; //프라이머리키 구문
+		Object[] date = {pocketmonNo};
+		return jdbcTemplate.update(sql, date) > 0;
+		
+	}
 	//목록 메소드
 	//검색 메소드
 	
