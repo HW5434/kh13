@@ -6,7 +6,7 @@ public class MenuDto {
 	private String menuNameKr;
 	private String menuNameEg;
 	private String menuType;
-	private int munuPrice;
+	private int menuPrice;
 	
 	
 	public MenuDto() {
@@ -37,10 +37,10 @@ public class MenuDto {
 	public void setMenuType(String menuType) {
 		this.menuType = menuType;
 	}
-	public int getMunuPrice() {
-		return munuPrice;
+	public int getMenuPrice() {
+		return menuPrice;
 	}
-	public void setMunuPrice(int munuPrice) {
-		this.munuPrice = munuPrice;
+	public void setMenuPrice(int menuPrice) {
+		this.menuPrice = menuPrice;
 	}
 }
