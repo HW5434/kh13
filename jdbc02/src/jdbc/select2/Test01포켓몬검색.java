@@ -19,7 +19,7 @@ public class Test01포켓몬검색 {
 		
 		//처리
 		JdbcTemplate jdbcTemplate = JdbcHelper.getJdbcTemplate();
-		String sql = "select * from pocketmon where pocketmon_name like ? || '%'";
+		String sql = "select * from pocketmon where instr(pocketmon_name,?) > 0";
 		Object[] data = {keyword};
 		PocketmonMapper mapper = new PocketmonMapper();
 		
