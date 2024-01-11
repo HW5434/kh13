@@ -56,6 +56,7 @@ public class PocketmonDao {
 		return jdbcTemplate.update(sql, date) > 0;
 		
 	}
+	
 	//목록 메소드
 	public List<PocketmonDto> selectList() {
 		JdbcTemplate jdbcTemplate = JdbcHelper.getJdbcTemplate();
@@ -67,7 +68,6 @@ public class PocketmonDao {
 //		List<PocketmonDto> list = jdbcTemplate.query(sql, mapper);
 //		return list;
 	}
-	
 	
 	//상세 메소드 - 기본키를 조건으로 설정하여 결과가 하나만 나오도록 구현
 	public PocketmonDto selectOne(int pocketmonNo) {
@@ -86,6 +86,16 @@ public class PocketmonDao {
 				}
 		
 		//상세패이지 만들때
+	}
+
+	//항목- 키워드 검색
+	public List<PocketmonDto> selectList(String column, String keyword){
+		JdbcTemplate jdbcTemplate = JdbcHelper.getJdbcTemplate();
+//		String sql = "select * from pocketmon where instr(항목, 키워드) > 0";
+		String sql = "select * from pocketmon where instr("+column+", ?) > 0";
+		Object[] data = {keyword};
+		PocketmonMapper mapper = new PocketmonMapper();
+		return jdbcTemplate.query(sql, mapper, data);
 	}
 }
 

@@ -10,7 +10,7 @@ import jdbc.util.JdbcHelper;
 
 public class EmpDao {
 	
-		//등록
+		//등록 메소드
 			public void insert(EmpDto dto) {
 			JdbcTemplate jdbcTemplate = JdbcHelper.getJdbcTemplate();
 			String sql = "insert into emp"
@@ -24,7 +24,7 @@ public class EmpDao {
 			};
 			jdbcTemplate.update(sql, data);
 	}
-		// 수정
+		// 수정 메소드
 			public boolean update(EmpDto dto) {
 			JdbcTemplate jdbcTemplate = JdbcHelper.getJdbcTemplate();
 			String sql = "update emp set "
@@ -41,23 +41,23 @@ public class EmpDao {
 			return jdbcTemplate.update(sql,data) > 0;
 			
 	}
-		//삭제
+		//삭제 메소드
 			public boolean delete(int empNo) {
 				JdbcTemplate jdbcTemplate = JdbcHelper.getJdbcTemplate();
 				String sql = "delete emp where emp_no=?";
 				Object[] data = {empNo};
 				return jdbcTemplate.update(sql, data) > 0;
 			}
-		//목록
+		//목록 메소드
 			public List<EmpDto> selectList(){
 				JdbcTemplate jdbcTemplate = JdbcHelper.getJdbcTemplate();
 				String sql = "select * from emp order by emp_no asc"; //delete문이랑 다름 주의
 				//Object[] data = {};
 				EmpMapper mapper = new EmpMapper();
-				return jdbcTemplate.query(sql, mapper); //다시 생각해보기
+				return jdbcTemplate.query(sql, mapper); 
 				
 			}
-		//상세
+		//상세 메소드
 			public EmpDto selectOne(int empNo) {
 				JdbcTemplate jdbcTemplate = JdbcHelper.getJdbcTemplate();
 				String sql = "select * from emp where emp_no=?"; 
@@ -74,5 +74,15 @@ public class EmpDao {
 				}
 			}
 			
-}
+		//검색 메소드
+			public List<EmpDto> selectList(String column, String keyword) {
+				JdbcTemplate jdbcTemplate = JdbcHelper.getJdbcTemplate();
+				String sql = "select * from emp where instr("+column+" , ?) > 0";
+				Object[] data = {keyword};
+				EmpMapper mapper = new EmpMapper();
+				return jdbcTemplate.query(sql, mapper, data);
+				
+				
+			}
+	}
 

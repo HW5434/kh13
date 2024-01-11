@@ -13,8 +13,8 @@ public class Test11사원목록 {
 		
 		System.out.println("사이즈 조회 : " + list.size());
 		for(EmpDto empDto : list) {
-		System.out.println("이름 : " + empDto.getEmpName() + 
-									", 부서 : " + empDto.getEmpDept());
+		System.out.println("이름 : " + empDto.getEmpName() + ", 부서 : " + empDto.getEmpDept());
+									
 
 		}
 	}

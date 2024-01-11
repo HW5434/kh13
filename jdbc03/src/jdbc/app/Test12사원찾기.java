@@ -13,12 +13,18 @@ public class Test12사원찾기 {
 		
 		
 		EmpDao dao = new EmpDao();
-		EmpDto dto = dao.selectOne(EmpNo);
+		EmpDto dto = dao.selectOne(EmpNo); //번호 줄테니까 조회
 		
-		System.out.println("이름, 부서, 입사일, 급여");
-		System.out.println(dto.getEmpName());
-		System.out.println(dto.getEmpDept());
-		System.out.println(dto.getEmpDate());
-		System.out.println(dto.getEmpSal());
+		if(dto != null) {
+			System.out.println("이름, 부서, 입사일, 급여");
+			System.out.println(dto.getEmpName());
+			System.out.println(dto.getEmpDept());
+			System.out.println(dto.getEmpDate());
+			System.out.println(dto.getEmpSal());
+		}
+		else {
+			System.out.println("존재하지 않는 번호입니다.");
+		}
+		
 	}
 }
