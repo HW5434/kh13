@@ -14,6 +14,7 @@ import com.kh.spring05.dto.PocketmonDto;
 public class EmpController {
 
 	@Autowired
+	//EmpDao dao = new EmpDao(); 이렇게 하면 안됌 내가 ;;실수한거
 	private EmpDao dao;
 	
 	@RequestMapping("/insert")
