@@ -4,9 +4,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Service;
 
 import com.kh.spring05.dto.PocketmonDto;
 
+//@Controller 또는 @Repository를 제외한 모든 요소는 @Service로 등록
+@Service
 public class PocketmonMapper implements RowMapper<PocketmonDto>{
 
 	@Override
