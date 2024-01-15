@@ -16,7 +16,7 @@ public class EmpDao {
 	private EmpMapper mapper;
 	
 	public void insert(EmpDto dto) {
-		String sql = "insert into("
+		String sql = "insert into emp("
 				+"emp_no, " 
 				+"emp_name, "
 				+"emp_dept, "
