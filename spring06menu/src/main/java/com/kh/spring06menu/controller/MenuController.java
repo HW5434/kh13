@@ -1,5 +1,7 @@
 package com.kh.spring06menu.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,10 +43,39 @@ public class MenuController {
 			else {
 				return "존재하지 않는 메뉴번호";
 			}
-			
-			
-			
-			
 		}
+		
+		
+		@RequestMapping("/list")
+		public String list (
+				@RequestParam String column, 
+				@RequestParam String keyword
+				) {
+			boolean isSearch = column != null && keyword != null;
+			List<MenuDto> list;
+			if(isSearch) {
+				list = dao.selectList(column, keyword);
+			}
+			else{
+				list = dao.selectList();
+			}
+			
+			//화면
+			StringBuffer buffer = new StringBuffer();
+			for(MenuDto dto : list) {
+//				buffer.append(dto.getMenuNo());
+//				buffer.append(", ");
+//				buffer.append(dto.getMenuNameKor());
+//				buffer.append(", ");
+//				buffer.append(dto.getMenuNameEng());
+//				buffer.append(", ");
+//				buffer.append(dto.getMenuType());
+//				buffer.append(", ");
+//				buffer.append(dto.getPrice());
+				
+				buffer.append(dto.toString()); //Dto에 to.String 을 만들어서 출력하는 방식
+				buffer.append("<br>");
+			}
+			return buffer.toString();
 	}
-
+}

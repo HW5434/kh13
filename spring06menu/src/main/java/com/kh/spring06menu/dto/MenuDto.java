@@ -2,6 +2,11 @@ package com.kh.spring06menu.dto;
 
 public class MenuDto {
 
+	@Override
+	public String toString() {
+		return "MenuDto [menuNo=" + menuNo + ", menuNameKor=" + menuNameKor + ", menuNameEng=" + menuNameEng
+				+ ", menuType=" + menuType + ", price=" + price + "]";
+	}
 	private int menuNo;
 	private String menuNameKor;
 	private String menuNameEng;

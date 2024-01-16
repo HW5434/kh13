@@ -1,5 +1,7 @@
 package com.kh.spring06menu.dao;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -45,4 +47,18 @@ public class MenuDao {
 		Object[] data = {menuNo};
 		return jdbcTemplate.update(sql, data) > 0;
 	}
+	
+	public List<MenuDto> selectList() {
+		String sql = "select * from menu order by menu_no asc";
+		return jdbcTemplate.query(sql, mapper);
+	}
+	
+	public List<MenuDto> selectList(String column, String keyword) {
+		String sql = "select * from menu where instr("+column+", ?) > 0"
+				+ "order by "+column+" asc, menu_no asc";
+		Object[] data = {keyword};
+		return jdbcTemplate.query(sql, mapper, data);
+		
+	}
+	
 }
