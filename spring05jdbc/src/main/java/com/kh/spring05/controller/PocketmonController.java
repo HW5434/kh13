@@ -55,6 +55,7 @@ public class PocketmonController {
 	
 	//업그레이드
 	// - DB 처리를 DAO에게 전담하여 처리
+	
 	@Autowired
 	private PocketmonDao dao;
 	
@@ -64,4 +65,26 @@ public class PocketmonController {
 		return "포켓몬스터 등록 완료";
 	}
 	
+	@RequestMapping("/edit")
+	public String edit(@ModelAttribute PocketmonDto dto) {
+		boolean result = dao.update(dto);
+		if(result) {
+			return "포켓몬 수정 완료";
+		}
+		else {
+			return "존재하지 않는 포켓몬스터 번호";
+		}
+	}
+//	@RequestParam 이름에 맞는걸 원시형 데이터
+		@RequestMapping("/delete")
+		public String delete(@RequestParam int pocketmonNo) {
+			if(dao.delete(pocketmonNo)) {
+				return "포켓몬스터 삭제 완료";
+			}
+			else {
+				return "존재하지 않는 포켓몬스터";
+			}
+		
+	}
+	//주소 : http://localhost:8080/pocketmon/edit?pocketmonNo=1&pocketmonName=바꾼이름&pocketmonType=물
 }

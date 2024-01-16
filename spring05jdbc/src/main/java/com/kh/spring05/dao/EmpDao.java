@@ -27,4 +27,19 @@ public class EmpDao {
 		jdbcTemplate.update(sql, data);
 	}
 	
+	public boolean update(EmpDto dto) {
+
+		String sql = "update emp "
+				+ "set emp_name=?, emp_dept=?, emp_date=?, emp_sal=? "
+				+ "where emp_no = ?";
+		Object[] data = {dto.getEmpName(), dto.getEmpDept(), dto.getEmpDate(), dto.getEmpSal(), dto.getEmpNo()};
+		return jdbcTemplate.update(sql, data) > 0;
+	}
+	
+	public boolean delete(int empNo) {
+		String sql = "delete emp where emp_no=?";
+		Object[] data = {empNo};
+		return jdbcTemplate.update(sql, data) > 0;
+	}
+	
 }

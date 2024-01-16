@@ -18,7 +18,7 @@ public class PocketmonDao {
 	
 	@Autowired
 	private PocketmonMapper mapper;
-	
+	//등록
 	public void insert(PocketmonDto dto) {
 		String sql = "insert into pocketmon("
 				+ "pocketmon_no, "
@@ -29,4 +29,20 @@ public class PocketmonDao {
 		jdbcTemplate.update(sql, data);
 		
 	}
+	//수정
+	public boolean update(PocketmonDto dto) {
+		String sql = "update pocketmon "
+				+ "set pocketmon_name=?, pocketmon_type=? "
+				+ "where pocketmon_no=?";
+		Object[] data = {dto.getPocketmonName(), dto.getPocketmonType(), dto.getPocketmonNo()};
+		return jdbcTemplate.update(sql, data) > 0;
+	}
+	//삭제 delete(primary key)
+	public boolean delete(int pocketmonNo) {
+		String sql = "delete pocketmon where pocketmon_no=?";
+		Object[] data = {pocketmonNo};
+		return jdbcTemplate.update(sql, data) > 0;
+	}
+	
+	
 }

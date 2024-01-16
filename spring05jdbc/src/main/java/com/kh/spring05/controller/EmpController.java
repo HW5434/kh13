@@ -3,11 +3,11 @@ package com.kh.spring05.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.kh.spring05.dao.EmpDao;
 import com.kh.spring05.dto.EmpDto;
-import com.kh.spring05.dto.PocketmonDto;
 
 @RestController
 @RequestMapping("/emp")
@@ -22,4 +22,29 @@ public class EmpController {
 		dao.insert(dto);
 		return "사원 등록 완료";
 	}
-}
+
+	
+	@RequestMapping("/edit") //기능에 맞는 이름
+		public String edit(EmpDto dto) {
+		boolean result = dao.update(dto);
+		if(result) {
+			return "사원 수정 완료";
+		}
+		else {
+			return "존재하지 않는 사원입니다.";
+		}
+	}
+		
+		@RequestMapping("/delete")
+		public String delete(@RequestParam int empNo) {
+			if(dao.delete(empNo)) {
+				return "사원 삭제 완료";
+			}
+			else {
+				return "존재하지 않는 사원 번호 입니다.";
+			}
+			
+			
+			
+		}
+	}
