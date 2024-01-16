@@ -156,6 +156,23 @@ public class PocketmonController {
 		}
 		return buffer.toString(); 
 	}
+
+	@RequestMapping("/detail")
+	public String detail(@RequestParam int pocketmonNo) {
+		PocketmonDto dto = dao.selectOne(pocketmonNo);
+		if(dto != null) {//있는 번호인 경우
+			StringBuffer buffer = new StringBuffer();
+			buffer.append(dto.getPocketmonName());
+			buffer.append(", ");
+			buffer.append(dto.getPocketmonType());
+			buffer.append(", ");
+			buffer.append("<br>"); //한줄 띄어쓰기
+			return buffer.toString();
+		}
+		else {//없는 번호인 경우
+			return "존재하지 않는 몬스터 번호";
+		}
+	}
 }
 	
 	

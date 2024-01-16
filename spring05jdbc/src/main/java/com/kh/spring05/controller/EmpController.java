@@ -21,12 +21,11 @@ public class EmpController {
 	private EmpDao dao;
 	
 	@RequestMapping("/insert")
-	public String insert(@ModelAttribute EmpDto dto) {
+		public String insert(@ModelAttribute EmpDto dto) {
 		dao.insert(dto);
 		return "사원 등록 완료";
 	}
 
-	
 	@RequestMapping("/edit") //기능에 맞는 이름
 		public String edit(EmpDto dto) {
 		boolean result = dao.update(dto);
@@ -48,8 +47,6 @@ public class EmpController {
 			}
 		}
 		
-			
-			
 		@RequestMapping("/list")
 		
 		
@@ -80,5 +77,24 @@ public class EmpController {
 			}
 			return buffer.toString(); 
 		}
+		
+		@RequestMapping("/detail")
+		public String detail(@RequestParam int empNo) {
+			EmpDto dto = dao.selectOne(empNo);
+			if(dto != null) {
+				StringBuffer buffer = new StringBuffer();
+				buffer.append(dto.getEmpName());
+				buffer.append(dto.getEmpDept());
+				buffer.append(dto.getEmpDate());
+				buffer.append(dto.getEmpSal());
+				return buffer.toString();
+			}
+			else {
+				return "존재하지 않는 번호입니다";
+			}
+		}
+		
+		
+		
 		
 }

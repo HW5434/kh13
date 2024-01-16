@@ -78,4 +78,25 @@ public class MenuController {
 			}
 			return buffer.toString();
 	}
+
+
+		@RequestMapping("/detail")
+		public String detail(@RequestParam int menuNo) {
+			MenuDto dto = dao.selectOne(menuNo);
+			if(dto != null) {
+				StringBuffer buffer = new StringBuffer();
+				buffer.append(dto.getMenuNameKor());
+				buffer.append(dto.getMenuNameEng());
+				buffer.append(dto.getMenuType());
+				return buffer.toString();
+			}
+			else {
+				return "존재하지 않는 번호입니다. ";
+			}
+		}
+		
+		
+		
+		
+		
 }
