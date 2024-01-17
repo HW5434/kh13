@@ -6,9 +6,9 @@
 <br>
 <br>
 
-<img width="100" alt="네이버 로고" src="/logo/naver.png">
+<a href="https://www.naver.com/"><img width="100" alt="네이버 로고" src="/logo/naver.png"></a>
 &nbsp;&nbsp;&nbsp;	<!-- 띄어쓰기 -->
-<img width="100" alt="카카오톡 로고" src="/logo/kakao.png">
+<a href="https://accounts.kakao.com/login/?continue=https%3A%2F%2Faccounts.kakao.com%2Fweblogin%2Faccount%2Finfo#login"><img width="100" alt="카카오톡 로고" src="/logo/kakao.png"></a>
 &nbsp;&nbsp;&nbsp;
 <img width="100" alt="페이스북 로고" src="/logo/facebook.png">
 &nbsp;&nbsp;&nbsp;
