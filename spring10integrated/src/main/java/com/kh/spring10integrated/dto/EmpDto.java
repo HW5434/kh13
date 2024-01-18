@@ -6,7 +6,11 @@ public class EmpDto {
 	private String empDept;
 	private String empDate;
 	private int empSal;
-	
+	@Override
+	public String toString() {
+		return "EmpDto [empNo=" + empNo + ", empName=" + empName + ", empDept=" + empDept + ", empDate=" + empDate
+				+ ", empSal=" + empSal + "]";
+	}
 	public EmpDto() {
 		super();
 	}
