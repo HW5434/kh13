@@ -68,7 +68,7 @@ if(ndl 짝수라면)
 for(int number : list){
 	System.out.println(number);
 }
---%>
+--%>/
 
 <c:forEach var="number" items="${list}">
 	<h2>number = ${number}</h2>
