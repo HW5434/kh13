@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.support.JdbcUtils;
 import org.springframework.stereotype.Repository;
 
 import com.kh.spring05.dto.EmpDto;
@@ -65,4 +66,9 @@ public class EmpDao {
 		return list.isEmpty() ? null : list.get(0);
 		
 	}
-}
+
+
+
+
+	}
+
