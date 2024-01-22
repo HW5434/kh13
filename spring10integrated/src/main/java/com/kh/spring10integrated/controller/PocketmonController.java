@@ -84,9 +84,14 @@ public class PocketmonController {
 		
 		model.addAttribute("list", list);
 		
-		return "/WEB-INF/views/pocketmon/list2.jsp";
+		return "/WEB-INF/views/pocketmon/list.jsp";
 	}
 	
-	
-	
+	//상세 페이지
+	@RequestMapping("/detail")
+	public String detail(@RequestParam int pocketmonNo,Model model) {
+		PocketmonDto dto = dao.selectOne(pocketmonNo);
+		model.addAttribute("dto", dto);
+		return "/WEB-INF/views/pocketmon/detail.jsp";
+	}
 }
