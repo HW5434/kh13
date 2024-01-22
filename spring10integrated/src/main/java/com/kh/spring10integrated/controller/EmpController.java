@@ -97,7 +97,23 @@ public class EmpController {
 			 */
 			model.addAttribute("isSearch", isSearch);
 			model.addAttribute("list", list);
-			return "/WEB-INF/views/emp/list2.jsp";
+			return "/WEB-INF/views/emp/list.jsp";
+			
+		}
+		
+		@RequestMapping("/detail")
+		public String detail(@RequestParam int empNo, Model model) {
+			EmpDto dto = dao.selectOne(empNo);
+			model.addAttribute("dto", dto);
+			return "/WEB-INF/views/emp/detail.jsp";
+			
+		}
+		
+		@RequestMapping("/delete")
+		public String delete(@RequestParam int empNo) {
+			dao.delete(empNo);
+			//return "redirect:/emp/list";
+			return "redirect:list";
 			
 		}
 }
