@@ -84,7 +84,7 @@ public class PocketmonController {
 		
 		model.addAttribute("list", list);
 		
-		return "/WEB-INF/views/pocketmon/list.jsp";
+		return "/WEB-INF/views/pocketmon/list2.jsp";
 	}
 	
 	
