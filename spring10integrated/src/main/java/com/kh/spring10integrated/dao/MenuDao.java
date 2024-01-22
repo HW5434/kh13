@@ -54,7 +54,9 @@ public class MenuDao {
 	}
 	
 	public List<MenuDto> selectList(String column, String keyword) {
-		String sql = "select * from menu where instr("+column+", ?) > 0"
+		String sql = "select * from menu "
+				//+ "where instr("+column+", ?) > 0"
+				+ "where instr(upper("+column+"), upper(?)) > 0"
 				+ "order by "+column+" asc, menu_no asc";
 		Object[] data = {keyword};
 		return jdbcTemplate.query(sql, mapper, data);
