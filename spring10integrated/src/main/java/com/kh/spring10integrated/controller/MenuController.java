@@ -1,5 +1,7 @@
 package com.kh.spring10integrated.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kh.spring10integrated.dao.MenuDao;
 import com.kh.spring10integrated.dto.MenuDto;
@@ -60,6 +63,18 @@ public class MenuController {
 	@RequestMapping("/changeFail")
 	public String changeFail() {
 		return "/WEB-INF/views/menu/changeFail.jsp";
+	}
+	
+	@RequestMapping("/list")
+	public String list(@RequestParam(required = false) String column, 
+						   	@RequestParam(required = false) String keyword, 
+							Model model) {
+		boolean isSearch = column != null && keyword != null;
+		List<MenuDto> list = isSearch ? dao.selectList(column,keyword) : dao.selectList();
+		model.addAttribute("list", list);
+		
+		return "/WEB-INF/views/menu/list.jsp";
+		
 	}
 	
 }

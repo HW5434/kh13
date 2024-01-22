@@ -51,11 +51,12 @@ if(ndl 짝수라면)
 </c:else>
 --%>
 
+
 <c:choose>
 	<c:when test="${param.n % 2 == 0}">
 	<h2>n은 짝수입니다</h2>
 	</c:when>
-	<c:otherwise>
+	<c:otherwise> 
 	<h2>n은 홀수입니다</h2>
 	</c:otherwise>
 </c:choose>
@@ -68,7 +69,7 @@ if(ndl 짝수라면)
 for(int number : list){
 	System.out.println(number);
 }
---%>/
+--%>
 
 <c:forEach var="number" items="${list}">
 	<h2>number = ${number}</h2>

@@ -1,11 +1,16 @@
 package com.kh.spring10integrated.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.kh.spring10integrated.dao.PocketmonDao;
 import com.kh.spring10integrated.dto.PocketmonDto;
@@ -66,5 +71,22 @@ public class PocketmonController {
 	public String editFail() {
 		return "/WEB-INF/views/pocketmon/editFail.jsp";
 	}
+	
+	//목록 /검색페이지
+	// - 사용자의 검색어(선택)을 전달받아 조회후 Model에 첨부한다
+	@RequestMapping("/list")
+	public String list(@RequestParam(required = false) String column, 
+							@RequestParam(required = false) String keyword, 
+							Model model) {
+		boolean isSearch = column != null && keyword != null;
+		List<PocketmonDto> list = isSearch ? 
+				dao.selectList(column, keyword) : dao.selectList();
+		
+		model.addAttribute("list", list);
+		
+		return "/WEB-INF/views/pocketmon/list.jsp";
+	}
+	
+	
 	
 }
