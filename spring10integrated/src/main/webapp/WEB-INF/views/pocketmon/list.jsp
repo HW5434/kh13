@@ -3,7 +3,10 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-    <h1>포켓몬 목록</h1>
+    <h1>
+    	포켓몬 목록
+    	<a href="insert1">+신규등록</a>
+    </h1>
     
     
 <!-- for(PocketmonDto dto : list) -->

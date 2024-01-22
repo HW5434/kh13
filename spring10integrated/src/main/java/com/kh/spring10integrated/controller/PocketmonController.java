@@ -94,4 +94,11 @@ public class PocketmonController {
 		model.addAttribute("dto", dto);
 		return "/WEB-INF/views/pocketmon/detail.jsp";
 	}
+	
+	@RequestMapping("/delete")
+	public String delete(@RequestParam int pocketmonNo) {
+		dao.delete(pocketmonNo);
+		//return "redirect:/pocketmon/list";//절대
+		return "redirect:list"; //상대
+	}
 }
