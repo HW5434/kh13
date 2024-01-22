@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kh.spring10integrated.dao.EmpDao;
@@ -76,13 +77,25 @@ public class EmpController {
 			return "/WEB-INF/views/emp/editFail.jsp";
 		}
 		
+		
+		//@RequestMapping(value = "/list", method = RequestMethod.GET)
 		@RequestMapping("/list")
 		public String list(@RequestParam(required = false) String column, 
 								@RequestParam(required = false) String keyword,
 								Model model) {
 			boolean isSearch = column != null && keyword != null;
 			List<EmpDto> list = isSearch ? dao.selectList(column, keyword) : dao.selectList();
-			
+			//if문 사용 가능
+			/*
+			 List<EmpDto> list;
+			 if(isSearch){
+			 	list = dao.selecList(column, keyword);
+			  {
+			  else{
+			  	list = dao.selectList();
+			  }
+			 */
+			model.addAttribute("isSearch", isSearch);
 			model.addAttribute("list", list);
 			return "/WEB-INF/views/emp/list.jsp";
 			
