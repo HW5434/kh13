@@ -32,4 +32,14 @@ public class MemberController {
 	public String joinFinish() {
 		return "/WEB-INF/views/member/finish.jsp";
 	}
+	
+	@GetMapping("/login")
+	public String login() {
+		return "/WEB-INF/views/member/login.jsp";
+	}
+	@PostMapping("/login")
+	public String login(@ModelAttribute MemberDto memberDto) {
+		return "redirect:";
+	}
+	
 }
