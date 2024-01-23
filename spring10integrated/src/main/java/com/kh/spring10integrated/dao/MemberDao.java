@@ -19,7 +19,7 @@ public class MemberDao {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	
-	//메소드에서 공용으로 사용하는 도구들을 생성
+	@Autowired
 	private MemberMapper mapper = new MemberMapper();
 	
 	//가입(등록, Create)
