@@ -2,8 +2,12 @@
     pageEncoding="UTF-8"%>
 
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-    
+<%-- 템플릿 페이지를 불러오는 코드 --%>
+<jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>    
     <h1>사원 상세정보</h1>
+    
+    <h2><a href="delete?empNo=${dto.empNo}" >사원 등록 하기</a></h2>
+    
     
     <c:choose>
     	<c:when test="${dto != null}">
@@ -34,8 +38,7 @@
     		<tr>
 	    		<th>바로가기</th>
 	    		<td><a href="list">목록보기</a>,
-	    		<a href="insert">수정하기</a>,
-	    		<a href="delete?empNo=${dto.empNo}" >삭제하기</a>
+	    		
 	    		</td>
     		</tr>
   	</tfoot>
@@ -45,7 +48,8 @@
     	<c:otherwise>존재하지 않는 사원</c:otherwise>
     </c:choose>
     
-    
+<%-- 템플릿 페이지를 불러오는 코드 --%>
+<jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>    
     
     
     

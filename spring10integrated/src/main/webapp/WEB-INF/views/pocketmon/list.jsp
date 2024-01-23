@@ -2,7 +2,8 @@
     pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%-- 템플릿 페이지를 불러오는 코드 --%>
+<jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
     <h1>
     	포켓몬 목록
     	<a href="insert1">+신규등록</a>
@@ -29,3 +30,6 @@
    	 <a href="detail?pocketmonNo=${dto.pocketmonNo}">이동</a>	
     </h2 >
     </c:forEach>
+    
+    <%-- 템플릿 페이지를 불러오는 코드 --%>
+<jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>

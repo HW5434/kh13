@@ -29,52 +29,83 @@ public class MenuController {
 	@PostMapping("/insert")
 	public String insert(@ModelAttribute MenuDto dto) {
 		dao.insert(dto);
-		
-		return "redirect:/menu/insertComplete";
+		//return "redirect:/menu/insertComplete";//절대
+		return "redirect:insertComplete";//상대
 	}
 	
 	@RequestMapping("/insertComplete")
-	public String insert3() {
+	public String insertComplete() {
 		return "/WEB-INF/views/menu/insertComplete.jsp";
 	}
 	
+	//수정페이지
 	@GetMapping("/change")
-	public String change(int menuNo, Model model) {
-		MenuDto dto = dao.selectOne(menuNo);
-		model.addAttribute("dto", dto);
-		return "/WEB-INF/views/menu/change.jsp";
+	public String change(Model model, @RequestParam int menuNo) {
+		MenuDto dto = dao.selectOne(menuNo);//번호에 대한 메뉴 조회
+		if(dto == null) {//없는 메뉴면
+			return "redirect:changeFail";//실패 페이지로 강제이동
+		}
+		else {//있는 메뉴면
+			model.addAttribute("dto", dto);//JSP로 메뉴정보를 전달
+			return "/WEB-INF/views/menu/change.jsp";//수정화면을 연결
+		}
 	}
 	
 	@PostMapping("/change")
 	public String change(@ModelAttribute MenuDto dto) {
-		if(dao.update(dto)) {
-			//return "/redirect:/menu/change"
-			return "redirect:changeSuccess";
-		}
-		else {
-			return "redirect:changeFail";
-		}
+		dao.update(dto);
+		//return "redirect:changeSuccess";//수정 성공 페이지
+		return "redirect:detail?menuNo="+dto.getMenuNo();//상세 페이지
 	}
 	
 	@RequestMapping("/changeSuccess")
 	public String changeSuccess() {
 		return "/WEB-INF/views/menu/changeSuccess.jsp";
 	}
+	
 	@RequestMapping("/changeFail")
 	public String changeFail() {
 		return "/WEB-INF/views/menu/changeFail.jsp";
 	}
 	
 	@RequestMapping("/list")
-	public String list(@RequestParam(required = false) String column, 
-						   	@RequestParam(required = false) String keyword, 
-							Model model) {
+	public String list(
+			@RequestParam(required = false) String column, 
+			@RequestParam(required = false) String keyword, 
+			Model model) {
 		boolean isSearch = column != null && keyword != null;
-		List<MenuDto> list = isSearch ? dao.selectList(column,keyword) : dao.selectList();
+//		List<MenuDto> list = isSearch ? dao.selectList(column, keyword) : dao.selectList();
+		List<MenuDto> list;
+		if(isSearch) {
+			list = dao.selectList(column, keyword);
+		}
+		else {
+			list = dao.selectList();
+		}
+		
 		model.addAttribute("list", list);
-		
 		return "/WEB-INF/views/menu/list.jsp";
-		
+	}
+	
+	@RequestMapping("/detail")
+	public String detail(@RequestParam int menuNo, Model model) {
+		MenuDto dto = dao.selectOne(menuNo);
+		model.addAttribute("dto", dto);
+		return "/WEB-INF/views/menu/detail.jsp";
+	}
+	
+	
+//	@RequestMapping("/delete")
+	@GetMapping("/delete")
+	public String delete(@RequestParam int menuNo) {
+		dao.delete(menuNo);
+		return "redirect:list";
 	}
 	
 }
+
+
+
+
+
+
