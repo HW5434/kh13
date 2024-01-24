@@ -2,6 +2,7 @@ package com.kh.spring10integrated.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -47,7 +48,7 @@ public class MemberController {
 	
 	//테스트 로그인 로그아웃
 	// - HttpSession을 사용하고 싶다면 매개변수에 선언한 
-	// - 등록 : session.getAttribute("key", value)
+	// - 등록 : session.setAttribute("key", value)
 	// - 확인 : session.getAttribute("key")
 	// - 삭제 : session.removeAttribute("key")
 	@RequestMapping("/testLogin")
@@ -73,6 +74,7 @@ public class MemberController {
 	@PostMapping("/login")
 	public String login(@ModelAttribute MemberDto inputDto,
 														HttpSession session) {
+		
 		//사용자가 입력한 아이디로 회원정보를 조회한다
 		MemberDto findDto = memberDao.selectOne(inputDto.getMemberId());
 		//로그인 가능 여부를 판정
@@ -97,5 +99,22 @@ public class MemberController {
 	public String logout(HttpSession session) {
 		session.removeAttribute("loginId");
 		return "redirect:/";
+	}
+	
+	// - (중요) 내 아이디는 HttpSession에 있다
+	// - 그리고 화면에 정보를 표시해야 한다
+	@RequestMapping("/mypage")
+	public String mypage(HttpSession session, Model model) {
+		//1. 세션에 저장된 아이디를 꺼낸다
+		String loginId = (String) session.getAttribute("loginId");
+		
+		//2. 아이디에 맞는 정보를 조회한다
+		MemberDto memberDto = memberDao.selectOne(loginId);
+		
+		//3. 화면에 조회한 정보를 전달한다
+		model.addAttribute("memberDto", memberDto);
+		
+		//4. 연결될 화면을 반환한다
+		return "/WEB-INF/views/member/mypage.jsp"; //사이트 이동
 	}
 }

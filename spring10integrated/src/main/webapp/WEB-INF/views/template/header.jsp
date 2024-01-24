@@ -45,7 +45,7 @@
              <c:choose>
                  <c:when test="${sessionScope.loginId != null}">
                      <a href="/member/logout">로그아웃</a>
-                     <a href="">내 정보</a>
+                     <a href="member/mypage">내 정보</a>
                      loginId=${sessionScope.loginId}
                  </c:when>
                  <c:otherwise>
