@@ -40,7 +40,7 @@ public class MemberController {
 	@PostMapping("/login")
 	public String login(@ModelAttribute MemberDto memberDto) {
 		return "redirect:";
-		//github
+		//github tesxt
 	}
 	
 }
