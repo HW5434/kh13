@@ -92,7 +92,6 @@ public class MemberController {
 	//실제 로그아웃
 	// - 로그인 때 검사를 했으므로 추가 검사는 불필요
 	// - 로그인 때 저장한 세션의 데이터만 삭제 처리
-	// - 123
 	
 	@RequestMapping("/logout")
 	public String logout(HttpSession session) {
