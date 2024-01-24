@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
     
 	<%--
 		HTML은 여러 버전이 있었으며, 지금은 HTML 5가 표준
@@ -39,12 +40,37 @@
 		<a href="/menu/list">메뉴관리 시스템</a>
 		</div>
 		
+		
 		<div>
-			<a href="/member/join">회원가입</a>
-			<a href="">로그인</a>
-<!-- 			<a href="">로그아웃</a> -->
-<!-- 			<a href="">내정보</a> -->
-		</div>
+             <c:choose>
+                 <c:when test="${sessionScope.loginId != null}">
+                     <a href="/member/logout">로그아웃</a>
+                     <a href="">내 정보</a>
+                     loginId=${sessionScope.loginId}
+                 </c:when>
+                 <c:otherwise>
+                     <a href="/member/join">회원가입</a>
+                     <a href="/member/login">로그인</a>
+                 </c:otherwise>
+             </c:choose>
+         </div>
+         
+         <div>
+         <%--
+         <c:choose>
+                 <c:when test="${sessionScope.loginId==null}">
+                    <a href="/member/testLogin">테스트로그인</a>
+                 </c:when>
+                 <c:otherwise>
+                     <a href="/member/testLogout">테스트로그아웃</a>
+                 </c:otherwise>
+             </c:choose>
+          --%>
+             <%-- 
+             <a href="">로그아웃</a>
+             <a href="">내정보</a>
+             --%>
+         </div>
 	<%--
 		중단 영역
 		- 실질적인 홈페이지의 내용이 표시되는 영역
