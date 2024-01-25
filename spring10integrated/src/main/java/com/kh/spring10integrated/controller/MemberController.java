@@ -221,7 +221,7 @@ public class MemberController {
 		MemberDto findDto = memberDao.selectOne(loginId);
 		boolean isValid = findDto.getMemberPw().equals(memberPw);
 		
-		if(isValid) {
+		if(isValid) { 
 			memberDao.delete(loginId); //회원탈퇴
 			session.removeAttribute("loginId");//로그아웃
 			return "redirect:exitFinish";
