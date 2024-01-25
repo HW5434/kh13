@@ -65,7 +65,6 @@ public class MemberDao {
 		return list.isEmpty() ? null : list.get(0);
 	}
 
-
 	//비밀번호 변경(수정, Update)
 	public boolean updateMemberPw(MemberDto dto) {
 		String sql = "update member set member_pw=? where member_id=?";
@@ -73,9 +72,32 @@ public class MemberDao {
 		return jdbcTemplate.update(sql, data) > 0;
 	}
 
+	//회원탈퇴(삭제, Delete)
 	public boolean delete(String memberId) {
 		String sql = "delete member where member_id = ?";
 		Object[] data = {memberId};
+		return jdbcTemplate.update(sql, data) > 0;
+	}
+	
+	//최종로그인시각 변경(수정, Update)
+	public boolean updateMemberLogin(String memberId) {
+		String sql = "update member set member_login=sysdate "
+				+ "where member_id = ?";
+		Object[] data = {memberId};
+		return jdbcTemplate.update(sql, data) > 0;
+	}
+	public boolean updateMember(MemberDto memberDto) {
+		String sql = "update member set "
+				+ "member_nick=?, member_email=?, member_birth=?,"
+				+ "member_contact=?, member_post=?, "
+				+ "member_address1=?, member_address2=? "
+				+ "where member_id = ?";
+		Object[] data = {
+				memberDto.getMemberNick(), memberDto.getMemberEmail(),
+				memberDto.getMemberBirth(), memberDto.getMemberContact(),
+				memberDto.getMemberPost(), memberDto.getMemberAddress1(),
+				memberDto.getMemberAddress2(), memberDto.getMemberId()
+		};
 		return jdbcTemplate.update(sql, data) > 0;
 	}
 }

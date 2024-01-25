@@ -6,10 +6,15 @@
 
 <h1>${memberDto.memberId}님의 정보</h1>
 
-<table border="1" width = "350">
+<table border="1" width = "400">
 	<tr>
 		<th width="30%">닉네임</th>
 		<td>${memberDto.memberNick}</td>
+	</tr>
+	
+	<tr>
+		<th>비밀번호</th>
+		<td>${memberDto.memberPw}</td>
 	</tr>
 	
 	<tr>
@@ -48,21 +53,21 @@
 	<tr>
 		<th>가입일시</th>
 			<td>
-				<fmt:formatDate value= "${memberDto.memberJoin}" pattern = "Y년 M월 D일 H시 M분 S초"/>
+				<fmt:formatDate value= "${memberDto.memberJoin}" pattern = "Y년 M월 D일 H시 m분 s초"/>
 			</td>
 	</tr>
 	
 	<tr>
 		<th>로그인일시</th>
 			<td>
-				<fmt:formatDate value= "${memberDto.memberLogin}" pattern = "Y년 M월 D일 H시 M분 S초"/>
+				<fmt:formatDate value= "${memberDto.memberLogin}" pattern = "Y년 M월 D일 H시 m분 s초"/>
 			</td>
 	</tr>
   
 </table>
 
-<h3><a href="#">비밀번호 변경</a></h3>
-<h3><a href="#">개인정보 변경</a></h3>
+<h3><a href="/member/password">비밀번호 변경</a></h3>
+<h3><a href="/member/change">개인정보 변경</a></h3>
 <h3><a href="#">회원탈퇴 변경</a></h3>
 
 
