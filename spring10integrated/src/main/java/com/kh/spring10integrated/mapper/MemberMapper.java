@@ -1,17 +1,18 @@
 package com.kh.spring10integrated.mapper;
 
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
+
 import com.kh.spring10integrated.dto.MemberDto;
 
 @Service
 public class MemberMapper implements RowMapper<MemberDto>{
-	
 	@Override
 	public MemberDto mapRow(ResultSet rs, int idx) throws SQLException {
+		//조회된 결과의 1줄(13열)을 DTO의 필드(13개)에 이동하는 코드
 		MemberDto dto = new MemberDto();
 		dto.setMemberId(rs.getString("member_id"));
 		dto.setMemberPw(rs.getString("member_pw"));
@@ -27,6 +28,13 @@ public class MemberMapper implements RowMapper<MemberDto>{
 		dto.setMemberJoin(rs.getDate("member_join"));
 		dto.setMemberLogin(rs.getDate("member_login"));
 		return dto;
-		
 	}
 }
+
+
+
+
+
+
+
+

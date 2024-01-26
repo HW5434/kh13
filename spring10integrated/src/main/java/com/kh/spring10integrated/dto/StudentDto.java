@@ -1,16 +1,13 @@
 package com.kh.spring10integrated.dto;
 
 public class StudentDto {
-
 	private int studentId;
-	private String studentName;
+	private String name;
 	private int koreanScore;
 	private int mathScore;
 	private int englishScore;
-	
 	public StudentDto() {
 		super();
-		
 	}
 	public int getStudentId() {
 		return studentId;
@@ -18,11 +15,11 @@ public class StudentDto {
 	public void setStudentId(int studentId) {
 		this.studentId = studentId;
 	}
-	public String getStudentName() {
-		return studentName;
+	public String getName() {
+		return name;
 	}
-	public void setStudentName(String studentName) {
-		this.studentName = studentName;
+	public void setName(String name) {
+		this.name = name;
 	}
 	public int getKoreanScore() {
 		return koreanScore;
@@ -42,5 +39,10 @@ public class StudentDto {
 	public void setEnglishScore(int englishScore) {
 		this.englishScore = englishScore;
 	}
-	
+	public int getTotal() {
+		return koreanScore+mathScore+englishScore;
+	}
+	public float getAverage() {
+		return getTotal() / 3f;
+	}
 }

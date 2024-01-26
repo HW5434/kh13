@@ -8,19 +8,17 @@ import org.springframework.stereotype.Repository;
 
 import com.kh.spring10integrated.dto.MemberDto;
 import com.kh.spring10integrated.mapper.MemberMapper;
-
-
-
+import com.kh.spring10integrated.mapper.StatMapper;
+import com.kh.spring10integrated.vo.StatVO;
 
 //member 테이블 데이터 처리를 담당하는 클래스
 @Repository
 public class MemberDao {
-	
+	//메소드에서 공용으로 사용하는 도구들을 생성
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
-	
 	@Autowired
-	private MemberMapper mapper = new MemberMapper();
+	private MemberMapper mapper;
 	
 	//가입(등록, Create)
 	public void insert(MemberDto dto) {
@@ -49,7 +47,7 @@ public class MemberDao {
 		//Object[] data = {};
 		return jdbcTemplate.query(sql, mapper);
 	}
-	//검색(조회, Read) 오버로딩
+	//검색(조회, Read)
 	public List<MemberDto> selectList(String column, String keyword) {
 		String sql = "select * from member where instr("+column+", ?) > 0 "
 										+ "order by "+column+" asc, member_id asc";
@@ -65,13 +63,13 @@ public class MemberDao {
 		return list.isEmpty() ? null : list.get(0);
 	}
 
+
 	//비밀번호 변경(수정, Update)
 	public boolean updateMemberPw(MemberDto dto) {
 		String sql = "update member set member_pw=? where member_id=?";
 		Object[] data = {dto.getMemberPw(), dto.getMemberId()};
 		return jdbcTemplate.update(sql, data) > 0;
 	}
-
 	//회원탈퇴(삭제, Delete)
 	public boolean delete(String memberId) {
 		String sql = "delete member where member_id = ?";
@@ -81,26 +79,37 @@ public class MemberDao {
 	
 	//최종로그인시각 변경(수정, Update)
 	public boolean updateMemberLogin(String memberId) {
-		String sql = "update member set member_login=sysdate "
-				+ "where member_id = ?";
+		String sql = "update member "
+						+ "set member_login=sysdate "
+						+ "where member_id = ?";
 		Object[] data = {memberId};
 		return jdbcTemplate.update(sql, data) > 0;
 	}
+	//회원이 자신의 정보를 변경(수정, Update)
 	public boolean updateMember(MemberDto memberDto) {
 		String sql = "update member set "
-				+ "member_nick=?, member_email=?, member_birth=?,"
-				+ "member_contact=?, member_post=?, "
-				+ "member_address1=?, member_address2=? "
-				+ "where member_id = ?";
+							+ "member_nick=?, member_email=?, member_birth=?, "
+							+ "member_contact=?, member_post=?, "
+							+ "member_address1=?, member_address2=? "
+						+ "where member_id = ?";
 		Object[] data = {
-				memberDto.getMemberNick(), memberDto.getMemberEmail(),
-				memberDto.getMemberBirth(), memberDto.getMemberContact(),
-				memberDto.getMemberPost(), memberDto.getMemberAddress1(),
-				memberDto.getMemberAddress2(), memberDto.getMemberId()
+			memberDto.getMemberNick(), memberDto.getMemberEmail(),
+			memberDto.getMemberBirth(), memberDto.getMemberContact(),
+			memberDto.getMemberPost(), memberDto.getMemberAddress1(),
+			memberDto.getMemberAddress2(), memberDto.getMemberId()
 		};
 		return jdbcTemplate.update(sql, data) > 0;
 	}
+	
+	@Autowired
+	private StatMapper statMapper;
+	public List<StatVO> statByLevel(){
+		String sql = "select member_level 항목, count(*) 개수 from member "
+				+ "group by member_level order by 개수 desc";
+		return jdbcTemplate.query(sql, statMapper);
+	}
 }
+
 
 
 

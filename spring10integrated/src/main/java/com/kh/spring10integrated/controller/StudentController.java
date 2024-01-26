@@ -18,52 +18,55 @@ import com.kh.spring10integrated.dto.StudentDto;
 @Controller
 @RequestMapping("/student")
 public class StudentController {
+	
 	@Autowired
-	private StudentDao studentDao;  
+	private StudentDao studentDao;
 	
 	@GetMapping("/add")
 	public String add() {
 		return "/WEB-INF/views/student/add.jsp";
 	}
-		
 	@PostMapping("/add")
 	public String add(@ModelAttribute StudentDto studentDto) {
 		studentDao.insert(studentDto);
-		return "redirect:addFinish";
+		return "redirect:list";
 	}
 	
-	@RequestMapping("/addFinish")
-	public String addFinish() {
-		return "/WEB-INF/views/student/addFinish.jsp";
-	}
-		
 	
 	@RequestMapping("/list")
-	public String list(@RequestParam String column, 
-							@RequestParam String keyword, 
-							Model model) {
-		boolean isSearch = column != null && keyword != null;
-		List<StudentDto> list;
-		if(isSearch) {
-			list = studentDao.selectList(column, keyword);
-		}
-		else {
-			list = studentDao.selectList();
- 		}
+	public String list(@RequestParam(required = false) String keyword, Model model) {
+		boolean isSearch = keyword != null;
+		List<StudentDto> list = isSearch ? 
+			studentDao.selectList("name", keyword) : studentDao.selectList();
 		model.addAttribute("list", list);
 		return "/WEB-INF/views/student/list.jsp";
 	}
 	
+	@RequestMapping("/detail")
+	public String detail(@RequestParam int studentId, Model model) {
+		StudentDto studentDto = studentDao.selectOne(studentId);
+		model.addAttribute("studentDto", studentDto);
+		int rank = studentDao.rank(studentDto.getTotal());
+		model.addAttribute("rank", rank); 
+		return "/WEB-INF/views/student/detail.jsp";
+	}
 	
+	@GetMapping("/edit")
+	public String edit(@RequestParam int studentId, Model model) {
+		StudentDto studentDto = studentDao.selectOne(studentId);
+		model.addAttribute("studentDto", studentDto);
+		return "/WEB-INF/views/student/edit.jsp";
+	}
+	@PostMapping("/edit")
+	public String edit(@ModelAttribute StudentDto studentDto) {
+		studentDao.update(studentDto);
+		return "redirect:detail?studentId="+studentDto.getStudentId();
+	}
 	
-	
-	//@RequestMapping("/detail")
-	
-	
-	//@RequestMapping("/edit")
-	
-	
-	//@RequestMapping("/delete")
-	
+	@GetMapping("/delete")
+	public String delete(@RequestParam int studentId) {
+		studentDao.delete(studentId);
+		return "redirect:list";
+	}
 	
 }

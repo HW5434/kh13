@@ -3,14 +3,14 @@
 
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 
-<h1>학생 정보 입력</h1>
+<h1>학생 정보 등록</h1>
 
 <form action="add" method="post">
-	학생이름 * <input type="text" name="studentName" required placeholder="한글 3글자"><br><br>
-	국어점수 * <input type="text" name="koeanScore" required placeholder="입력 숫자는 1~100"><br><br>
-	수학점수 * <input type="text" name="mathScore" required placeholder="입력 숫자는 1~100"><br><br>
-	영어점수 * <input type="text" name="englishScore" required placeholder="입력 숫자는 1~100"><br><br>
-<button>등록하기</button>
+	이름 <input type="text" name="name" required><br><br>
+	국어 <input type="number" name="koreanScore" required min="0" max="100">점 <br><br>
+	영어 <input type="number" name="englishScore" required min="0" max="100">점 <br><br>
+	수학 <input type="number" name="mathScore" required min="0" max="100">점 <br><br>
+	<button>등록</button>	
 </form>
 
 <jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>

@@ -10,13 +10,11 @@ import com.kh.spring10integrated.dto.StudentDto;
 
 @Service
 public class StudentMapper implements RowMapper<StudentDto>{
-
 	@Override
 	public StudentDto mapRow(ResultSet rs, int rowNum) throws SQLException {
 		StudentDto dto = new StudentDto();
-		
 		dto.setStudentId(rs.getInt("student_id"));
-		dto.setStudentName(rs.getString("name"));
+		dto.setName(rs.getString("name"));
 		dto.setKoreanScore(rs.getInt("korean_score"));
 		dto.setMathScore(rs.getInt("math_score"));
 		dto.setEnglishScore(rs.getInt("english_score"));
