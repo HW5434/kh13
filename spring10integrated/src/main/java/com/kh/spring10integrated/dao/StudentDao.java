@@ -73,7 +73,7 @@ public class StudentDao {
 		String sql = "select rank(?) within group(order by korean_score+english_score+math_score desc) from student";
 		Object[] data = {total};
 		//int.class는 int라는 결과값을 얻어내기 위해 알려주는 자료형 정보
-		//- 만약 String이라면 해당 위치에 String.class라고 작성
+		//- 만약 String이라면 해당 위치에 String.class  라고 작성
 		return jdbcTemplate.queryForObject(sql, int.class, data);
 	}
 }

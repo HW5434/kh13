@@ -52,7 +52,7 @@ public class InterceptorConfiguration implements WebMvcConfigurer{
 				"/member/login","/member/exitFinish"
 				); 
 		//관리자 인터셉터 등록
-		registry.addInterceptor(adminIntersepter).addPathPatterns("/admin/**");
+		//registry.addInterceptor(adminIntersepter).addPathPatterns("/admin/**");
 	}
 }
 
