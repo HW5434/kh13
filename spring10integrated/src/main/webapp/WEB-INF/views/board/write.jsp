@@ -6,9 +6,17 @@
 <h1>게시글 작성</h1>
 
 <form action="write" method="post">
-	제목 <input type="text" name="boardTitle" size="80%"><br>
-	내용 <input type="text" name="boardContent" size="80%"><br>
-	작성자 <input type="hidden" name="boardWriter" value="${sessionScope.loginId}">
+	제목 <input type="text" name="boardTitle" required> <br><br>
+	내용 
+	<%-- 
+		여러 줄 입력하고 싶다면 textarea 태그를 사용한다 
+		<input type="text" name="boardContent" required>
+		
+		textarea 태그는 종료 태그가 필요하며, type과 value를 설정할 수 없다
+		 <textarea name="boardContent" required></textarea>
+	--%>
+	<textarea name="boardContent" required></textarea>
+	<br><br>
 	<button>등록</button>
 </form>
 
