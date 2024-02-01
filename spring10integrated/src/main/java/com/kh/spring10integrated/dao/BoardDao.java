@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.kh.spring10integrated.dto.BoardDto;
 import com.kh.spring10integrated.mapper.BoardListMapper;
 import com.kh.spring10integrated.mapper.BoardMapper;
+import com.kh.spring10integrated.vo.PageVO;
 
 @Repository
 public class BoardDao {
@@ -30,7 +31,7 @@ public class BoardDao {
 		String sql = "select "
 							+ "board_no, board_title, board_writer, "
 							+ "board_wtime, board_etime, board_readcount "
-						+ "from board order by board_no desc";
+							+ "from board order by board_no desc";
 		return jdbcTemplate.query(sql, boardListMapper);
 	}
 	//검색
@@ -91,6 +92,45 @@ public class BoardDao {
 		Object[] data = {keyword, beginRow, endRow};
 		return jdbcTemplate.query(sql, boardListMapper, data);
 	}
+
+	//통합+페이징
+	public List<BoardDto> selectListByPaging(PageVO pageVO){
+		if(pageVO.isSearch()) {//검색
+			String sql = "select * from ("
+								+ "select rownum rn, TMP.* from ("
+									+ "select "
+										+ "board_no, board_title, board_writer, "
+										+ "board_wtime, board_etime, board_readcount "
+									+ "from board "
+									+ "where instr("+pageVO.getColumn()+", ?) > 0 "
+									+ "order by board_no desc"
+								+ ")TMP"
+							+ ") where rn between ? and ?";
+			Object[] data = {
+					pageVO.getKeyword(),
+					pageVO.getBeginRow(),
+					pageVO.getEndRow()
+					};
+			return jdbcTemplate.query(sql, boardListMapper, data);
+		}
+		else {//목록
+			String sql = "select * from ("
+								+ "select rownum rn, TMP.* from ("
+									+ "select "
+										+ "board_no, board_title, board_writer, "
+										+ "board_wtime, board_etime, board_readcount "
+									+ "from board "
+									+ "where instr("+pageVO.getColumn()+", ?) > 0 "
+									+ "order by board_no desc"
+								+ ")TMP"
+							+ ") where rn between ? and ?";
+			Object[] data = {
+					pageVO.getBeginRow(),
+					pageVO.getEndRow()
+					};
+			return jdbcTemplate.query(sql, boardListMapper, data);
+		}
+	}
 	
 	//카운트 - 목록일 경우와 검색일 경우를 각각 구현
 	public int count() {
@@ -102,6 +142,18 @@ public class BoardDao {
 						+ "where instr("+column+" , ?) > 0";
 		Object[] data = {keyword};
 		return jdbcTemplate.queryForObject(sql, int.class,data);
+	}
+	public int count(PageVO pageVO) {
+		if(pageVO.isSearch()) {//검색
+			String sql = "select count(*) from board "
+					+ "where instr("+pageVO.getColumn()+" , ?) > 0";
+			Object[] data = {pageVO.getKeyword()};
+			return jdbcTemplate.queryForObject(sql, int.class,data);
+		}
+		else {
+			String sql = "select count(*) from board";
+			return jdbcTemplate.queryForObject(sql, int.class);
+		}
 	}
 	
 	//단일조회
