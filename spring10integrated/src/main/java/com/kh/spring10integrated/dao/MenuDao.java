@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.kh.spring10integrated.dto.MenuDto;
 import com.kh.spring10integrated.mapper.MenuMapper;
 import com.kh.spring10integrated.mapper.StatMapper;
+import com.kh.spring10integrated.vo.PageVO;
 import com.kh.spring10integrated.vo.StatVO;
 
 @Repository
@@ -72,6 +73,55 @@ public class MenuDao {
 		List<MenuDto> list = jdbcTemplate.query(sql, mapper, data);
 		return list.isEmpty() ? null : list.get(0);
 	}
+	
+	//통합 페이징 만들기
+	public List<MenuDto> selectListByPaging(PageVO vo) {
+		if(vo.isSearch()){
+			String sql = "select * from ("
+						+ "select rownum rn, TMP.* from ("
+							+ "select "
+							+ "menu_no, menu_name_kor, menu_name_eng, "
+							+ "menu_type, menu_price "
+							+ "from menu "
+							+ "where instr("+vo.getColumn()+", ?) > 0 "
+							+ "order by menu_no desc"
+						+ ")TMP"
+						+ ") where rn between ? and ?";
+			Object[] data = {
+					vo.getKeyword(),
+					vo.getBeginRow(),
+					vo.getEndRow()
+			};
+			return jdbcTemplate.query(sql, mapper, data);
+		}
+		else {
+			String sql = "select * from ("
+					+ "select rownum rn, TMP.* from ("
+						+ "select "
+						+ "menu_no, menu_name_kor, menu_name_eng, "
+						+ "menu_type, menu_price "
+						+ "from menu order by menu_no desc"
+					+ ")TMP"
+					+ ") where rn between ? and ?";
+			Object[] data = {vo.getBeginRow(),vo.getEndRow()};
+			return jdbcTemplate.query(sql, mapper, data);
+		}
+	}
+	
+	//카운트
+		public int count(PageVO pageVO) {
+			if(pageVO.isSearch()) {//검색
+				String sql = "select count(*) from menu "
+								+ "where instr("+pageVO.getColumn()+", ?) > 0";
+				Object[] data = {pageVO.getKeyword()};
+				return jdbcTemplate.queryForObject(sql, int.class, data);
+			}
+			else {//목록
+				String sql = "select count(*) from menu";
+				return jdbcTemplate.queryForObject(sql, int.class);
+		}
+	}
+
 	
 	@Autowired
 	private StatMapper statMapper;

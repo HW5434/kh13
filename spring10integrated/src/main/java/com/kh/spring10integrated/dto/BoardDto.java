@@ -16,6 +16,28 @@ public class BoardDto {
 	private Date boardEtime;
 	private int boardReadcount;
 	
+	private int boardGroup; //그룹번호 
+	private Integer boardTarget; //원볼글번호
+	private int boardDepth; //차수
+	
+	public int getBoardGroup() {
+		return boardGroup;
+	}
+	public void setBoardGroup(int boardGroup) {
+		this.boardGroup = boardGroup;
+	}
+	public int getBoardDepth() {
+		return boardDepth;
+	}
+	public void setBoardDepth(int boardDepth) {
+		this.boardDepth = boardDepth;
+	}
+	public Integer getBoardTarget() {
+		return boardTarget;
+	}
+	public void setBoardTarget(Integer boardTarget) {
+		this.boardTarget = boardTarget;
+	}
 	public int getBoardNo() {
 		return boardNo;
 	}

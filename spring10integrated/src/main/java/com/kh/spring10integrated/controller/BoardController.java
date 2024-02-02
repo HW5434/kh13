@@ -26,14 +26,14 @@ import jakarta.servlet.http.HttpSession;
 @RequestMapping("/board")
 public class BoardController {
 	
-	//게시판에서는 empty String 으로 전단되는 파라미터를 null로 간주하도록 설정
-	// @InitBinder 설정으로 구현
+	//게시판에서는 empty string으로 전달되는 파라미터를 null로 간주하도록 설정
+	//@InitBinder 설정으로 구현
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
-		binder.registerCustomEditor(String.class , new StringTrimmerEditor(true));
+		binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
 	}
-
 	
+
 	@Autowired
 	private BoardDao boardDao;
 	
@@ -60,17 +60,17 @@ public class BoardController {
 //		int blockSize = 10;
 //		int beginBlock = (page-1) / blockSize * blockSize + 1;
 //		int endBlock = (page-1) / blockSize * blockSize + blockSize;
-//		model.addAttribute("beginBlock", beginBlock); //네비게이터 시작번호
-//		model.addAttribute("endBlock", endBlock); //네비게이터 종료번호
-//		model.addAttribute("page", page); //현재 페이지 번호
+//		model.addAttribute("beginBlock", beginBlock);//네비게이터 시작번호
+//		model.addAttribute("endBlock", endBlock);//네비게이터 종료번호
+//		model.addAttribute("page", page);//현재 페이지 번호
 //		
-//		int count = isSearch ? boardDao.count(column, keyword) : boardDao.count();
-//		int totalPage = (count -1) / size + 1; //게시글 개수
-//		model.addAttribute("totalPage" , totalPage); //총 페이지 수
+//		int count = isSearch ? 
+//				boardDao.count(column, keyword) : boardDao.count();
+//		int totalPage = (count - 1) / size + 1;
+//		model.addAttribute("count", count);//게시글 개수
+//		model.addAttribute("totalPage", totalPage);//총 페이지 수
 //		
-//		model.addAttribute("size" , size); //현재 게시글 표시 개수
-//		model.addAttribute("page" , page);
-//		
+//		model.addAttribute("size", size);//현재 게시글 표시 개수
 //		
 //		if(isSearch) {
 //			//model.addAttribute("list", boardDao.selectList(column, keyword));
@@ -84,15 +84,15 @@ public class BoardController {
 //	}
 	
 //	Paging 처리를 별도의 VO 클래스로 구현
-	//(참고) @ModelAttribute에 옵션을 주면 자동으로 모델에 첨부된다
+//	(참고) @ModelAttribute에 옵션을 주면 자동으로 모델에 첨부된다
 	@RequestMapping("/list")
-		public String list(
-				@ModelAttribute PageVO pageVO, 
-				Model model) {
-			//세부 계산은 클래스에서 수행하도록 하고 count, list만 처리
+	public String list(
+			@ModelAttribute PageVO pageVO,
+			Model model) {
+		//세부 계산은 클래스에서 수행하도록 하고 count, list만 처리
 		int count = boardDao.count(pageVO);
 		pageVO.setCount(count);
-		model.addAttribute("pageVO",pageVO);
+		model.addAttribute("pageVO", pageVO);
 		
 		List<BoardDto> list = boardDao.selectListByPaging(pageVO);
 		model.addAttribute("list", list);
@@ -152,6 +152,7 @@ public class BoardController {
 		boardDao.update(boardDto);
 		return "redirect:detail?boardNo="+boardDto.getBoardNo();
 	}
+	
 }
 
 
