@@ -15,10 +15,10 @@ public class BoardMapper implements RowMapper<BoardDto>{
 		BoardDto boardDto = new BoardDto();
 		boardDto.setBoardNo(rs.getInt("board_no"));
 		boardDto.setBoardTitle(rs.getString("board_title"));
-		//boardDto.setBoardContent(rs.getString("board_content"));
+		boardDto.setBoardContent(rs.getString("board_content"));
 		boardDto.setBoardWriter(rs.getString("board_writer"));
 		boardDto.setBoardWtime(rs.getDate("board_wtime"));
-		boardDto.setBoardWtime(rs.getDate("board_wtime"));
+		boardDto.setBoardEtime(rs.getDate("board_etime"));
 		boardDto.setBoardReadcount(rs.getInt("board_readcount"));
 		boardDto.setBoardGroup(rs.getInt("board_group"));
 		boardDto.setBoardTarget(rs.getObject("board_target",Integer.class));

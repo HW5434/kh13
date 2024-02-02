@@ -14,7 +14,11 @@
 	</c:choose>
 	
 	<%-- for(int i=beginBlock; i <= endBlock; i++) { .. } --%>
-	<c:forEach var="i" begin="${pageVO.getBeginBlock()}" end="${pageVO.getEndBlock()}" step="1">
+	<c:forEach var="i" begin="${pageVO.getBegi
+	
+	
+	
+	nBlock()}" end="${pageVO.getEndBlock()}" step="1">
 		<%-- 다른 페이지일 경우만 링크를 제공 --%>
 		<c:choose>
 			<c:when test="${pageVO.isCurrentPage(i)}">${i}</c:when>

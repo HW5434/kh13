@@ -99,14 +99,14 @@ public class BoardDao {
 								+ "select rownum rn, TMP.* from ("
 									+ "select "
 										+ "board_no, board_title, board_writer, "
-										+ "board_wtime, board_etime, board_readcount,"
+										+ "board_wtime, board_etime, board_readcount, "
 										+ "board_group, board_target, board_depth "
 									+ "from board "
 									+ "where instr("+pageVO.getColumn()+", ?) > 0 "
-									//+ "order by board_no desc"
-										+ "connect by prior board_no=board_target "
-										+ "start with board_target is null "
-										+ "order siblings by board_group desc, board_no asc"
+									//+ "order by board_no desc"//옛날방식(최신순)
+									+ "connect by prior board_no=board_target "
+									+ "start with board_target is null "
+									+ "order siblings by board_group desc, board_no asc"
 								+ ")TMP"
 							+ ") where rn between ? and ?";
 			Object[] data = {
@@ -120,14 +120,14 @@ public class BoardDao {
 			String sql = "select * from ("
 								+ "select rownum rn, TMP.* from ("
 									+ "select "
-											+ "board_no, board_title, board_writer, "
-											+ "board_wtime, board_etime, board_readcount, "
-											+ "board_group, board_target, board_depth "
-										+ "from board "
-										//+ order by board_no desc" 옛날방식(최신순)
-											+ "connect by prior board_no=board_target "
-											+ "start with board_target is null "
-											+ "order siblings by board_group desc, board_no asc"
+										+ "board_no, board_title, board_writer, "
+										+ "board_wtime, board_etime, board_readcount, "
+										+ "board_group, board_target, board_depth "
+									+ "from board "
+									//+ "order by board_no desc"//옛날방식(최신순)
+									+ "connect by prior board_no=board_target "
+									+ "start with board_target is null "
+									+ "order siblings by board_group desc, board_no asc"
 								+ ")TMP"
 							+ ") where rn between ? and ?";
 			Object[] data = {pageVO.getBeginRow(), pageVO.getEndRow()};
@@ -146,7 +146,6 @@ public class BoardDao {
 		Object[] data = {keyword};
 		return jdbcTemplate.queryForObject(sql, int.class, data);
 	}
-	
 	public int count(PageVO pageVO) {
 		if(pageVO.isSearch()) {//검색
 			String sql = "select count(*) from board "
@@ -190,11 +189,14 @@ public class BoardDao {
 		//String sql = "insert into board(7개) values(?, ?, ?, ?, sysdate, null, 0)";
 		//String sql = "insert into board(4개) values(?, ?, ?, ?)";
 		String sql = "insert into board("
-						+ "board_no, board_title, board_content, board_writer"
-					+ ") values(?, ?, ?, ?)";
+						+ "board_no, board_title, board_content, board_writer, "
+						+ "board_group, board_target, board_depth"
+					+ ") values(?, ?, ?, ?, ?, ?, ?)";
 		Object[] data = {
 			boardDto.getBoardNo(), boardDto.getBoardTitle(),
-			boardDto.getBoardContent(), boardDto.getBoardWriter()
+			boardDto.getBoardContent(), boardDto.getBoardWriter(),
+			boardDto.getBoardGroup(), boardDto.getBoardTarget(),
+			boardDto.getBoardDepth()
 		};
 		jdbcTemplate.update(sql, data);
 	}
@@ -205,8 +207,6 @@ public class BoardDao {
 	}
 	public boolean update(BoardDto boardDto) {
 		String sql = "update board "
-				
-				
 						+ "set board_title=?, board_content=?, board_etime=sysdate "
 						+ "where board_no = ?";
 		Object[] data = {
