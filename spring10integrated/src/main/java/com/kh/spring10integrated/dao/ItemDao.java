@@ -18,7 +18,6 @@ public class ItemDao {
 		String sql = "select item_seq.nextval from dual";
 		return jdbcTemplate.queryForObject(sql, int.class);
 	}
-	
 	public void insert(ItemDto itemDto) {
 		String sql = "insert into item("
 				+ "item_no, item_name, item_price, item_charge"
@@ -30,4 +29,10 @@ public class ItemDao {
 		jdbcTemplate.update(sql, data);
 	}
 	
+	//연결
+	public void connect(int itemNo, int attachNo) {
+		String sql = "insert into item_attach(item_no, attach_no) values(?, ?)";
+		Object[] data = {itemNo, attachNo};
+		jdbcTemplate.update(sql, data);
+	}
 }
