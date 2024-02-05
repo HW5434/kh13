@@ -20,11 +20,11 @@ public class ItemDao {
 	}
 	public void insert(ItemDto itemDto) {
 		String sql = "insert into item("
-				+ "item_no, item_name, item_price, item_charge"
-				+ ") values(?, ?, ?, ?)";
+							+ "item_no, item_name, item_price, item_charge"
+					+ ") values(?, ?, ?, ?)";
 		Object[] data = {
-				itemDto.getItemNo(), itemDto.getItemName(),
-				itemDto.getItemPrice(), itemDto.getItemCharge(),
+			itemDto.getItemNo(), itemDto.getItemName(),
+			itemDto.getItemPrice(), itemDto.getItemCharge()
 		};
 		jdbcTemplate.update(sql, data);
 	}
@@ -36,3 +36,6 @@ public class ItemDao {
 		jdbcTemplate.update(sql, data);
 	}
 }
+
+
+
