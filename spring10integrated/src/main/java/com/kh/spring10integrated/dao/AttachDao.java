@@ -20,6 +20,7 @@ public class AttachDao {
 		String sql = "select attach_seq.nextval from dual";
 		return jdbcTemplate.queryForObject(sql, int.class);
 	}
+	
 	public void insert(AttachDto attachDto) {
 		String sql = "insert into attach("
 						+ "attach_no, attach_name, attach_type, attach_size"
@@ -37,6 +38,8 @@ public class AttachDao {
 		List<AttachDto> list = jdbcTemplate.query(sql, attachMapper, data);
 		return list.isEmpty() ? null : list.get(0);
 	}
+	
+
 }
 
 

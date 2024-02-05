@@ -1,9 +1,12 @@
 package com.kh.spring10integrated.dao;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.kh.spring10integrated.dto.AttachDto;
 import com.kh.spring10integrated.dto.ItemDto;
 import com.kh.spring10integrated.mapper.ItemMapper;
 
@@ -35,6 +38,12 @@ public class ItemDao {
 		Object[] data = {itemNo, attachNo};
 		jdbcTemplate.update(sql, data);
 	}
+	
+	public List<ItemDto> selectList() {
+		String sql = "select * from item order by item_price asc";
+		return jdbcTemplate.query(sql, itemMapper);
+	}
+
 }
 
 
