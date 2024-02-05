@@ -1,11 +1,13 @@
 package com.kh.spring10integrated.dto;
 
 public class AttachDto {
-
 	private int attachNo;
 	private String attachName;
 	private String attachType;
 	private long attachSize;
+	public AttachDto() {
+		super();
+	}
 	public int getAttachNo() {
 		return attachNo;
 	}
@@ -30,8 +32,4 @@ public class AttachDto {
 	public void setAttachSize(long attachSize) {
 		this.attachSize = attachSize;
 	}
-	public AttachDto() {
-		super();
-	}
-	
 }

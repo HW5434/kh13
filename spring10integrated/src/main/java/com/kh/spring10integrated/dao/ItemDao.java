@@ -20,7 +20,7 @@ public class ItemDao {
 	}
 	public void insert(ItemDto itemDto) {
 		String sql = "insert into item("
-							+ "item_no, item_name, item_price, item_charge"
+						+ "item_no, item_name, item_price, item_charge"
 					+ ") values(?, ?, ?, ?)";
 		Object[] data = {
 			itemDto.getItemNo(), itemDto.getItemName(),
