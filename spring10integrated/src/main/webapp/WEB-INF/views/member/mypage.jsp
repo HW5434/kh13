@@ -6,6 +6,8 @@
 
 <h1>${memberDto.memberId}님의 정보</h1>
 
+<img src="image" width="200" height="200"> <br>
+
 <table border="1" width = "400">
 	<tr>
 		<th width="30%">닉네임</th>

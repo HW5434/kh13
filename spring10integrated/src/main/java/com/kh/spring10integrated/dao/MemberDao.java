@@ -19,6 +19,8 @@ public class MemberDao {
 	private JdbcTemplate jdbcTemplate;
 	@Autowired
 	private MemberMapper mapper;
+	@Autowired
+	private StatMapper statMapper;
 	
 	//가입(등록, Create)
 	public void insert(MemberDto dto) {
@@ -101,29 +103,43 @@ public class MemberDao {
 		return jdbcTemplate.update(sql, data) > 0;
 	}
 	
-	@Autowired
-	private StatMapper statMapper;
-	public List<StatVO> statByLevel(){
+	//회원 그룹별 통계
+	public List<StatVO> countByMemberLevel() {
 		String sql = "select member_level 항목, count(*) 개수 from member "
-				+ "group by member_level order by 개수 desc";
+						+ "group by member_level "
+						+ "order by 개수 desc, 항목 asc";
 		return jdbcTemplate.query(sql, statMapper);
 	}
-	
+
 	//관리자에 의한 회원 정보 수정
 	public boolean updateMemberByAdmin(MemberDto memberDto) {
 		String sql = "update member set "
-				+ "member_nick=?, member_email=?, member_birth=?, "
-				+ "member_contact=?, member_post=?, member_address1=?, "
-				+ "member_address2=? , member_level=?, member_point=? "
-			+ "where member_id=?";
+						+ "member_nick=?, member_email=?, member_birth=?,"
+						+ "member_contact=?, member_post=?, member_address1=?,"
+						+ "member_address2=?, member_level=?, member_point=? "
+						+ "where member_id=?";
 		Object[] data = {
-				memberDto.getMemberNick(), memberDto.getMemberEmail(),
-				memberDto.getMemberBirth(), memberDto.getMemberContact(),
-				memberDto.getMemberPost(), memberDto.getMemberAddress1(),
-				memberDto.getMemberAddress2(), memberDto.getMemberLevel(), 
-				memberDto.getMemberPoint(), memberDto.getMemberId()
+			memberDto.getMemberNick(), memberDto.getMemberEmail(),
+			memberDto.getMemberBirth(), memberDto.getMemberContact(),
+			memberDto.getMemberPost(), memberDto.getMemberAddress1(),
+			memberDto.getMemberAddress2(), memberDto.getMemberLevel(),
+			memberDto.getMemberPoint(), memberDto.getMemberId()
 		};
 		return jdbcTemplate.update(sql, data) > 0;
+	}
+	
+	//프로필 이미지 연결
+	public void connect(String memberId, int attachNo) {
+		String sql = "insert into member_attach(member_id, attach_no) "
+						+ "values(?, ?)";
+		Object[] data = {memberId, attachNo};
+		jdbcTemplate.update(sql, data);
+	}
+	
+	public int findAttachNo(String memberId) {
+		String sql = "select attach_no from member_attach where member_id = ?";
+		Object[] data = {memberId};
+		return jdbcTemplate.queryForObject(sql, int.class, data);
 	}
 }
 
