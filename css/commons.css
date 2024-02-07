@@ -19,8 +19,6 @@
     - 컨테이너는 가운데 배치되도록 구현
 */
 .container{
-    border: 1px dotted gray;
-    /* text-align: center; 내부 요소 정렬 */
     margin-left: auto;
     margin-right: auto;
 }
@@ -31,7 +29,6 @@
     - 셀과 셀 사이에는 일정 크기의 여백이 필요
 */
 .cell{
-    border: 1px dotted gray;
     margin-top: 10px;
     margin-bottom: 10px;
 }
