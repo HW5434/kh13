@@ -8,20 +8,27 @@
     <style>
     *{
         box-sizing: border-box;
-        font-family: 빙그레 메로나체, sans-serif;
+        font-family: sans-serif;
     }
 
         .logo{/*로고*/
-            width: 200px;
-            margin: 2.5em;
+            color: #2db400;
+            font-size: 50px;
+            font-weight: 900;
+            
         }
         .box{/*전체*/
             display: block;
             font-size: 20px;
             padding:  0.7em;            
-            border: 1px solid  #7fa6ce28;
+            border: 1px solid  #7fa7ce2d;
+        }
+        /* 조건부 선택자 */
+        .box.input1:focus{
+            border-color: #2db400;
         }
         .input1{/*입력*/
+            
             font-size: 15px;
             display: block;
             width: 400px;   
@@ -45,17 +52,16 @@
             background-color: #34c005d3;
             border:1.5px solid #2db400;
             color: white;
+            font-weight: bold;
         }
     </style>
 </head>
 <div align = "center">
     <body>
-        <img src="image/naver.png" class = "logo">
-    
-        <form action="#" method="post" autocomplete="off">
+        <div class = "logo">NAVER</div>
+            <form action="#" method="post" autocomplete="off">
             <input class = "box input1" type="text" name="memberId" placeholder="아이디">
-            <input class = "box input2" type="text" name="memberPw" placeholder="비밀번호">
-            
+            <input class = "box input2" type="text" name="memberPw" placeholder="비밀번호">           
             <button class = "box btn">로그인</button>
         </form>
 </div>
