@@ -7,27 +7,50 @@
     <link rel = "stylesheet" type="text/css" href="commons.css">
     <link rel = "stylesheet" type="text/css" href="test.css">
 <style>
-   
+   .tool , .btn{
+     font-size: 14px;
+     
+   }
+   .cell{
+        margin: 15px 0px;
+   }
+   .btn{
+    border-radius: 0.25em;
+   }
+
+
+   .btn.positive{
+        background-color: rgb(52, 106, 252);
+        border: none;       
+   }
+
 </style>
 </head>
 <body>
-    <div class="container">
-    <div class="cell">
-        <img src="image/coupang.png" width="30%">
-    </div>
-
-    <div class="cell">
-
-    </div>
-
-    <div class="cell">
-
-    </div>
-
-    <div class="cell">
-
-    </div>
-</div>
+    <form action="#" method="post" autocomplete="off">
+        <div class="container w-350 my-40">
+            <div class="cell center">
+                <img src="image/coupang.png" width="45%">   
+    
+                    <div class="cell">
+                        <input type="text" name="memberId" placeholder="아이디 (이메일)"class="tool w-100">   
+                    </div>
+    
+                    <div class="cell">
+                        <input type="text" name="memberPw" placeholder="비밀번호"class="tool w-100">
+                    </div>
+    
+                    <div class="btn positive w-100">
+                        로그인
+                    </div>
+                    <hr>
+                    <div class="btn w-100">
+                        회원가입
+                    </div>
+            </div>
+        </div>
+    </form>
+    
 
 </body>
 </html>
