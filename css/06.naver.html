@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>네이버 로그인 페이지 구현</title>
+    
+    <style>
+    *{
+        box-sizing: border-box;
+        font-family: sans-serif;
+    }
+
+        .logo{/*로고*/
+            color: #2db400;
+            font-size: 50px;
+            font-weight: 900;
+            
+        }
+        .box{/*전체*/
+            display: block;
+            font-size: 20px;
+            padding:  0.7em;            
+            border: 1px solid  #7fa7ce2d;
+        }
+        /* 조건부 선택자 */
+        .box.input1:focus{
+            border-color: #2db400;
+        }
+        .input1{/*입력*/
+            
+            font-size: 15px;
+            display: block;
+            width: 400px;   
+            border-top-left-radius: 0.35em;    
+            border-top-right-radius: 0.35em;          
+        }
+        .input2{/*입력*/
+            font-size: 15px;
+            display: block;
+            width: 400px;    
+            border-bottom-left-radius: 0.35em;    
+            border-bottom-right-radius: 0.35em;  
+              
+        }
+
+        .btn{/*버튼*/
+            width: 400px;           
+            margin: 1.5em;
+            padding:  0.5em;
+            border-radius: 0.35em;
+            background-color: #34c005d3;
+            border:1.5px solid #2db400;
+            color: white;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<div align = "center">
+    <body>
+        <div class = "logo">NAVER</div>
+            <form action="#" method="post" autocomplete="off">
+            <input class = "box input1" type="text" name="memberId" placeholder="아이디">
+            <input class = "box input2" type="text" name="memberPw" placeholder="비밀번호">           
+            <button class = "box btn">로그인</button>
+        </form>
+</div>
+    
+
+</body>
+</html>
