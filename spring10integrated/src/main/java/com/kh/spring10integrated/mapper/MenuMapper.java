@@ -17,7 +17,7 @@ public class MenuMapper implements RowMapper<MenuDto>{
 		dto.setMenuNameKor(rs.getString("menu_name_kor"));
 		dto.setMenuNameEng(rs.getString("menu_name_eng"));
 		dto.setMenuType(rs.getString("menu_type"));
-		dto.setPrice(rs.getInt("menu_price"));
+		dto.setMenuPrice(rs.getInt("menu_price"));
 		return dto;
 	}
 

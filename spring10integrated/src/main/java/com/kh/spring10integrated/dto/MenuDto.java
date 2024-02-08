@@ -2,17 +2,17 @@ package com.kh.spring10integrated.dto;
 
 public class MenuDto {
 
-	@Override
-	public String toString() {
-		return "MenuDto [menuNo=" + menuNo + ", menuNameKor=" + menuNameKor + ", menuNameEng=" + menuNameEng
-				+ ", menuType=" + menuType + ", price=" + price + "]";
-	}
 	private int menuNo;
 	private String menuNameKor;
 	private String menuNameEng;
 	private String menuType;
-	private int price;
+	private int menuPrice;
 	
+	@Override
+	public String toString() {
+		return "MenuDto [menuNo=" + menuNo + ", menuNameKor=" + menuNameKor + ", menuNameEng=" + menuNameEng
+				+ ", menuType=" + menuType + ", menuPrice=" + menuPrice + "]";
+	}
 	public MenuDto() {
 		super();
 	}
@@ -40,10 +40,12 @@ public class MenuDto {
 	public void setMenuType(String menuType) {
 		this.menuType = menuType;
 	}
-	public int getPrice() {
-		return price;
+	public int getMenuPrice() {
+		return menuPrice;
 	}
-	public void setPrice(int price) {
-		this.price = price;
+	
+	public void setMenuPrice(int menuPrice) {
+		this.menuPrice = menuPrice;
 	}
+
 }
