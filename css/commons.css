@@ -81,13 +81,22 @@
 }
 
 /*  밑줄만 있는 입력창 구현 .tool.underline*/
-
 .tool.underline{
     border-top: none;
     border-left: none;
     border-right: none;  
     padding-left: 0;
     padding-right: 0;
+}
+
+/*이미지가 들어갈 수 있는 입력창*/
+.tool.tool-image{
+    padding-left: 2.25em;    
+    background-size: 1em;
+    background-repeat: no-repeat;
+    background-position-x: 0.625em;
+    /* background-position-y: 50%; */
+    background-position-y: center;
 }
 
 
