@@ -1,7 +1,7 @@
 /*
     KH정보교육원 당산지원 C강의장 수업자료
 
-    만든이 - 피카츄
+    만든이 - 김현우
     만든날짜 - 2024.02.07
 */
 @charset "UTF-8";
@@ -9,6 +9,7 @@
 /* 전체 선택자 - 모든 태그에 설정(전체 규칙) */
 * {
     box-sizing: border-box;
+    word-break: break-all;
     font-family: 빙그레 메로나체, sans-serif;
 }
 
@@ -556,12 +557,22 @@ textarea.tool.tool-fixed {
     글자 디자인
 */
     .red {color: #d63031;}
-   .orange {color: #e17055;}
-   .yellow {color: #ffeaa7;}
-   .green {color: #55efc4;}
-   .sky {color: #74b9ff;}
-   .blue {color: #0984e3;}
-   .purple {color: #6c5ce7;}
-   .black {color: #2d3436;}
-   .gray {color: #636e72;}
-   .white {color: white;}
+    .orange {color: #e17055;}
+    .yellow {color: #ffeaa7;}
+    .green {color: #55efc4;}
+    .sky {color: #74b9ff;}
+    .blue {color: #0984e3;}
+    .purple {color: #6c5ce7;}
+    .black {color: #2d3436;}
+    .gray {color: #636e72;}
+    .white {color: white;}
+
+.ellipsis{
+/* 
+    다음 세 개의 스타일을 같이 사용ㅇ하면 말줄임표 처리가 된다
+    단, 반드시 영역에 폭이 설정되어 있어야 한다
+*/
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
