@@ -42,9 +42,9 @@
 				</a>
 			</td>
 			<td>${dto.menuType}</td>
-<%-- 			<td align="right">${dto.menuPrice}</td> --%>
+<%-- <td align="right">${dto.menuPrice}</td> --%>
 			<td align="right">
-				<fmt:formatNumber value="${dto.getPrice()}" pattern="#,##0"/> 
+				<fmt:formatNumber value="${dto.menuPrice}" pattern="#,##0"/> 
 				원
 			</td>
 		</tr>
@@ -52,11 +52,16 @@
 	</tbody>	
 </table>
 
-<%-- 네비게이터 페이지를 불러오는 코드 --%>
-<jsp:include page="/WEB-INF/views/template/navigator.jsp"></jsp:include>
+<%-- 네비게이터 출력(구조는 복잡하지만 /board/list와 같지 않을까?) --%>
+<jsp:include page="/WEB-INF/views/template/navigator.jsp"></jsp:include> 
 
 <%-- 템플릿 페이지를 불러오는 코드 --%>
 <jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>
+
+
+
+
+
 
 
 
