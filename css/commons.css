@@ -727,3 +727,11 @@ textarea.tool.tool-fixed {
     .flex-cell.vertical{
         flex-direction: column; /* 수직 */
     }
+
+    /* 가운데 정렬 */
+
+    .felx-cell.middle {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
