@@ -61,7 +61,7 @@
     </form>
     
     <%-- 표(테이블) 만들기 --%>
-    <table border="1" width = "500">
+    <table class="table table-horizontal">
     	<thead align="center">
     		<tr>
     			<th>사원번호</th>

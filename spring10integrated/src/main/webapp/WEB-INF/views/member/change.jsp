@@ -16,6 +16,8 @@
 	<input type="text" name="memberAddress1" placeholder="기본주소" value="${memberDto.memberAddress1}" size="50"> <br> 
 	<input type="text" name="memberAddress2" placeholder="상세주소" value="${memberDto.memberAddress2}" size="50"> <br>
 	비밀번호 확인 * <input type="password" name="memberPw" required> <br><br>
+	프로필 이미지 <input type="file" name="attach"><br><br>
+	
 	<button>변경하기</button>
 </form>
 
