@@ -22,7 +22,7 @@
 <h2><a href="insert">신규 메뉴 등록</a></h2>
 
 <%-- 목록 출력 --%>
-<table border="1">
+<table class="table table-horizontal">
 	<thead>
 		<tr>
 			<th>메뉴번호</th>

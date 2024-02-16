@@ -12,14 +12,16 @@
 }   
    
 .image-wrapper{
-    width: 25%;    
+    width: 25%; 
+    padding: 20xp 15px;
 }
+
 
 
 
 .list-wrapper{
     width: 75%;
-    w-300
+    w-
 }
 
 .memberlist{
@@ -29,16 +31,19 @@
 .pointlist{
 	margin: 10px;
 }
+.foot{
+	margin: 10px;
+}
 </style>
 
 
 <body>
-<div class="container w-1000 center">
+<div class="container w-1200 center">
 <div class="title left">
 	<h1>${memberDto.memberId}님의 정보</h1>
 </div>
 
-<div class="cell floating-cell">
+<div class="floating-cell">
 	<div class="image-wrapper">
             
             <div>
@@ -48,23 +53,23 @@
 
 <!-- 링크 목록 -->	
 	
-        <div>
+        
             <h2><a href="/member/password">비밀번호 변경</a></h2>        
-        </div>
+        
               
-        <div>
+       
             <h2><a href="/member/change">개인정보 변경</a></h2>
-        </div> 
+        
          
-        <div>
+      
              <h2><a href="/member/exit">회원 탈퇴</a></h2>      
-        </div>             
+                 
     </div>
 
 <div class="list-wrapper">
 	<!-- 목록표 리스트 -->
 	<div class="memberlist left">
-		<table border="1" width="450" center>
+		<table class="table table-horizontal">
 			<tr>
 				<th width="30%">닉네임</th>
 				<td>${memberDto.memberNick}</td>
@@ -117,12 +122,12 @@
 	
 	<!-- 포인트 구매 내역 테이블 -->
 	<div class="pointlist left">
-			<h1>
+			<h1 class="center">
 				포인트 구매 내역
 				<a href="/point/charge">추가구매</a>
 			</h1>
 			
-			<table border="1" width="600">
+			<table class="table table-horizontal">
 				<thead>
 					<tr>
 						<th>번호</th>
@@ -151,7 +156,6 @@
 			</table>
 		</div>   
     </div>
-
 </div>
 
 </body>
