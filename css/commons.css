@@ -713,3 +713,17 @@ textarea.tool.tool-fixed {
     .floating-cell.reverse > * {
         float: right;
     }
+
+    /* flex layout 디자인 */
+   .flex-cell{
+    display: flex;
+    }
+    .flex-cell > .width-fill{
+        flex-grow: 1;
+    }
+    .flex-cell.auto-width > * {
+        flex-grow: 1;
+    }
+    .flex-cell.vertical{
+        flex-direction: column; /* 수직 */
+    }
