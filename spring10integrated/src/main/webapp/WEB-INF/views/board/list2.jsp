@@ -60,7 +60,7 @@
 							<td>${boardDto.boardWriter}</td>
 						</c:otherwise>
 					</c:choose>
-					 --%> v 
+					 --%>  
 				 	<td>${boardDto.boardWriterStr}</td>
 					<td>${boardDto.boardWtimeStr}</td>
 					<td>${boardDto.boardReadcount}</td>

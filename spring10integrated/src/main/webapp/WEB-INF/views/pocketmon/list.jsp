@@ -7,7 +7,11 @@
      
     
     
-    
+<style>
+.a{
+	
+}
+</style>    
     
 <!-- for(PocketmonDto dto : list) -->
 <%-- "${requestScope.list} --%>
@@ -24,40 +28,44 @@
    			 </h1>
             </header>
             
-            <nav>메뉴</nav>
+            <nav></nav>
             
             <section>
                 <aside>
-                <div>
-                	<h1>리스트</h1>
-	                <span><h2><a href="insert1">신규등록</a></h2></span>
-                </div>
-                </aside>
-                	
-                <article>
- 
+	                <div class="cell left my-0">
+						<a href="insert1"><h2>신규등록</h2></a>
+	                </div>
+                </aside>             	
+        <article>       
+	         <div class="cell center p-20 my-0">
+	       		 <table class="table table-horizontal">
+			<thead>
+				<tr>
+					<td>번호</td>
+					<td>이름</td>
+					<td>속성</td>
+					<td>상세페이지</td>
+				</tr>
+			</thead>
+			<tbody>
+			 <c:forEach var="dto" items="${list}">
+				<tr>
+					<td>${dto.pocketmonNo}</td>
+					<td>${dto.pocketmonName}</td>
+					<td> ${dto.pocketmonType}</td>
+					<td><a href="detail?pocketmonNo=${dto.pocketmonNo}">→</a></td>
+				</tr>
+				 </c:forEach>
+			</tbody>
+			</table>
+	        </div>  		
+        </article>
                 
-<table class="table table-horizontal">
-<thead>
-	<tr>
-		<td>번호</td>
-		<td>이름</td>
-		<td>속성</td>
-	</tr>
-</thead>
-
-<tbody>
- <c:forEach var="dto" items="${list}">
-	<tr>
-		<td>${dto.pocketmonNo}</td>
-		<td>${dto.pocketmonName}</td>
-		<td> ${dto.pocketmonType}<a href="detail?pocketmonNo=${dto.pocketmonNo}">→</a></td>		
-	</tr>
-	 </c:forEach>
-</tbody>
-</table>
-<!-- 검색창 -->
-			<div class="center">
+                
+            </section>
+            <footer>
+<!-- 검색창 -->           
+            <div class="cell center">
 				<form action="list" method="get">
 				
 					<select name="column">
@@ -68,12 +76,10 @@
 					<button>검색</button>
 				</form>
 			</div>
-                </article>
-                
-                
-            </section>
-            <footer>
+
+            <div class="cell center">
             	<jsp:include page="/WEB-INF/views/template/navigator.jsp"></jsp:include> 
+            </div>
             </footer>
         </main>
 
