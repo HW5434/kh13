@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이미지 사이즈</title>
+    
+    <!-- 구글 폰트 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+
+    <!-- 내가 구현한 스타일 -->
+    <link rel = "stylesheet" type="text/css" href="../css/commons.css">
+    <link rel = "stylesheet" type="text/css" href="../css/test.css">
+
+    <!-- font awesome 아이콘 CDN -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        .dummyImg {
+            transition-property: width, height;
+            transition-duration: 0.1s;
+            transition: width 0.1s ease-out;
+        }
+    </style>
+<!-- javascript를 의도적으로 head 자리에 배치해서 가장 먼저 실행되도록 구현 -->
+    <script type="text/javascript">
+        
+        //이미지 사이즈 1번
+
+        function sizeSmall() {
+            var target = document.querySelector(".dummyImg")
+            target.style.width = "150px";
+            target.style.height = "150px";
+        }
+
+        function sizeMedium() {
+            var target = document.querySelector(".dummyImg")
+            target.style.width = "300px";
+            target.style.height = "300px";
+        }
+
+        function sizeLarge() {
+            var target = document.querySelector(".dummyImg")
+            target.style.width = "450px";
+            target.style.height = "450px";
+        }
+
+        //이미지 사이즈 2번
+
+    </script>
+</head>
+<body>
+
+    <div class="container w-500">
+        <div class="cell center">
+            <h1>이미지 사이즈 1</h1>
+        </div>
+        <div class="cell flex-cell auto-width ">
+            <button class="btn me-20" onclick="sizeSmall();">작게</button>
+            <button class="btn me-20" onclick="sizeMedium();">보통</button>
+            <button class="btn" onclick="sizeLarge();">크게</button>
+         </div>
+
+         <div class="cell center">
+            <img class="dummyImg" src="http://via.placeholder.com/300x300?text=img">
+         </div>
+    </div>
+
+    <div class="container w-500">
+        <div class="cell center">
+            <h1>이미지 사이즈 2</h1>
+        </div>
+        <div class="cell flex-cell auto-width ">
+            <button class="btn me-20" onclick="sizeSmall();">작게</button>
+            <button class="btn me-20" onclick="sizeMedium();">보통</button>
+            <button class="btn" onclick="sizeLarge();">크게</button>
+         </div>
+
+         <div class="cell center">
+            <textarea name="" id="" cols="100%" rows="10"></textarea>
+         </div>
+    </div>
+
+
+</body>
+</html>
