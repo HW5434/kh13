@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>제목을 설정하세요</title>
+    <title>지하철 요금 계산기</title>
     
     <!-- 구글 폰트 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,20 +20,37 @@
     <style>
     
     </style>
-<!-- javascript를 의도적으로 head 자리에 배치해서 가장 먼저 실행되도록 구현 -->
+    
     <script type="text/javascript">
-        //입력창에 작성된 내용을 p 태그로 복사
-        // - 입력창(input,select,textarea)의 내용은 value 속성이다
-        // - p태그의 내용은 textContent 속성이다
         function saveContent() {
-        //만나이로 바뀌는 코드
-            
-            var currentYear = 2024;
-
             var inputTarget = document.querySelector("[name=test1]"); //이름이 test1인 
-            var copyTarget = document.querySelector(".copy"); //계산된 금액이 들어 가야함
+            var pirceTarget = document.querySelector(".pirce"); //계산된 금액이 들어 가야함
 
-            copyTarget.textContent = inputTarget.value;
+
+            //만나이 나오는 코드 (생일 후 나이)
+            var todayYear = 2024; //현재 년도
+
+            var yearOfbirth = inputTarget.value; //입력한 출생년도
+            var age = todayYear - yearOfbirth;
+
+                //지하철 요금 계산
+
+                if(age >= 65 || age < 8) {
+                    pirce = 0;
+                }
+                else if(age >= 20) {
+                    pirce = 1400;
+                }
+                else if(age >= 14) {
+                    pirce = 800;
+                }
+                else {
+                    pirce = 500;
+                }
+
+                var pirce;
+
+                pirceTarget.textContent = "지불하실 금액은 : " + pirce + "원";
         }
     </script>
 </head>
@@ -45,7 +62,7 @@
         </div>
         <div class="cell">
             <h2>출생년도 4자리</h2>
-            <input name="test1" class="tool w-100 "> <!-- value : 2000 -->
+            <input name="test1" class="tool w-100 " placeholder="ex : 2000"> <!-- value : 2000 -->
         </div>
 
         <div class="cell">
@@ -57,7 +74,7 @@
         <hr>
 
         <div class="cell">
-            <p class="copy"></p>
+            <p class="pirce"></p>
         </div>
     </div>
 
