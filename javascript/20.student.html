@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>학생 정보 등록</title>
+    
+    <!-- 구글 폰트 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+
+    <!-- 내가 구현한 스타일 -->
+    <link rel = "stylesheet" type="text/css" href="../css/commons.css">
+    <link rel = "stylesheet" type="text/css" href="../css/test.css">
+
+    <!-- font awesome 아이콘 CDN -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+    
+    </style>
+<!-- javascript를 의도적으로 head 자리에 배치해서 가장 먼저 실행되도록 구현 -->
+    <script type="text/javascript">
+        function checkName() {}
+        function checkKoreaScore() {}
+        function checkEnglishScore() {}
+        function checkMathScore() {}
+        function checkForm() {}
+    </script>
+</head>
+<body>
+
+<form action="?" method="post" onsubmit="return checkForm();">    
+    <div class="container w-500">
+        <div class="cell center">
+            <h1>학생 정보 등록</h1>
+        </div>
+        <div class="cell">
+            <div>
+                <label>이름</label>
+            </div>
+            <input class="tool w-100" type="text" name="name" placeholder="ex : 김**" onblur="checkName();">
+            <div class="success-feedback">이름의 형식에 맞습니다</div>
+            <div class="fail-feedback">올바른 이름을 작성하세요</div>
+         </div>
+
+         <div class="cell">
+            <div>
+                <label>국어</label>
+            </div>
+            <input class="tool w-100" type="" name="koreaScore" placeholder="ex : 70" onblur="checkKoreaScore();">
+            <div class="fail-feedback">숫자만 적어주세요 [1이상, 100이하의 숫자]</div>
+         </div>
+
+         <div class="cell">
+            <div>
+                <label>영어</label>
+            </div>
+            <input class="tool w-100" name="englishScore" placeholder="ex : 90" onblur="checkEnglishScore();">
+            <div class="fail-feedback">숫자만 적어주세요 [1이상, 100이하의 숫자]</div>
+         </div>
+
+         <div class="cell">
+            <div>
+                <label>수학</label>
+            </div>
+            <input class="tool w-100" name="mathScore" placeholder="ex : 80" onblur="checkMathScore();">
+            <div class="fail-feedback">숫자만 적어주세요 [1이상, 100이하의 숫자]</div>
+         </div>
+
+         <button class="btn w-100">
+            <i class="fa-solid fa-save"></i>
+            등록
+        </button>
+
+    </div>
+
+
+</body>
+</html>
