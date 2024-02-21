@@ -15,7 +15,7 @@
 <hr>
 
 <p>등록된 학생 총 ${list.size()}명</p>
-<table border="1" width="500">
+<table ">
 	<thead>
 		<tr>
 			<th>번호</th>
