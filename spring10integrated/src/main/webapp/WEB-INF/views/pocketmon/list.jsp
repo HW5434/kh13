@@ -5,19 +5,10 @@
 <%-- 템플릿 페이지를 불러오는 코드 --%>
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
      
-    
-    
-<style>
-.a{
-	
-}
-</style>    
+
     
 <!-- for(PocketmonDto dto : list) -->
 <%-- "${requestScope.list} --%>
-
-
-
  <body>
 
         <main>
@@ -61,19 +52,17 @@
 	        </div>  		
         </article>
                 
-                
             </section>
             <footer>
 <!-- 검색창 -->           
             <div class="cell center">
-				<form action="list" method="get">
-				
-					<select name="column">
+				<form action="list" method="get">				
+					<select name="column" class="tool">
 						<option value="pocketmon_name">이름</option>
 						<option value="pocketmon_type">속성</option>
 					</select>
-					<input type="search" name="keyword" value="${param.keyword}">
-					<button>검색</button>
+					<input class="tool" type="search" name="keyword" value="${param.keyword}">
+					<button class="btn positive">검색</button>
 				</form>
 			</div>
 
