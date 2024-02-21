@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    
+    <!-- 구글 폰트 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+
+    <!-- 내가 구현한 스타일 -->
+    <link rel = "stylesheet" type="text/css" href="../css/commons.css">
+    <link rel = "stylesheet" type="text/css" href="../css/test.css">
+
+    <!-- font awesome 아이콘 CDN -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+    
+    </style>
+<!-- javascript를 의도적으로 head 자리에 배치해서 가장 먼저 실행되도록 구현 -->
+    <script type="text/javascript">
+        
+        function checkId() {
+
+            var inputTarget = document.querySelector(".temp");
+            var text = inputTarget.value;
+
+            var regex = /^(A-Z)(a-z|1-9){7,19}$/;
+            var isValid = regex.test(text);
+            console.log(isValid);
+            
+            var regexTarget = document.querySelector("result1");
+                if(isValid) {
+                    regexTarget.textContent = "멋진 아이디네요!";
+                }
+                else {
+                    regexTarget.textContent = "아이디는 소문자 시작, 숫자 포함 8~20글자로 작성하세요";
+                }
+
+            
+        }
+        
+
+            
+
+
+    </script>
+</head>
+<body>
+
+    <div class="container w-500">
+        <div class="cell center">
+            <h1>회원가입</h1>
+        </div>
+
+        <div>
+            <h2>아이디</h2>
+        </div>
+        <div class="cell">
+            <input class="temp tool w-100" type="text" oninput="checkId();">
+         </div>
+         <div class="result1"></div>
+
+
+    </div>
+
+
+</body>
+</html>
