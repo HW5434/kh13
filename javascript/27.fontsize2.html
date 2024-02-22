@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제목을 설정하세요</title>
+    
+    <!-- 구글 폰트 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+
+    <!-- 내가 구현한 스타일 -->
+    <link rel = "stylesheet" type="text/css" href="../css/commons.css">
+    <link rel = "stylesheet" type="text/css" href="../css/test.css">
+
+    <!-- font awesome 아이콘 CDN -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        
+    </style>
+<!-- javascript를 의도적으로 head 자리에 배치해서 가장 먼저 실행되도록 구현 -->
+    <script type="text/javascript">
+        window.onload = function() {
+            var fontsizeButtons = document.querySelectorAll(".btn-fontsize");
+            for(var i = 0; fontsizeButtons.length; i++) {
+                fontsizeButtons[i].addEventListener("click" , function(){
+                    //this == 클릭한 버튼
+                    var fontsize = this.dataset.fontsize;
+                    document.querySelector(".editor").style.fontsize = fontsize;
+                });
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <div class="container w-500">
+        <div class="cell center">
+            <h1>글자 크기 변경 문제</h1>
+        </div>
+        <div class="cell center">
+            <button class="btn positive btn-fontsize" data-fontsize="12px">작게</button>
+            <button class="btn positive btn-fontsize" data-fontsize="16px">보통</button>
+            <button class="btn positive btn-fontsize" data-fontsize="24px">크게</button>
+        </div>
+        <hr>
+        <div class="cell">
+            <textarea class="tool w-100 dummy" style="min-height: 250px; font-size: 16px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fermentum tincidunt rhoncus. Proin mauris mi, efficitur id consectetur a, consectetur eu metus. Vestibulum consequat viverra dolor. Morbi sed quam non est pulvinar rhoncus. Nunc iaculis arcu sit amet dui convallis interdum. Sed vestibulum a lectus vel semper. Fusce suscipit faucibus justo, a euismod odio porta nec. Aliquam erat volutpat. Donec eu ipsum gravida, condimentum mi vel, accumsan lectus. Proin non enim facilisis, feugiat felis eu, vehicula tortor. Integer blandit nunc at dictum rutrum. Nulla facilisi. Proin condimentum risus et molestie congue. Phasellus imperdiet velit in odio cursus mollis. Vestibulum dignissim sem hendrerit elit tincidunt iaculis. Praesent rutrum urna a mi eleifend, eget semper est dapibus.</textarea>
+        </div>
+    </div>
+
+
+</body>
+</html>
