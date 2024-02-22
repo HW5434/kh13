@@ -31,12 +31,14 @@
             console.log(target.checked);
         }
 
-        function text02() {
+        function test02() {
             var targetList = document.querySelectorAll(".item");
             // targetList[0].checked = true;
             for(var i = 0; i < targetList.length; i++) {
                 targetList[i].checked = true;
+                
             }
+            
         }
     </script>
 </head>
@@ -52,7 +54,7 @@
          </div>
 
          <div class="cell">
-            <button class="btn positive" onclick="text02();">전체선택</button>
+            <button class="btn positive" onclick="test02();">전체선택</button>
          </div>
          <div class="cell">
             <div><input type="checkbox" class="item">항목1</div>
