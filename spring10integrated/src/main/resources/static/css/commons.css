@@ -619,7 +619,7 @@ textarea.tool.tool-fixed {
 */
 .menu,
 .menu ul {
-    background-color: #2d3436;
+    background-color: #51a3f9;
 }
 .menu li {
     font-size: 20px;
@@ -645,7 +645,7 @@ textarea.tool.tool-fixed {
 
 /* 모든 메뉴에 마우스가 올라가면 강조 표시 */
 .menu li:hover {
-    background-color: #636e72;
+    background-color: #258cf8;;
 }
 
 /* 2차 메뉴(ul)의 위치를 미세조정 */
@@ -763,4 +763,18 @@ textarea.tool.tool-fixed {
 .tool.fail3 ~ .fail3-feedback 
 { 
     display: block; 
+}
+
+/*
+    진행바(progressbar) 디자인
+*/
+.progressbar {
+    box-shadow: 0 0 1px 0 #ccc;
+}
+.progressbar > .guage {
+    width: 0%;
+    height: 5px;
+    background: rgb(131,58,180);
+    background: rgb(210,255,212);
+    background: linear-gradient(90deg, rgba(210,255,212,1) 0%, rgba(154,255,232,1) 50%, rgba(160,229,255,1) 100%);
 }
