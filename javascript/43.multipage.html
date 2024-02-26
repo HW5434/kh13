@@ -26,42 +26,37 @@
     <script src="commons.js"></script>
     <!-- javascript를 의도적으로 head 자리에 배치해서 가장 먼저 실행되도록 구현 -->
     <script type="text/javascript">
-        $(function(){
-            $(".btn-show").click(function(){
-                //$(".target").css("display" , "");
-                //$(".target").show(); //가독성 너무 좋음
-                //$(".target").fadeIn(); // 3번 명령
-                $(".target").slideDown(); // 4번 명령
-            });
-            $(".btn-hide").click(function(){
-               // $(".target").css("display" , "none"); // 1번 명령
-               //$(".target").hide(); // 2번 명령
-               //$(".target").fadeOut(); // 3번 명령
-               $(".target").slideUp(); // 4번 명령
-            });
-            $(".btn-toggle").click(function(){
-                //해야되나??.. 너무 1차원 적이야 [1번 명령]
-               // $(".target").toggle(); // 2번 명령
-               //$(".target").fadeToggle(); // 3번 명령
-               $(".target").slideToggle(); // 4번 명령 
-            });
-        });
+        
     </script>
 </head>
 <body>
 
     <div class="container w-500">
         <div class="cell center">
-            <h1>jQuery 표시 제어</h1>
+            <h1>제목</h1>
         </div>
         <div class="cell">
-            <button class="btn positive btn-show">표시</button>
-            <button class="btn positive btn-hide">숨김</button>
-            <button class="btn positive btn-toggle">토글</button>
+            <h1>1페이지</h1>
+            <!-- <button class="btn-prev">이전</button> -->
+            <button class="btn-next">다음</button>
          </div>
 
          <div class="cell">
-            <h2 class="target">Hello jQuery!</h2>
+            <h1>2페이지</h1>
+            <button class="btn-prev">이전</button>
+            <button class="btn-next">다음</button>
+         </div>
+
+         <div class="cell">
+            <h1>3페이지</h1>
+            <button class="btn-prev">이전</button>
+            <button class="btn-next">다음</button>
+         </div>
+
+         <div class="cell">
+            <h1>4페이지</h1>
+            <button class="btn-prev">이전</button>
+            <!-- <button class="btn-next">다음</button> -->
          </div>
     </div>
 
