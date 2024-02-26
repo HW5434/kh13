@@ -31,7 +31,8 @@
 		
 		<h2><a href = "list">목록보기</a></h2>
 		<h2><a href = "">수정하기</a></h2>
-		<h2><a href = "delete?pocketmonNo=${dto.pocketmonNo}">삭제하기</a></h2>
+		<h2><a href = "delete?pocketmonNo=${dto.pocketmonNo}"
+				class="link link-confirm" data-message="정말 삭제하시겠습니까?">삭제하기</a></h2>
 	</c:when>
 		
 	<c:otherwise>

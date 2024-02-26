@@ -54,31 +54,51 @@
 	<button>검색</button>
 </form>
 
+<form action="deleteAll" method="post">
 <%-- 목록 출력 --%>
-<table class="table table-horizontal">
-	<thead>
-		<tr>
-			<th>사원번호</th>
-			<th>사원명</th>
-			<th>부서명</th>
-			<th>입사일</th>
-<!-- 			<th>급여액</th> -->
-		</tr>
-	</thead>
-	<tbody align="center">
-		<c:forEach var="dto" items="${list}">
-		<tr>
-			<td>${dto.empNo}</td>
-			<td>
-				<a href="detail?empNo=${dto.empNo}">${dto.empName}</a>
-			</td>
-			<td>${dto.empDept}</td>
-			<td>${dto.empDate}</td>
-<%-- 			<td>${dto.empSal}원</td> --%>
-		</tr>
-		</c:forEach>
-	</tbody>
-</table>
+	<table class="table table-horizontal">
+		<thead>
+			<tr>
+				<c:if test="${sessionScope.loginLevel == '관리자'}">
+				<th>
+					<input type="checkbox" class="check-all">
+				</th>
+				</c:if>
+				<th>사원번호</th>
+				<th>사원명</th>
+				<th>부서명</th>
+				<th>입사일</th>
+	<!-- 			<th>급여액</th> -->
+			</tr>
+		</thead>
+		<tbody align="center">
+			<c:forEach var="dto" items="${list}">
+			<tr>
+				<td>
+					<input type="checkbox" class="check-item" name="empNo" value="${dto.empNo}">
+				</td>
+				<td>${dto.empNo}</td>
+				
+				<c:if test="${sessionScope.loginLevel == '관리자'}">
+					<td>
+						<a href="detail?empNo=${dto.empNo}">${dto.empName}</a>
+					</td>
+				</c:if>
+				<td>${dto.empDept}</td>
+				<td>${dto.empDate}</td>
+	<%-- <td>${dto.empSal}원</td> --%>
+			</tr>
+			</c:forEach>
+		</tbody>
+	</table>
+
+	<%--삭제버튼 --%>
+	<c:if test="${sessionScope.loginLevel == '관리자'}">
+	<div class="cell right">
+		<button class="btn negative">전체삭제</button>
+	</div>
+	</c:if>
+</form>
 
 
 <%-- 템플릿 페이지를 불러오는 코드 --%>
