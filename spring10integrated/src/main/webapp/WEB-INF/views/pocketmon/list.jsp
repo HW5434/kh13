@@ -10,17 +10,13 @@
 <!-- for(PocketmonDto dto : list) -->
 <%-- "${requestScope.list} --%>
  <body>
-
         <main>
             <header>
              <h1>
 		    	포켓몬 목록
-		    	
    			 </h1>
             </header>
-            
             <nav></nav>
-            
             <section>
                 <aside>
 	                <div class="cell left my-0">
