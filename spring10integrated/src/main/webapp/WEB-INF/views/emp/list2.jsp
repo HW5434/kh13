@@ -84,6 +84,7 @@
 						<a href="detail?empNo=${dto.empNo}">${dto.empName}</a>
 					</td>
 				</c:if>
+				
 				<td>${dto.empDept}</td>
 				<td>${dto.empDate}</td>
 	<%-- <td>${dto.empSal}원</td> --%>
