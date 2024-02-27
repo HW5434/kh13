@@ -44,7 +44,7 @@
                             memberId : value
                         },
                         success : function(response) {
-                            console.table(response);
+                            console.log(response);
                             if(response == "NNNNN") {
                                 $("[name=memberId]").removeClass("success fail fail2").addClass("fail2");
                                 state.memberIdValid = false;
