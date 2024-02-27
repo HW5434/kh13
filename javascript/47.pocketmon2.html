@@ -48,6 +48,32 @@
 
           $("[name=pocketmonNo]").blur(function(){
             var regex = /^[0-9]+$/;
+
+            //형식 검사를 먼저해야 서버 부하가 적어진다
+            var value = $(this).val();
+            if(regex.test(value)) {
+                $.ajax({
+                    url : "http://localhost:8080/checkPocketmonNo",
+                    method : "post", //간단하게 데이터를 쓰고 싶어서 쓰는거야
+                    data : {pocketmonNo : value},
+                    success : function(response){
+                        // console.log(response);
+                        if(response) {
+                            $("[name=pocketmonNo]").removeClass("success fail fail2").addClass("success");
+                            state.pocketmonNoValid = true;
+                        }
+                        else {
+                            $("[name=pocketmonNo]").removeClass("success fail fail2").addClass("fail2");
+                            state.pocketmonNoValid = false;
+                        }
+                    }
+                });
+            }
+            else {
+                $("[name=pocketmonNo]").removeClass("success fail fail2").addClass("fail");
+                state.pocketmonNoValid = false;
+            }
+
             state.pocketmonNoValid = regex.test($(this).val());
             $(this).removeClass("success fail").addClass(state.pocketmonNoValid ? "success" : "fail");
           });
@@ -76,8 +102,9 @@
                 </label>
                 <input type="text" name="pocketmonNo" 
                             placeholder="(ex) 1" class="tool w-100">
-                <!-- <div class="success-feedback"></div> -->
-                <div class="fail-feedback">번호를 반드시 작성하세요</div>
+                <div class="success-feedback">사용 가능한 포켓몬번호 입니다!</div>
+                <div class="fail-feedback">형식에 맞게 작성해주세요. [숫자만 가능]</div>
+                <div class="fail2-feedback">이미 등록되어 있는 번호입니다.</div>
             </div>
 
             <div class="cell">
