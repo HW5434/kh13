@@ -30,7 +30,14 @@
             $(".btn-add").click(function(){ //.btn-add를 클릭하면
                 var value = $(".todo-input").val(); // .todo-input의 값을 읽어
                 if(value.length == 0) return; //미입력 차단
+
+                //추가하는 화면이 복잡해진다면..?
+                //- 삭제 아이콘을 추가하여 배치
                 var tag = $("<h3>").text(value); //<h3>태그를 만들고 글자 설정 후
+                var x = $("<i>").addClass("fa-solid fa-xmark red");
+                
+                tag.append(x); //태그의 안쪽 마지막에 x를 추가
+
                 $(".result").append(tag); //.result의 안쪽 마지막에 추가
                 $(".todo-input").val(""); //입력값 삭제
             });
