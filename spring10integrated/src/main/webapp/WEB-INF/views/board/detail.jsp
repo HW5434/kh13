@@ -5,7 +5,39 @@
 
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 
-<script>
+<c:if test="${sessionScope.loginId != null}">
+<script type="text/javascript">
+	//좋아요 하트 클릭 이벤트
+	$(function(){
+		//(주의) 아무리 같은 페이지라도 서로 다른언어를 혼용하지 말것
+		//- 자바스크립트에서 파라미터를 읽어 번호를 추출
+		var params = new URLSearchParams(location.search);
+		var boardNo = params.get("boardNo");
+		
+		//목표 : 하트를 클릭하면 좋아요 갱신처리
+		$(".board-like").find(".fa-heart").click(function(){
+			$.ajax({
+				url : "/rest/board_like/toggle",//같은 서버이므로 앞 경로 생략
+				method : "post",
+				data : { boardNo : boardNo },
+				success : function(response){
+					//console.log(response);
+					
+					//response.state에 따라서 하트의 형태를 설정
+					$(".board-like").find(".fa-heart")
+						.removeClass("fa-solid fa-regular")
+						.addClass(response.state ? "fa-solid" : "fa-regular");
+					
+					//response.count에 따라서 좋아요 개수를 표시
+					$(".board-like").find(".count").text(response.count);
+				}
+			});
+		});
+	});
+</script>
+</c:if>
+<script type="text/javascript">
+	//좋아요 최초 불러오기
 	$(function(){
 		//(주의) 아무리 같은 페이지라도 서로 다른언어를 혼용하지 말것
 		//- 자바스크립트에서 파라미터를 읽어 번호를 추출
@@ -26,27 +58,6 @@
 				//response.count에 따라서 좋아요 개수를 표시
 				$(".board-like").find(".count").text(response.count);
 			}
-		});
-		
-		
-		//목표 : 하트를 클릭하면 좋아요 갱신처리
-		$(".board-like").find(".fa-heart").click(function(){
-			$.ajax({
-				url : "/rest/board_like/toggle",//같은 서버이므로 앞 경로 생략
-				method : "post",
-				data : { boardNo : boardNo },
-				success : function(response){
-					//console.log(response);
-					
-					//response.state에 따라서 하트의 형태를 설정
-					$(".board-like").find(".fa-heart")
-						.removeClass("fa-solid fa-regular")
-						.addClass(response.state ? "fa-solid" : "fa-regular");
-					
-					//response.count에 따라서 좋아요 개수를 표시
-					$(".board-like").find(".count").text(response.count);
-				}
-			});
 		});
 	});
 </script>
@@ -85,7 +96,7 @@
 				HTML은 엔터와 스페이스 등을 무시하기 때문에 textarea와 모양이 달라진다
 				- 상용 에디터를 쓰면 알아서 글자를 보정해주기 때문에 문제가 없다
 				- 기본 textarea를 쓰면 문제가 발생한다
-				- <pre>태그를 사용하면 글자를 있는 그대로 출력한다
+				- <pre>태그를 사용하면 글자를 있는 그대로 출력한다  
 			--%>
 			<pre>${boardDto.boardContent}</pre>
 		</td>
