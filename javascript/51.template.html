@@ -48,14 +48,28 @@
     -->
     <script type="text/template" id="todo-item">
         <div class="item">
-            <span class="title">샘플 텍스트</span>
-                <button class="btn positive">
+            <span class="title w-50">샘플 텍스트</span>
+                <button class="btn positive btn-edit">
                     <i class="fa-solid fa-edit"></i>
                 </button>
 
-                <button class="btn negative">
+                <button class="btn negative btn-delete">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
+        </div>
+    </script>
+
+    <script type="text/template" id="todo-item-edit">
+        <div class="item-edit">
+            <input type="text" class="tool title-edit" value="">
+
+            <button class="btn positive ms-20 btn-save">
+                <i class="fa-solid fa-floppy-disk"></i>
+            </button>
+
+            <button class="btn negative ms-20 btn-cancel">
+                <i class="fa-solid fa-ban"></i>
+            </button>
         </div>
     </script>
 </head>
