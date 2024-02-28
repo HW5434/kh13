@@ -38,18 +38,27 @@ public class AjaxRestController {
 		}
 	}
 		
-		@PostMapping("/checkPocketmonNo")
-		public String checkPocketmonNo(@RequestParam int pocketmonNo) {
-			PocketmonDto pocketmonDto = pocketmonDao.selectOne(pocketmonNo);
-			
-			if(pocketmonDto == null) {
-				return "YES"; // 사용가능
-			}
-			else {
-				return "NO"; // 사용불가
-			}
-		}
+//		@PostMapping("/checkPocketmonNo")
+//		public String checkPocketmonNo(@RequestParam int pocketmonNo) {
+//			PocketmonDto pocketmonDto = pocketmonDao.selectOne(pocketmonNo);
+//			
+//			if(pocketmonDto == null) {
+//				return "YES"; // 사용가능
+//			}
+//			else {
+//				return "NO"; // 사용불가
+//			}
+//		}
 
+		@PostMapping("/checkPocketmonNo")
+		public boolean checkPocketmonNo(@RequestParam int pocketmonNo) {
+			PocketmonDto pocketmonDto = pocketmonDao.selectOne(pocketmonNo);
+			return pocketmonDto == null;
+		}
 		
-	
+		@PostMapping("/checkMemberNick")
+		public boolean checkMemberNick(@RequestParam String memberNick) {
+			MemberDto memberDto = memberDao.selectOneBytNick(memberNick);
+			return memberDto == null;
+		}
 }

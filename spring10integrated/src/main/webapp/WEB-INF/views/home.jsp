@@ -4,10 +4,12 @@
 <%-- 템플릿 페이지를 불러오는 코드 --%>
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 
-<div class="container w-600">
-	<div class="cell">
-		<h1>환영합니다!</h1>
-		<img src="http://via.placeholder.com/600x400">
+<div class="container">
+	<div class="cell center">
+		<h1>KH홈페이지에 오신것을 환영합니다!</h1>
+		<div class="cell">
+			<img src="/image/airplane.png">
+		</div>
 	</div>
 </div>
 

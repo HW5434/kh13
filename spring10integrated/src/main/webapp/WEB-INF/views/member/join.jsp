@@ -3,8 +3,6 @@
 
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 
-<form action="join" method="post" enctype="multipart/form-data">
-
 <!--  이 페이지에서만 사용할 JS 코드 -->
 <script type="text/javascript">
 	$(function(){
@@ -30,107 +28,326 @@
 		}
 	});
 </script>
+<script type="text/javascript">
+	$(function(){
+	    //상태객체(React의 state로 개념이 이어짐)
+	    var state = {
+	        //key : value
+	        memberIdValid : false,
+	        memberPwValid : false,
+	        memberPwCheckValid : false,
+	        memberNickValid : false,
+	        memberEmailValid : false,
+	        memberBirthValid : true, //선택항목
+	        memberContactValid : true, //선택항목
+	        memberAddressValid : true,//선택항목
+	        //객체에 함수를 변수처럼 생성할 수 있다
+	        //- this는 객체 자신(자바와 동일하지만 생략이 불가능)
+	        ok : function(){
+	            return this.memberIdValid 
+	                    && this.memberPwValid && this.memberPwCheckValid
+	                    && this.memberNickValid && this.memberEmailValid
+	                    && this.memberBirthValid && this.memberContactValid
+	                    && this.memberAddressValid;
+	        },
+	    };
 	
-	<div class="cell container w-500">
-		<h1>회원 정보 입력</h1>
-		
-		<!-- 진행바 -->
+	    $("[name=memberId]").blur(function(){
+	        var regex = /^[a-z][a-z0-9]{7,19}$/;
+	        var value = $(this).val();
+	
+	        if(regex.test(value)) {//아이디 형식 검사를 통과했다면
+	            $.ajax({
+	                url : "/rest/member/checkId",
+	                method : "post",
+	                data: {
+	                    memberId : value
+	                },
+	                success : function(response) {
+	                    //console.log(response);
+	                    if(response == "NNNNN") {
+	                        $("[name=memberId]").removeClass("success fail fail2").addClass("fail2");
+	                        state.memberIdValid = false;
+	                    }
+	                    else if(response == "NNNNY") {
+	                        $("[name=memberId]").removeClass("success fail fail2").addClass("success");
+	                        state.memberIdValid = true;
+	                    }
+	                }
+	            });
+	        }
+	        else {//아이디가 형식검사를 통과하지 못했다면
+	            $("[name=memberId]").removeClass("success fail fail2").addClass("fail");
+	            state.memberIdValid = false;
+	        }
+	    });
+	    $("[name=memberPw]").on("blur", function(){
+	        var regex = /^[A-Za-z0-9!@#$]{6,15}$/;
+	        state.memberPwValid = regex.test($(this).val());
+	        $(this).removeClass("success fail")
+	                    .addClass(state.memberPwValid ? "success" : "fail");
+	    });
+	    $("#pw-reinput").blur(function(){
+	        var memberPw = $("[name=memberPw]").val();
+	        state.memberPwCheckValid = memberPw == $(this).val();
+	        
+	        if(memberPw.length == 0) {
+	            $(this).removeClass("success fail fail2").addClass("fail2");
+	        }
+	        else {
+	            $(this).removeClass("success fail fail2")
+	                        .addClass(state.memberPwCheckValid ? "success" : "fail");
+	        }
+	    });
+	    $("[name=memberNick]").blur(function(){
+	        var regex = /^[가-힣0-9]{2,10}$/;
+	        var value = $(this).val();
+	
+	        if(regex.test(value)) {
+	            $.ajax({
+	                url:"/rest/member/checkMemberNick",
+	                method:"post",
+	                data : { memberNick : value },
+	                success:function(response){
+	                    if(response) {//사용 가능한 경우 - success
+	                        state.memberNickValid = true;
+	                        $("[name=memberNick]")
+	                            .removeClass("success fail fail2")
+	                            .addClass("success");
+	                    }
+	                    else {//이미 사용중인 경우 - fail2
+	                        state.memberNickValid = false;
+	                        $("[name=memberNick]")
+	                            .removeClass("success fail fail2")
+	                            .addClass("fail2");
+	                    }
+	                }
+	            });
+	        }
+	        else {//형식이 맞지 않는 경우 - fail
+	            state.memberNickValid = false;
+	            $("[name=memberNick]")
+	                .removeClass("success fail fail2")
+	                .addClass("fail");
+	        }
+	    });
+	    $("[name=memberEmail]").blur(function(){
+	        var regex = /^[a-z0-9]{8,20}@[a-z0-9\.]{1,20}$/;
+	        var value = $(this).val();
+	        state.memberEmailValid = regex.test(value);
+	        $(this).removeClass("success fail")
+	                    .addClass(state.memberEmailValid ? "success" : "fail");
+	    });
+	    $("[name=memberContact]").blur(function(){
+	        var regex = /^010[1-9][0-9]{7}$/;
+	        var value = $(this).val();
+	        state.memberContactValid = value.length == 0 || regex.test(value);
+	        $(this).removeClass("success fail")
+	                    .addClass(state.memberContactValid ? "success" : "fail");
+	    });
+	    $("[name=memberBirth]").blur(function(){
+	        var regex = /^(19[0-9]{2}|20[0-9]{2})-(02-(0[1-9]|1[0-9]|2[0-8])|(0[469]|11)-(0[1-9]|1[0-9]|2[0-9]|30)|(0[13578]|1[02])-(0[1-9]|1[0-9]|2[0-9]|3[01]))$/;
+	        var value = $(this).val();
+	        state.memberBirthValid = value.length == 0 || regex.test(value);
+	        $(this).removeClass("success fail")
+	                    .addClass(state.memberBirthValid ? "success" : "fail");
+	    });
+	
+	    //주소는 세 개의 입력창이 모두 입력되거나 안되거나 둘 중 하나
+	    $("[name=memberAddress2]").blur(function(){
+	        var post = $("[name=memberPost]").val();
+	        var address1 = $("[name=memberAddress1]").val();
+	        var address2 = $("[name=memberAddress2]").val();
+	
+	        var isClear = post.length == 0 && address1.length == 0 && address2.length == 0;
+	        var isFill = post.length > 0 && address1.length > 0 && address2.length > 0;
+	
+	        state.memberAddressValid = isClear || isFill;
+	
+	        $("[name=memberPost], [name=memberAddress1], [name=memberAddress2]")
+	                .removeClass("success fail")
+	                .addClass(state.memberAddressValid ? "success" : "fail");
+	    });
+	
+	    //form 전송
+	    $(".check-form").submit(function(){
+	        //$(this).find("[name], #pw-reinput").blur();
+	        //$(this).find(".tool").blur();//모든 창
+	        
+	        //입력창 중에서 success fail fail2가 없는 창
+	        $(this).find(".tool").not(".success, .fail, .fail2").blur();
+	        return state.ok();
+	    });
+	});
+</script>
+
+<form action="join" method="post" enctype="multipart/form-data" 
+			autocomplete="off" class="check-form">
+
+<div class="container w-500">
+
+	<div class="cell center"><h1>회원 정보 입력</h1></div>
+	
+	<!-- 진행바 -->
+	<div class="cell">
+		<div class="progressbar"><div class="guage"></div></div>
+	</div>
+	
+	<!-- 1페이지 - 아이디/비밀번호 -->
+	<div class="cell page">
 		<div class="cell">
-			<div class=" progressbar"><div class="guage"></div></div>
+            <label>
+                아이디
+                <i class="fa-solid fa-asterisk red"></i>
+            </label>
+            <input type="text" name="memberId" 
+                            placeholder="영문 소문자시작, 숫자 포함 8~20자" 
+                            class="tool w-100">
+            <div class="success-feedback">멋진 아이디네요!</div>
+            <div class="fail-feedback">아이디는 소문자 시작, 숫자 포함 8~20자로 작성하세요</div>
+            <div class="fail2-feedback">이미 사용중인 아이디입니다</div>
+        </div>
+		<div class="cell">
+            <label>
+                비밀번호
+                <i class="fa-solid fa-asterisk red"></i>
+            </label>
+            <input type="password" name="memberPw"
+                            placeholder="영문 대소문자, 숫자, 특수문자 1개 이상 포함 6~15자"
+                            class="tool w-100">
+            <div class="success-feedback">비밀번호가 올바른 형식입니다</div>
+            <div class="fail-feedback">비밀번호에는 반드시 영문 대,소문자와 숫자, 특수문자가 포함되어야 합니다</div>
+        </div>
+		<div class="cell">
+			<label>
+			    비밀번호 확인
+			    <i class="fa-solid fa-asterisk red"></i>
+			</label>
+			<!-- 비밀번호 확인은 백엔드로 전송되지 않도록 이름을 부여하지 않는다 -->
+		    <input type="password" placeholder=""
+		                    id="pw-reinput" class="tool w-100">
+		    <div class="success-feedback">비밀번호가 일치합니다</div>
+		    <div class="fail-feedback">비밀번호가 일치하지 않습니다</div>
+		    <div class="fail2-feedback">비밀번호를 먼저 입력하세요</div>
 		</div>
 		
-		<div class="cell page">
-			<!-- 아이디 비밀번호 -->
-			<div>
-				<label>아이디 *</label>			 
-				<input class="tool w-100" type="text" name="memberId" placeholder="소문자 시작, 숫자 포함 8~20자" required> <br><br>
-				<label>비밀번호 *</label>	
-				<input class="tool w-100" type="password" name="memberPw" placeholder="대소문자,숫자,특수문자 포함 6~15자" required><br><br>
-			</div>
-			<!-- 버튼 -->
-			<div class="flex-cell">
-				<div class="w-100 left">
-					<button type="button" class="btn btn-prev">이전</button>
-				</div>
-				<div class="w-100 right">
-					<button type="button" class="btn btn-next">다음</button>
-				</div>
-			</div>
-		</div>
-		
-		<div class="cell page">
-			<!-- 닉네임 비밀번호 -->
-			<div>
-				<label>닉네임 *</label>			 
-				<input class="tool w-100" type="text" name="memberNick" placeholder="한글숫자 2~10자" required> <br><br>	
-			</div>
-			
-			<div class="floating-cell">
-				<div class="w-50 left">
-					<button type="button" class="btn btn-prev">이전</button>
-				</div>
-				<div class="w-50 right">
-					<button type="button" class="btn btn-next">다음</button>
-				</div>
-			</div>
-		</div>
-		
-		<div class="cell page">
-			<div>
-				<label>이메일 *</label>
-				<input class="tool w-100" type="email" name="memberEmail" required> <br><br>
-				
-				<label>생년월일 *</label>
-				<input class="tool w-100" type="date" name="memberBirth"> <br><br>
-				
-				<label>휴대전화 *</label>
-				<input class="tool w-100" type="tel" name="memberContact"> <br><br>
-			</div>
-		
-			<div class="floating-cell">
-				<div class="w-50 left">
-					<button type="button" class="btn btn-prev">이전</button>
-				</div>
-				<div class="w-50 right">
-					<button type="button" class="btn btn-next">다음</button>
-				</div>
-			</div>
-		</div>
-		
-		<div class="cell page">
-			<div>
-				<label>주소</label>
-					<input class="tool w-100" type="text" name="memberPost" placeholder="우편번호"> <br><br>
-					<input class="tool w-100" type="text" name="memberAddress1" placeholder="기본주소"> <br><br>
-					<input class="tool w-100" type="text" name="memberAddress2" placeholder="상세주소"> <br><br>
-			</div>
-				
-		
-			<div class="floating-cell">
-				<div class="w-50 left">
-					<button type="button" class="btn btn-prev">이전</button>
-				</div>
-				<div class="w-50 right">
-					<button type="button" class="btn btn-next">다음</button>
-				</div>
-			</div>
-		</div>
-		
-		<div class="cell page">
-			<label>프로필 이미지</label>
-			<input class="tool w-100" type="file" name="attach"> <br><br>
-		
-			<div class="floating-cell">
-				<div class="w-50 left">
-					<button type="button" class="btn btn-prev">이전</button>
-				</div>
-				<div class="w-50 right">
-					<button type="button" class="btn btn-next">다음</button>
-					<button type="submit" class="btn">회원가입</button>
-				</div>
+		<div class="flex-cell">
+			<div class="w-100 right">
+				<button type="button" class="btn btn-next">다음</button>
 			</div>
 		</div>
 	</div>
+	
+	<div class="cell page">
+		<div class="cell">
+            <label>
+                닉네임
+                <i class="fa-solid fa-asterisk red"></i>
+            </label>
+            <input type="text" name="memberNick" placeholder="한글,숫자 2~10글자"
+                                class="tool w-100">
+            <div class="success-feedback">사용 가능한 닉네임입니다</div>
+            <div class="fail-feedback">닉네임을 한글,숫자 2~10글자로 작성하세요</div>
+            <div class="fail2-feedback">이미 사용중인 닉네임입니다</div>
+        </div>
+		
+		<div class="flex-cell">
+			<div class="w-100 left">
+				<button type="button" class="btn btn-prev">이전</button>
+			</div>
+			<div class="w-100 right">
+				<button type="button" class="btn btn-next">다음</button>
+			</div>
+		</div>
+	</div>
+	
+	<div class="cell page">
+		<div class="cell">
+            <label>이메일<i class="fa-solid fa-asterisk red"></i></label>
+            <input type="email" name="memberEmail" 
+                                placeholder="test@kh.com" class="tool w-100">
+            <div class="fail-feedback">잘못된 이메일 형식입니다</div>
+        </div>
+
+        <div class="cell">
+            <label>연락처</label>
+            <input type="tel" name="memberContact" 
+                        placeholder="- 제외하고 입력" class="tool w-100">
+            <div class="fail-feedback">잘못된 휴대전화 번호 형식입니다</div>
+        </div>
+
+        <div class="cell">
+            <label>생년월일</label>
+            <input type="date" name="memberBirth" class="tool w-100">
+            <div class="fail-feedback">잘못된 날짜 형식입니다</div>
+        </div>
+		
+		<!-- 
+			버튼이 없는 경우도 처리하기 위해서 flex-cell 사용
+			flex-cell은 설정에 따라 줄바꿈을 금지할 수 있기 때문에 폭을 100%로 설정	 
+		-->
+		<div class="flex-cell">
+			<div class="w-100 left">
+				<button type="button" class="btn btn-prev">이전</button>
+			</div>
+			<div class="w-100 right">
+				<button type="button" class="btn btn-next">다음</button>
+			</div>
+		</div>
+	</div>
+	
+	<div class="cell page">
+		<!-- 주소 : 모두 입력하든가 입력하지 않든가 -->
+        <div class="cell">
+            <label>주소</label>
+        </div>
+        <div class="cell">
+            <input type="text" name="memberPost" 
+                    placeholder="우편번호" class="tool" size="6" maxlength="6">
+            <button type="button" class="btn positive">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>        
+        </div>
+        <div class="cell">
+            <input type="text" name="memberAddress1" 
+                    placeholder="기본주소" class="tool w-100">
+        </div>
+        <div class="cell">
+            <input type="text" name="memberAddress2" 
+                    placeholder="상세주소" class="tool w-100">
+            <div class="fail-feedback">주소를 모두 작성하세요</div>
+        </div>
+		
+		<div class="flex-cell">
+			<div class="w-100 left">
+				<button type="button" class="btn btn-prev">이전</button>
+			</div>
+			<div class="w-100 right">
+				<button type="button" class="btn btn-next">다음</button>
+			</div>
+		</div>
+	</div>
+	
+	<div class="cell page">
+		<div class="cell">
+			<label>프로필 이미지</label>
+			<input type="file" name="attach" class="tool w-100">
+		</div>
+		
+		<div class="flex-cell">
+			<div class="w-100 left">
+				<button type="button" class="btn btn-prev">이전</button>
+			</div>
+			<div class="w-100 right">
+				<button type="submit" class="btn positive">회원가입</button>
+			</div>
+		</div>
+	</div>
+	
+	
+</div>
+
+	
 </form>
 
 <jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>
