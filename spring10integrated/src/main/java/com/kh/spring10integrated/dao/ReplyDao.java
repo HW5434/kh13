@@ -27,4 +27,11 @@ public class ReplyDao {
 		return jdbcTemplate.query(sql, replyMapper, data);
 	}
 	
+	//댓글은 전체 목록이 없습니다
+	public boolean delete(int replyNo) {
+		String sql = "delete reply where reply_no = ?";
+		Object[] data = {replyNo};
+		return jdbcTemplate.update(sql, data) > 0;
+	}
+	
 }

@@ -24,7 +24,7 @@
 	</div>
 </script>
 <script type="text/javascript">
-	$(function(){
+	function loadList() {
 		//파라미터에서 게시글 번호를 읽는다
 		var params = new URLSearchParams(location.search);
 		var boardNo = params.get("boardNo");
@@ -49,17 +49,38 @@
 					$(templateHtml).find(".reply-content").text(response[i].replyContent);
 					$(templateHtml).find(".reply-time").text(response[i].replyTime);
 					
+					//화면에 필요한 정보를 추가 (ex : 삭제 , 수정버튼에 번호 설정)
+					// - data라는 명령으로는 읽기만 가능
+					// - 태그에 글자를 추가하고 싶다면 .attr() 명령 사용
+					$(templateHtml).find(".btn-reply-delete")
+											.attr("data-reply-no" , response[i].replyNo);
+					
 					//화면에 추가
 					$(".reply-list-wrapper").append(templateHtml);
 				}								
 			}
 		});
+	}
+
+	$(function(){
+		//최초에 목록 불러오기
+		loadList();
 		
 		//문서에 댓글 삭제 이벤트 등록
 		//- 화면을 지우는 것이 아니라 서버에 지워달라고 요청을 해야 한다
 		//- 삭제가 완료되면 화면을 직접 지우지 말고 목록을 다시 불러온다
 		$(document).on("click", ".btn-reply-delete", function(){
+			//태그에 심어져 있는 번호 정보를 읽어와서 삭제하도록 요청
+			var replyNo = $(this).data("reply-no");
 			
+			$.ajax({
+				url : "/rest/reply/delete",
+				method : "post",
+				data : {replyNo : replyNo},
+				success: function(response) {
+					loadList(); //삭제가 완료되면 목록 불러오기
+				}
+			});
 		});
 		
 		//문서에 댓글 수정 이벤트 등록

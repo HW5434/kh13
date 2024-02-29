@@ -23,5 +23,21 @@ public class ReplyRestController {
 	public List<ReplyDto> list(@RequestParam int replyOrigin) {
 		return replyDao.selectList(replyOrigin);
 	}
+	@PostMapping("/delete")
+	public void delete(@RequestParam int replyNo) {
+		replyDao.delete(replyNo);
+	}
 	
 }
+
+
+
+
+
+
+
+
+
+
+
+
