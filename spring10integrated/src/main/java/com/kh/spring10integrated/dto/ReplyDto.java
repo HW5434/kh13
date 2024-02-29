@@ -1,7 +1,5 @@
 package com.kh.spring10integrated.dto;
 
-import java.sql.Date;
-
 public class ReplyDto {
 	private int replyNo;
 	private String replyContent;
