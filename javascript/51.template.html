@@ -26,7 +26,37 @@
     <script src="commons.js"></script>
     <!-- javascript를 의도적으로 head 자리에 배치해서 가장 먼저 실행되도록 구현-->
     <script type="text/javascript">
-       $(function(){
+        $(function(){
+            //삭제 버튼(this)을 누르면 아이템 항목 1개를 삭제
+            $(document).on("click" , ".btn-delete" , function(){
+                $(this).parent(".item").remove();
+            });
+            //수정 버튼(this)을 누르면 수정용 템플릿을 불러와서 값을 옮겨 추가
+            $(document).on("click" , ".btn-edit" , function(){
+                var templateText = $("#todo-item-edit").text(); //수정용 템플릿 글자 불러오기
+                var templateHtml = $.parseHTML(templateText); //HTML로 해석
+
+                var value = $(this).parents(".item").find(".title").text(); //현재창의 타이틀 불러와서
+                $(templateHtml).find(".title-edit").val(value); //수정창의 입력창에 설정 추가
+
+                $(this).parents(".item").hide().after(templateHtml); //현재창 숨기고 
+            });
+
+            //저장 버튼(this)을 누르면 작성한 값을 복사한 뒤 수정창 제거하고 기존창 표시
+            $(document).on("click" , ".btn-save" , function(){
+                var value = $(this).parents(".item-edit").find(".title-edit").val(); //작성
+                $(this).parents(".item-edit").prev(".item").find(".title").text(value);
+
+                $(this).parents(".item-edit").prev(".item").show(); //기존창 표시(먼저)
+                $(this).parents(".item-edit").remove(); //수정창 삭제(나중)
+            });
+
+            //취소버튼(this) 누르면 수정창 제거하고 기존창 표시
+            $(document).on("click" , ".btn-cancel" , function(){
+                $(this).parents(".item-edit").prev(".item").show(); //기존창 표시(먼저)
+                $(this).parents(".item-edit").remove(); //수정창 삭제(나중)
+            });
+            
             //추가 버튼을 클릭하면 #todo-item의 내용을 불러와 변경 후 추가
             $(".btn-add").click(function(){
                 var inputText = $(".todo-input").val();
@@ -38,40 +68,38 @@
                 $(templateHtml).find(".title").text(inputText);
                 $(".result").append(templateHtml);
             });
-       });
+        });
     </script>
 
     <!-- 
-        앞으로 사용할 화면의 조각을 보관
+        앞으로 사용할 화면의 조각을 보관 
         1. 항목을 추가했을 때 화면에 표시될 조각
         2. 항목을 수정할 때 화면에 표시될 조각
     -->
     <script type="text/template" id="todo-item">
-        <div class="item">
-            <span class="title w-50">샘플 텍스트</span>
-                <button class="btn positive btn-edit">
-                    <i class="fa-solid fa-edit"></i>
-                </button>
-
-                <button class="btn negative btn-delete">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
+        <div class="item cell flex-cell">
+            <h3 class="title w-50">샘플 텍스트</h3>
+            <button class="btn positive ms-20 btn-edit">
+                <i class="fa-solid fa-edit"></i>
+            </button>
+            <button class="btn negative ms-10 btn-delete">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
         </div>
     </script>
 
     <script type="text/template" id="todo-item-edit">
-        <div class="item-edit">
-            <input type="text" class="tool title-edit" value="">
-
+        <div class="item-edit cell flex-cell">
+            <input type="text" class="tool title-edit w-50" value="">
             <button class="btn positive ms-20 btn-save">
                 <i class="fa-solid fa-floppy-disk"></i>
             </button>
-
-            <button class="btn negative ms-20 btn-cancel">
-                <i class="fa-solid fa-ban"></i>
+            <button class="btn negative ms-10 btn-cancel">
+                <i class="fa-solid fa-xmark"></i>
             </button>
         </div>
     </script>
+
 </head>
 <body>
 
