@@ -63,7 +63,34 @@
                     maxHeight: 300,
                     //안내문구 설정
                     //placeholder: "입력하세요",
-                };
+                    callbacks: {
+                    onImageUpload: function (files) {
+                    	var editor = this;
+                    	
+                        var formData = new FormData(); 
+                        for(var i = 0; i < files.length; i++) {
+                            formData.append("attachList" , files[i]);
+                        }
+  
+                        $.ajax({
+                            url : "/rest/board_attach/upload",
+                            method : "post",
+                            data : formData,
+                            processData : false,
+                            contentType : false,
+                            success : function(response){
+                                console.log(response);
+                                if(response == null) return;
+
+	                            for(var i = 0; i < response.length; i++) {
+	                                 var tag = $("<img>").attr("src" , "/download?attachNo="+response[i]);
+	                                 $(editor).summernote("insertNode", tag[0]);
+                                }
+                            }
+                        });
+                    }
+                }
+            };
     		
     		$("[name=boardContent]").summernote(options);
     	});
