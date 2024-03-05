@@ -102,7 +102,7 @@
                        //processData : false, contentType : false;
 
                        //FormData는 전송을 위한 데이터 저장소(자바의 Map과 동일)
-                        var formData = new FormData();
+                        var formData = new FormData(); //가상의 form
                         //formData.append("이름", 값);
                         for(var i = 0; i < files.length; i++) {
                             formData.append("attachList" , files[i]);
@@ -118,6 +118,12 @@
                                 //response에는 업로드된 이미지들의 배열이 들어옴
                                 console.log(response);
                                 if(response == null) return;
+
+                                for(var i = 0; i < response.length; i++) {
+                                    //reponse[i] == 이미지 번호 1개
+                                    var tag = $("<img>").attr("src" , "http://localhost:8080/download?attachNo="+response[i]);
+                                    $("[name=test4]").summernote("insertNode", tag[0]);
+                                }
                             }
                         });
                     }
