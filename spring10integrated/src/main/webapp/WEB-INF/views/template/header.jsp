@@ -30,24 +30,51 @@
 
     <!-- 내가 구현한 스타일 -->
     <link rel="stylesheet" type="text/css" href="/css/commons.css">
-    <link rel="stylesheet" type="text/css" href="/css/test.css">
+<!--     <link rel="stylesheet" type="text/css" href="/css/test.css"> -->
     <link rel="stylesheet" type="text/css" href="/css/layout.css">
 
     <!-- font awesome 아이콘 CDN -->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
-	<style>
-	</style>
-	
-	<!-- jQuery CDN -->
-	<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
-	
-	<!-- 내가 만든 JS -->
-	<script src="/js/commons.js"></script>
-	
+    <style>
+    </style>
+    
+    <!--  jQuery CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+    
+    <!-- summernote cdn -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+    <script>
+    	$(function(){
+    		var options = {
+                    //에디터 툴바(메뉴) 설정
+                    toolbar: [
+                        // [groupName, [list of button]]
+                        ['style', ['bold', 'italic', 'underline']],
+                        ['fontsize', ['fontname', 'fontsize']],
+                        ['color', ['forecolor', 'backcolor']],
+                        ['para', ['style', 'ul', 'ol', 'paragraph']],
+                        ['insert', ['picture', 'link', 'hr']],
+                    ],
+                    //기본높이 설정(단위 : px)
+                    height: 200,
+                    minHeight: 200,
+                    maxHeight: 300,
+                    //안내문구 설정
+                    //placeholder: "입력하세요",
+                };
+    		
+    		$("[name=boardContent]").summernote(options);
+    	});
+    </script>
+    
+    <!-- 내가 만든 JS -->
+    <script src="/js/commons.js"></script>
+    
 </head>
-
 <body>
+    
     <main>
         <div class="header">
             <h1 class="center">KH정보교육원</h1>            
@@ -101,7 +128,7 @@
 								${sessionScope.loginId}
 							</a>
 				            <ul>
-				                <li ><a href="/point/charge">포인트충전</a></li>
+				                <li><a href="/point/charge">포인트충전</a></li>
 				                <li><a href="/member/logout">로그아웃</a></li>
 				            </ul>
 						</c:when>
@@ -117,6 +144,6 @@
 		</div>
         <div class="section">
 <!--             <div class="aside"></div> -->
-        <div class="article">
+            <div class="article">
 
 		
