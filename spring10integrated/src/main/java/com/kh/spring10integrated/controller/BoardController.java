@@ -1,6 +1,8 @@
 package com.kh.spring10integrated.controller;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -218,6 +220,36 @@ public class BoardController {
 	
 	@PostMapping("/edit")
 	public String edit(@ModelAttribute BoardDto boardDto) {
+		//수정 전,후를 비교하여 사라진 이미지를 찾아 삭제
+		// - 수정 전 이미지 그룹과 수정 후 이미지의 차집합(Set 사용)
+		
+		//기존 글 조회하여 수정 전 이미지 그룹을 조사
+		Set<Integer> before = new HashSet<>();
+		BoardDto findDto = boardDao.selectOne(boardDto.getBoardNo());
+		Document doc = Jsoup.parse(findDto.getBoardContent()); //해석
+		for(Element el : doc.select(".server-img")) {
+			String key = el.attr("data-key"); //data-key 추출
+			int attachNo = Integer.parseInt(key); //숫자로 변환
+			before.add(attachNo); //저장
+		}
+		
+		//수정한 글 조사하여 수정 후 이미지 그룹을 조사
+		Set<Integer> after = new HashSet<>();
+		Document doc2 = Jsoup.parse(boardDto.getBoardContent()); //해석
+		for(Element el : doc2.select(".server-img")) {
+			String key = el.attr("data-key");
+			int attachNo = Integer.parseInt(key); //숫자로 변환
+			after.add(attachNo); //저장
+		}
+		
+		//before에만 있는 번호를 찾아서 모두 삭제
+		before.removeAll(after);
+		
+		//before에 남은 번호에 이미지를 모두 삭제
+		for(int attachNo : before) {
+			attachService.remove(attachNo);
+		}
+		
 		boardDao.update(boardDto);
 		return "redirect:detail?boardNo="+boardDto.getBoardNo();
 	}
