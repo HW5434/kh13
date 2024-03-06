@@ -2,6 +2,10 @@ package com.kh.spring10integrated.controller;
 
 import java.util.List;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
@@ -18,6 +22,7 @@ import com.kh.spring10integrated.dao.BoardDao;
 import com.kh.spring10integrated.dao.MemberDao;
 import com.kh.spring10integrated.dto.BoardDto;
 import com.kh.spring10integrated.dto.MemberDto;
+import com.kh.spring10integrated.service.AttachService;
 import com.kh.spring10integrated.vo.PageVO;
 
 import jakarta.servlet.http.HttpSession;
@@ -39,6 +44,9 @@ public class BoardController {
 	
 	@Autowired
 	private MemberDao memberDao;
+	
+	@Autowired
+	private AttachService attachService;
 	
 //	@RequestMapping("/list")
 //	public String list(
@@ -176,6 +184,25 @@ public class BoardController {
 	
 	@GetMapping("/delete")
 	public String delete(@RequestParam int boardNo) {
+		//(summernote 관련 추가할 내용)
+		// - 글을 지우면 첨부파일이 좀비가 된다
+		// - 글과 첨부파일이 연결되어 있지 않다
+		// - 글 내용을 찾아서 사용된 이미지 번호를 뽑아 모두 삭제하도록 구현
+		// - DB를 활용하는 것이 아니라 프로그래밍으로 처리하는 방식
+		// - 글 안에 있는 <img> 중에 .server-img를 찾아서 data-key를 읽어 삭제
+		// - (문제점) Java에서 HTML 구조를 탐색 (해석) 할 수 있나? OK (Jsoup)
+		
+		BoardDto boardDto = boardDao.selectOne(boardNo);
+		
+		//Jsoup으로 내용을 탐색하는 과정
+		Document document = Jsoup.parse(boardDto.getBoardContent());
+		Elements elements = document.select(".server-img"); 
+		for(Element element : elements) {//반복문으로 한개씩 처리
+			String key = element.attr("data-key"); //data-key 속성을 읽어라!
+			int attachNo = Integer.parseInt(key); //숫자로 변환
+			attachService.remove(attachNo); //파일삭제 + DB삭제
+		}
+		
 		boardDao.delete(boardNo);
 		//return "redirect:/board/list";
 		return "redirect:list";

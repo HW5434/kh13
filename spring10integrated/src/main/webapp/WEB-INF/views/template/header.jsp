@@ -83,7 +83,10 @@
                                 if(response == null) return;
 
 	                            for(var i = 0; i < response.length; i++) {
-	                                 var tag = $("<img>").attr("src" , "/download?attachNo="+response[i]);
+	                                 var tag = $("<img>")
+	                                 	.attr("src" , "/download?attachNo="+response[i])
+	                                 	.addClass("server-img")
+	                                 	.attr("data-key" , response[i]);
 	                                 $(editor).summernote("insertNode", tag[0]);
                                 }
                             }
