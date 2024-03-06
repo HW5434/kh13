@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 
@@ -11,18 +11,22 @@
 	<c:if test="${param.boardTarget != null}">
 		<input type="hidden" name="boardTarget" value="${param.boardTarget}">
 	</c:if>
-	
-	
-	제목
-	<c:choose>
-		<c:when test="${param.boardTarget == null}">
-			<input type="text" name="boardTitle" required><br><br>
-		</c:when>
-		<c:otherwise>
-		 <input type="text" name="boardTitle" required value="[Re] ${targetDto.boardTitle}"> <br><br>
-		</c:otherwise>
-	</c:choose>
-	내용 
+
+
+
+	<div class="cell">
+		<h2>제목</h2>
+		<c:choose>
+			<c:when test="${param.boardTarget == null}">
+				<input class="tool w-100" type="text" name="boardTitle" required>
+			</c:when>
+			<c:otherwise>
+				<input class="tool w-100" type="text" name="boardTitle" required
+					value="[Re] ${targetDto.boardTitle}">
+			</c:otherwise>
+		</c:choose>
+	</div>
+	내용
 	<%-- 
 		여러 줄 입력하고 싶다면 textarea 태그를 사용한다 
 		<input type="text" name="boardContent" required>
@@ -31,8 +35,11 @@
 		 <textarea name="boardContent" required></textarea>
 	--%>
 	<textarea name="boardContent" required></textarea>
-	<br><br>
-	<button>등록</button>
+	<br> <br>
+	<div class="cell right">
+		<button class="btn">등록</button>
+		<a class="btn" href="list">글목록</a>
+	</div>
 </form>
 
 <jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>
