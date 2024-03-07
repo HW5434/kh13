@@ -76,7 +76,7 @@ input[name = memberPw]
                             </div>
                                 <div class="w-50 right">
                                     <a class="link" href="findId">아이디 찾기 , </a>
-                                    <a class="link" href="#">비밀번호 찾기</a>
+                                    <a class="link" href="findPw">비밀번호 찾기</a>
                                 </div>                               
                              </div>
                         

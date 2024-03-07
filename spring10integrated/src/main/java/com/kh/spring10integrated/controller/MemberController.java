@@ -306,6 +306,30 @@ public class MemberController {
 	}
 	
 	//비밀번호 찾기
+	@GetMapping("/findPw")
+	public String findPw() {
+		return "/WEB-INF/views/member/findPw.jsp";
+	}
+	@PostMapping("/findPw")
+	public String findPw(@ModelAttribute String memberId , String memberEmail) {
+		//boolean result = emailService.send임시비밀번호();
+		if(memberId != null && memberEmail != null) {
+			return "redirect:findPwSuccess";
+		}
+		else {
+			return "redirect:findPwFail";
+		}
+	}
+	
+	@RequestMapping("/findPwSuccess")
+	public String findPwSuccess() {
+		return "/WEB-INF/views/member/findPwSuccess.jsp";
+	}
+	
+	@RequestMapping("/findPwFail")
+	public String findPwFail() {
+		return "/WEB-INF/views/member/findPwFail.jsp";
+	}
 	
 	
 	
