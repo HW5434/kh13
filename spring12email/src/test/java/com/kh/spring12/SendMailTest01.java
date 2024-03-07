@@ -41,7 +41,7 @@ public class SendMailTest01 {
 		//message.setCc("참조대상1", "참조대상2", "참조대상3");
 		//message.setBcc("숨은참조대상1", "숨은참조대상2");
 		message.setTo("l990628l@gmail.com");
-		message.setCc("l990628l@gmail.com");
+		message.setCc("hw33315434@gmail.com");
 		message.setSubject("오늘도 행운이 가득한 하루 되세요");
 		message.setText("이 메세지를 복사해서 10명에게 보내지 않으면 불행할거에요");
 		
