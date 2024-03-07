@@ -295,8 +295,15 @@ public class MemberController {
 		}
 	}
 	
-	//@RequestMapping("/findIdSuccess")
-	//@RequestMapping("/findIdFail")
+	@RequestMapping("/findIdSuccess")
+	public String findIdSuccess() {
+		return "/WEB-INF/views/member/findIdSuccess.jsp";
+	}
+	
+	@RequestMapping("/findIdFail")
+	public String findIdFail() {
+		return "/WEB-INF/views/member/findIdFail.jsp";
+	}
 	
 	//비밀번호 찾기
 	

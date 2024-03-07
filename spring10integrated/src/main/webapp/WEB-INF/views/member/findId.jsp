@@ -3,7 +3,7 @@
     
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 
-<form action="findId" method="post">
+<form action="findId" method="post" autocomplete="off">
 	닉네임 <input type="text" name="memberNick" required>
 	<button type="submit">찾기</button>
 </form>
