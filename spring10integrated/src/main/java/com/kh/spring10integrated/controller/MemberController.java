@@ -17,6 +17,7 @@ import com.kh.spring10integrated.dao.BuyDao;
 import com.kh.spring10integrated.dao.MemberDao;
 import com.kh.spring10integrated.dto.MemberDto;
 import com.kh.spring10integrated.service.AttachService;
+import com.kh.spring10integrated.service.EmailService;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -36,6 +37,9 @@ public class MemberController {
 	@Autowired
 	private BuyDao buyDao;
 	
+	@Autowired
+	private EmailService emailService;
+	
 	//회원가입
 	@GetMapping("/join")
 	public String join() {
@@ -50,13 +54,16 @@ public class MemberController {
 			int attachNo = attachService.save(attach);//파일저장+DB저장
 			memberDao.connect(memberDto.getMemberId(), attachNo);//연결
 		}
+		
+		//가입 환영 메일
+		emailService.sendWelcomeMail(memberDto.getMemberEmail());
+		
 		return "redirect:joinFinish";
 	}
 	@RequestMapping("/joinFinish")
 	public String joinFinish() {
 		return "/WEB-INF/views/member/joinFinish.jsp";
 	}
-	
 	
 	//테스트 로그인 & 로그아웃
 	//- HttpSession을 사용하고 싶다면 매개변수에 선언만 하면 된다
