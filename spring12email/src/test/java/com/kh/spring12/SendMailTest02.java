@@ -8,7 +8,7 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 
 //미리 만들어둔 도구를 불러와서 이메일을 발송
 @SpringBootTest
-public class SendMailTest02 {
+public class SendMailTest02 { 
 
 	@Autowired
 	private JavaMailSenderImpl sender;
