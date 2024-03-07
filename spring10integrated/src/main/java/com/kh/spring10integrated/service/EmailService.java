@@ -7,11 +7,19 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
+import com.kh.spring10integrated.dao.MemberDao;
+import com.kh.spring10integrated.dto.MemberDto;
+
 @Service
 public class EmailService {
 
 	@Autowired
 	private JavaMailSender sender;
+	
+	@Autowired
+	private MemberDao memberDao;
+	
+	
 
 	// 가입 환영 이메일 발송
 	public void sendWelcomeMail(String email) {
@@ -23,6 +31,25 @@ public class EmailService {
 		sender.send(message);
 	}
 
+	//아이디 발송
+	public boolean sendMemberId(String memberNick) {
+		MemberDto memberDto = memberDao.selectOneBytNick(memberNick); //닉네임으로 회원정보 조회
+		
+		if(memberDto != null) { //존재하는 닉네임이라면 [null이 아니면]
+			SimpleMailMessage message = new SimpleMailMessage();
+			message.setTo(memberDto.getMemberEmail());
+			message.setSubject("[KH정보교육원] 아이디 찾기 결과 안내");
+			message.setText("당신의 아이디는 "+memberDto.getMemberId()+" 입니다");
+			sender.send(message);
+			return true;
+		}
+		else {//존재하지 않는 닉네임이라면
+			return false;
+		}
+		
+	}
+	
+	
 	// 임시 비밀번호 발송
 	public void sendTempPassword(String email) {
 		String lower = "abcdefghijklmnopqrstuvwxyz"; // 3글자

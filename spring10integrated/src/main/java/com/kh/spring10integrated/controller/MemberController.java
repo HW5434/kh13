@@ -277,6 +277,31 @@ public class MemberController {
 			return "redirect:/image/user.png";
 		}
 	}
+	
+	//아이디 찾기
+	@GetMapping("/findId")
+	public String findId() {
+		return "/WEB-INF/views/member/findId.jsp";
+	}
+	
+	@PostMapping("/findId")
+	public String findId(@RequestParam String memberNick) {
+		boolean result = emailService.sendMemberId(memberNick);
+		if(result) {
+			return "redirect:findIdSuccess";
+		}
+		else {
+			return "redirect:findIdFail";
+		}
+	}
+	
+	//@RequestMapping("/findIdSuccess")
+	//@RequestMapping("/findIdFail")
+	
+	//비밀번호 찾기
+	
+	
+	
 }
 
 
