@@ -80,7 +80,7 @@ public class EmailService {
 			buffer.append(special.charAt(pos)); //버퍼에 추가
 		}
 		
-		//
+		//생성한 비밀번호로 DB를 변경
 		memberDto.setMemberPw(buffer.toString());
 		memberDao.updateMemberPw(memberDto);
 		
