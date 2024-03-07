@@ -81,7 +81,7 @@ public class EmailService {
 		}
 		
 		//생성한 비밀번호로 DB를 변경
-		memberDto.setMemberPw(buffer.toString());
+		memberDto.setMemberPw(buffer.toString()); 
 		memberDao.updateMemberPw(memberDto);
 		
 		//이메일 발송
