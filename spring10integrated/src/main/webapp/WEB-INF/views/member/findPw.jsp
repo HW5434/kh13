@@ -6,7 +6,7 @@
 <form action="findPw" method="post" autocomplete="off">
 	아이디 <input type="text" name="memberId" required> <br><br>
 	이메일 <input type="text" name="memberEmail" required> <br><br>
-	<button type="submit">찾기</button>
+	<button class="btn" type="submit">찾기</button>
 </form>
 
 <jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>

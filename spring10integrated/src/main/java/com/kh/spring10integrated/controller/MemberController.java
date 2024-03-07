@@ -311,13 +311,20 @@ public class MemberController {
 		return "/WEB-INF/views/member/findPw.jsp";
 	}
 	@PostMapping("/findPw")
-	public String findPw(@ModelAttribute String memberId , String memberEmail) {
-		//boolean result = emailService.send임시비밀번호();
-		if(memberId != null && memberEmail != null) {
+	public String findPw(@ModelAttribute MemberDto memberDto) {
+		MemberDto findDto = memberDao.selectOne(memberDto.getMemberId());
+		
+		//아이디가 있으면서 이메일까지 일치한다면 통과하는 것으로 판정
+		boolean isValid = findDto != null && 
+				findDto.getMemberEmail().equals(memberDto.getMemberEmail());
+		
+		if(isValid) {
+			emailService.sendTempPassword(findDto);
 			return "redirect:findPwSuccess";
 		}
 		else {
 			return "redirect:findPwFail";
+			//return "redirect:findPw?error";
 		}
 	}
 	

@@ -51,7 +51,7 @@ public class EmailService {
 	
 	
 	// 임시 비밀번호 발송
-	public void sendTempPassword(String email) {
+	public void sendTempPassword(MemberDto memberDto) {
 		String lower = "abcdefghijklmnopqrstuvwxyz"; // 3글자
 		String upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; // 3글자
 		String number = "0123456789"; // 1글자
@@ -80,10 +80,15 @@ public class EmailService {
 			buffer.append(special.charAt(pos)); //버퍼에 추가
 		}
 		
+		//
+		memberDto.setMemberPw(buffer.toString());
+		memberDao.updateMemberPw(memberDto);
+		
+		//이메일 발송
 		SimpleMailMessage message = new SimpleMailMessage();
-		message.setTo(email);
+		message.setTo(memberDto.getMemberEmail());
 		message.setSubject("[KH정보교육원] 임시 비밀번호 안내");
-		message.setText("임시 비밀번호는 "+buffer+"입니다.");
+		message.setText("임시 비밀번호는 "+memberDto.getMemberPw()+"입니다.");
 		
 		sender.send(message);
 	}
