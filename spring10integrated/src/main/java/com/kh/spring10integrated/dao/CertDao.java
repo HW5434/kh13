@@ -34,4 +34,24 @@ public class CertDao {
 		List<CertDto> list = jdbcTemplate.query(sql, certMapper, data);
 		return list.isEmpty() ? null : list.get(0);
 	}
+	
+	public boolean checkValid(CertDto certDto) {
+		String sql = "select * from cert "
+						+ "where cert_email = ? "
+						+ "and cert_number = ? "
+						+ "and cert_time >= sysdate-5/24/60";
+		Object[] data = {certDto.getCertEmail(), certDto.getCertNumber()};
+		List<CertDto> list = jdbcTemplate.query(sql, certMapper, data);
+		return list.isEmpty() ? false : true;
+		//return !list.isEmpty(); 비어있지 않으면 성공
+	}
 }
+
+
+
+
+
+
+
+
+
