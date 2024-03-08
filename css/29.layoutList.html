@@ -13,38 +13,12 @@
     <!-- 내가 구현한 스타일 -->
     <link rel = "stylesheet" type="text/css" href="commons.css">
     <link rel = "stylesheet" type="text/css" href="test.css">
+    <link rel = "stylesheet" type="text/css" href="Listlayout.css">
 
     <!-- font awesome 아이콘 CDN -->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <style>
-   html, body{
-    margin: 0%;
-    padding: 0%;
-   }
-   main{
-        width: 1100px;
-        margin:0 auto;
-   }
-   header{
-        padding: 10px;
-   }
-   section{
-        display: flex;
-        min-height: 400px;
-        padding: 10px;
-   }
-   aside{
-        display: flex;
-        width: 200px;
-   }
-   article{
-        flex-grow: 1;
-        padding: 5px;
-   }
-   footer{
-        padding: 10px;
-   }
-
+   
 </style>
 
 </head>
@@ -52,35 +26,38 @@
 
         <main>
             <header>
-                <h1>List 이름</h1>
+
+                <div>
+                    <h1>List 이름</h1>
+                </div>
+
             </header>
 
-                <section>
-                    <aside>
-                        <div class="cell">
-                            <div>
-                                <img src="http://via.placeholder.com/200x200?text=img">
-                            </div>
-
-                            <div>
-                                <h2>1 . 목록</h2>
-                            </div>
-        
-                            <div>
-                                <h2>2 . 목록</h2>
-                            </div>
-
+            <section>
+                <aside>
+                    <div class="cell">
+                        <div class="img-box">
+                            <img src="image/dummy.png" class="w-100">
                         </div>
-                    </aside>
 
-                    <article>
-                        <h2>컨텐츠</h2>
-                    </article>
-                </section>
+                        <div>
+                            <h2>1 . 목록</h2>
+                        </div>
+    
+                        <div>
+                            <h2>2 . 목록</h2>
+                        </div>
 
-                <footer>
-                    <h3>푸터</h3>
-                </footer>
+                    </div>
+                </aside>
+
+                <article>
+                    <div>
+                        <h2>컨텐츠 박스</h2>
+                    </div>
+                </article>
+            </section>
+
         </main>
 
     </body>
