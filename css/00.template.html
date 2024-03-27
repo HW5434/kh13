@@ -17,13 +17,41 @@
     <!-- font awesome 아이콘 CDN -->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <style>
-   
+.input{
+    padding: 10px;
+}
 </style>
 
 </head>
     <body>
 
-        
+        <div class="flex-cell">
+            <div class="cell flex-cell my-30 bottom-bar">
+
+                <div class="cell">
+                    <%-- 검색창 --%>
+                    <form action="list" method="get" class="left">
+                        <select name="column" class="searchSelect">
+                            <option value="qna_no"
+                                ${param.column == 'qna_no' ? 'selected' : ''}>글번호</option>
+                            <option value="qna_title"
+                                ${param.column == 'qna_title' ? 'selected' : ''}>제목</option>
+                            <option value="qna_writer"
+                                ${param.column == 'qna_writer' ? 'selected' : ''}>작성자</option>
+                            <option value="qna_content"
+                                ${param.column == 'qna_content' ? 'selected' : ''}>내용</option>
+                        </select> <input class="searchBar w-400" type="search" name="keyword"
+                            placeholder="검색어 입력" required value="${param.keyword}">
+                        <button class="btn searchBtn">검색</button>
+                    </form>
+                </div>
+
+                <div class="cell right">
+                    <a href="write" class="link">질문글쓰기</a>
+                </div>
+                
+            </div>
+        </div>
 
     </body>
 </html>
