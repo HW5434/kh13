@@ -6,7 +6,7 @@
 
 <div class="container">
 	<div class="cell center">
-		<h1>KH홈페이지에 오신것을 환영합니다!</h1>
+		<h1>KH홈페이지에 오신것을 환영합니다!1</h1>
 		<div class="cell">
 			<img src="/image/airplane.png">
 		</div>
