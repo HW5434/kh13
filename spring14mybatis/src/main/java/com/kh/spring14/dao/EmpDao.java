@@ -16,24 +16,21 @@ public class EmpDao {
 	
 	//등록
 	public void insert(EmpDto empDto) {
+		//(주의) 구문을 적고 뒤에 데이터는 최대 1개밖에 전달할 수 없다
 		sqlSession.insert("emp.add", empDto);
 	}
-	
 	//목록
 	public List<EmpDto> selectList(){
 		return sqlSession.selectList("emp.list");
 	}
-	
 	//상세
 	public EmpDto selectOne(int empNo) {
 		return sqlSession.selectOne("emp.find", empNo);
 	}
-	
 	//수정
 	public boolean update(EmpDto empDto) {
 		return sqlSession.update("emp.edit", empDto) > 0;
 	}
-	
 	//삭제
 	public boolean delete(int empNo) {
 		return sqlSession.delete("emp.remove", empNo) > 0;

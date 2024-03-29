@@ -9,10 +9,11 @@
 	<!-- CRUD = C -->
 	<insert id="add">
 		insert into emp (
-		emp_no , emp_name , emp_dept , emp_date , emp_sal
+			emp_no , emp_name , emp_dept , emp_date , emp_sal
 		)
-		values ( #{empNo} ,
-		#{empName} , #{empDept} , #{empDate} , #{empSal} )
+		values ( 
+			#{empNo} , #{empName} , #{empDept} , #{empDate} , #{empSal}
+		 )
 	</insert>
 
 	<!-- CRUD = R -->
@@ -29,13 +30,12 @@
 	<update id="edit">
 		update emp
 		set
-		emp_name = #{empName},
-		emp_dept = #{empDept},
-		emp_date = #{empDate},
-		emp_sal = #{empSal}
+			emp_name = #{empName},
+			emp_dept = #{empDept},
+			emp_date = #{empDate},
+			emp_sal = #{empSal}
 		where emp_no = #{empNo}
 	</update>
-
 
 	<!-- CRUD = D -->
 	<delete id="remove">
