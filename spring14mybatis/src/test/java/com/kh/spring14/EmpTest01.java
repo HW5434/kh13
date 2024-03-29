@@ -19,7 +19,6 @@ public class EmpTest01 {
 	@Test
 	public void test() {
 		EmpDto empDto = new EmpDto();
-		empDto.setEmpNo(1);
 		empDto.setEmpName("이사원");
 		empDto.setEmpDept("이부서");
 		empDto.setEmpDate("2024-03-03");
