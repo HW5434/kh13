@@ -22,4 +22,8 @@ public class PocketmonDao {
 	public void insert(PocketmonDto pocketmonDto) {
 		sqlSession.insert("pocketmon.add", pocketmonDto);
 	}
+	
+	public boolean update(PocketmonDto pocketmonDto) {
+		return sqlSession.update("pocketmon.edit", pocketmonDto) > 0;
+	}
 }

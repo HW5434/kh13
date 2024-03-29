@@ -18,5 +18,13 @@
 		values ( #{pocketmonNo} , #{pocketmonName} , #{pocketmonType} )
 	</insert>
 	
+	<update id="edit">
+		update pocketmon
+		set 
+			pocketmon_name=#{pocketmonName} , 
+			pocketmon_type=#{pocketmonType}
+		where pocketmon_no=#{pocketmonNo}
+	</update>
+	
 </mapper>   
 
