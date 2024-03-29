@@ -26,4 +26,16 @@ public class PocketmonDao {
 	public boolean update(PocketmonDto pocketmonDto) {
 		return sqlSession.update("pocketmon.edit", pocketmonDto) > 0;
 	}
+	
+	public boolean delete(int pocketmonNo) {
+		return sqlSession.delete("pocketmon.remove", pocketmonNo) > 0;
+	}
 }
+
+
+
+
+
+
+
+

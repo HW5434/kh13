@@ -26,5 +26,9 @@
 		where pocketmon_no=#{pocketmonNo}
 	</update>
 	
+	<delete id="remove">
+		delete pocketmon where pocketmon_no = #{pocketmonNo}
+	</delete>
+	
 </mapper>   
 
