@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제목을 설정하세요</title>
+
+    <!-- 구글 폰트 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+
+    <!-- 내가 구현한 스타일 -->
+    <link rel="stylesheet" type="text/css" href="../css/commons.css">
+    <link rel="stylesheet" type="text/css" href="../css/test.css">
+
+    <!-- font awesome 아이콘 CDN -->
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        .ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.tool {
+    font-size: 20px;
+    padding: 0.5em 1em;
+    outline: none;/*선택시 자동강조효과 제거*/
+    border: 1px solid #636e72;
+    border-radius: 0.1em;
+}
+    </style>
+    <!-- javascript를 의도적으로 head 자리에 배치해서 가장 먼저 실행되도록 구현 -->
+    <script type="text/javascript">
+        //새로 받은 코드
+        function handleClick(event) {
+            var display = document.querySelector(".display");
+            var target = event.target;
+            var value = target.textContent;
+            display.textContent += value;
+        }
+
+        function clearKeypad() {
+            var target = document.querySelector(".display");
+            target.textContent = "";
+        }
+    </script>
+</head>
+
+<body>
+
+    <div class="container w-300">
+        <div class="cell center">
+            <h1>휴대전화 키패드 구현</h1>
+        </div>
+
+        <div class="tool display ellipsis">
+            <div class="cell" py-20></div>
+            <!-- <input type="password" class="tool display" > -->
+        </div>
+
+
+        <div class="cell flex-cell auto-width">
+            <button class="btn" onclick="handleClick(event);">1</button>
+            <button class="btn" onclick="handleClick(event);">2</button>
+            <button class="btn" onclick="handleClick(event);">3</button>
+        </div>
+
+        <div class="cell flex-cell auto-width">
+            <button class="btn" onclick="handleClick(event);">4</button>
+            <button class="btn" onclick="handleClick(event);">5</button>
+            <button class="btn" onclick="handleClick(event);">6</button>
+        </div>
+
+        <div class="cell flex-cell auto-width">
+            <button class="btn" onclick="handleClick(event);">7</button>
+            <button class="btn" onclick="handleClick(event);">8</button>
+            <button class="btn" onclick="handleClick(event);">9</button>
+        </div>
+
+        <div class="cell flex-cell auto-width">
+            <button class="btn" onclick="handleClick(event);">*</button>
+            <button class="btn" onclick="handleClick(event);">0</button>
+            <button class="btn" onclick="clearKeypad();">C</button>
+        </div>
+    </div>
+</body>
+</html>
