@@ -1,0 +1,46 @@
+2024-03-29T10:36:14.916+09:00  INFO 7408 --- [restartedMain] c.k.spring14.Spring14mybatisApplication  : Starting Spring14mybatisApplication using Java 17.0.9 with PID 7408 (C:\Users\user1\git\kh13\spring14mybatis\target\classes started by user1 in C:\Users\user1\git\kh13\spring14mybatis)
+2024-03-29T10:36:14.918+09:00 DEBUG 7408 --- [restartedMain] c.k.spring14.Spring14mybatisApplication  : Running with Spring Boot v3.2.4, Spring v6.1.5
+2024-03-29T10:36:14.918+09:00  INFO 7408 --- [restartedMain] c.k.spring14.Spring14mybatisApplication  : No active profile set, falling back to 1 default profile: "default"
+2024-03-29T10:36:15.426+09:00  WARN 7408 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.kh.spring14]' package. Please check your configuration.
+2024-03-29T10:36:16.392+09:00  INFO 7408 --- [restartedMain] c.k.spring14.Spring14mybatisApplication  : Started Spring14mybatisApplication in 1.765 seconds (process running for 2.342)
+2024-03-29T10:38:56.627+09:00  INFO 7408 --- [restartedMain] c.k.spring14.Spring14mybatisApplication  : Starting Spring14mybatisApplication using Java 17.0.9 with PID 7408 (C:\Users\user1\git\kh13\spring14mybatis\target\classes started by user1 in C:\Users\user1\git\kh13\spring14mybatis)
+2024-03-29T10:38:56.628+09:00 DEBUG 7408 --- [restartedMain] c.k.spring14.Spring14mybatisApplication  : Running with Spring Boot v3.2.4, Spring v6.1.5
+2024-03-29T10:38:56.628+09:00  INFO 7408 --- [restartedMain] c.k.spring14.Spring14mybatisApplication  : No active profile set, falling back to 1 default profile: "default"
+2024-03-29T10:38:56.760+09:00  WARN 7408 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.kh.spring14]' package. Please check your configuration.
+2024-03-29T10:38:56.950+09:00  INFO 7408 --- [restartedMain] c.k.spring14.Spring14mybatisApplication  : Started Spring14mybatisApplication in 0.341 seconds (process running for 162.9)
+2024-03-29T10:38:57.252+09:00  INFO 14896 --- [main] com.kh.spring14.PocketmonSelectTest01    : Starting PocketmonSelectTest01 using Java 17.0.9 with PID 14896 (started by user1 in C:\Users\user1\git\kh13\spring14mybatis)
+2024-03-29T10:38:57.253+09:00 DEBUG 14896 --- [main] com.kh.spring14.PocketmonSelectTest01    : Running with Spring Boot v3.2.4, Spring v6.1.5
+2024-03-29T10:38:57.253+09:00  INFO 14896 --- [main] com.kh.spring14.PocketmonSelectTest01    : No active profile set, falling back to 1 default profile: "default"
+2024-03-29T10:38:57.857+09:00  WARN 14896 --- [main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.kh.spring14]' package. Please check your configuration.
+2024-03-29T10:38:59.016+09:00  INFO 14896 --- [main] com.kh.spring14.PocketmonSelectTest01    : Started PocketmonSelectTest01 in 2.08 seconds (process running for 2.988)
+2024-03-29T10:39:14.375+09:00  INFO 7260 --- [main] com.kh.spring14.PocketmonSelectTest01    : Starting PocketmonSelectTest01 using Java 17.0.9 with PID 7260 (started by user1 in C:\Users\user1\git\kh13\spring14mybatis)
+2024-03-29T10:39:14.376+09:00 DEBUG 7260 --- [main] com.kh.spring14.PocketmonSelectTest01    : Running with Spring Boot v3.2.4, Spring v6.1.5
+2024-03-29T10:39:14.377+09:00  INFO 7260 --- [main] com.kh.spring14.PocketmonSelectTest01    : No active profile set, falling back to 1 default profile: "default"
+2024-03-29T10:39:14.957+09:00  WARN 7260 --- [main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.kh.spring14]' package. Please check your configuration.
+2024-03-29T10:39:16.097+09:00  INFO 7260 --- [main] com.kh.spring14.PocketmonSelectTest01    : Started PocketmonSelectTest01 in 2.022 seconds (process running for 2.88)
+2024-03-29T10:39:52.658+09:00  INFO 16372 --- [restartedMain] c.k.spring14.Spring14mybatisApplication  : Starting Spring14mybatisApplication using Java 17.0.9 with PID 16372 (C:\Users\user1\git\kh13\spring14mybatis\target\classes started by user1 in C:\Users\user1\git\kh13\spring14mybatis)
+2024-03-29T10:39:52.659+09:00 DEBUG 16372 --- [restartedMain] c.k.spring14.Spring14mybatisApplication  : Running with Spring Boot v3.2.4, Spring v6.1.5
+2024-03-29T10:39:52.660+09:00  INFO 16372 --- [restartedMain] c.k.spring14.Spring14mybatisApplication  : No active profile set, falling back to 1 default profile: "default"
+2024-03-29T10:39:53.159+09:00  WARN 16372 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.kh.spring14]' package. Please check your configuration.
+2024-03-29T10:39:54.106+09:00  INFO 16372 --- [restartedMain] c.k.spring14.Spring14mybatisApplication  : Started Spring14mybatisApplication in 1.741 seconds (process running for 2.244)
+2024-03-29T10:39:57.353+09:00  INFO 15084 --- [main] com.kh.spring14.PocketmonSelectTest01    : Starting PocketmonSelectTest01 using Java 17.0.9 with PID 15084 (started by user1 in C:\Users\user1\git\kh13\spring14mybatis)
+2024-03-29T10:39:57.354+09:00 DEBUG 15084 --- [main] com.kh.spring14.PocketmonSelectTest01    : Running with Spring Boot v3.2.4, Spring v6.1.5
+2024-03-29T10:39:57.354+09:00  INFO 15084 --- [main] com.kh.spring14.PocketmonSelectTest01    : No active profile set, falling back to 1 default profile: "default"
+2024-03-29T10:39:57.931+09:00  WARN 15084 --- [main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.kh.spring14]' package. Please check your configuration.
+2024-03-29T10:39:59.058+09:00  INFO 15084 --- [main] com.kh.spring14.PocketmonSelectTest01    : Started PocketmonSelectTest01 in 2.017 seconds (process running for 2.869)
+2024-03-29T10:41:40.459+09:00  INFO 10224 --- [main] com.kh.spring14.PocketmonSelectTest01    : Starting PocketmonSelectTest01 using Java 17.0.9 with PID 10224 (started by user1 in C:\Users\user1\git\kh13\spring14mybatis)
+2024-03-29T10:41:40.460+09:00 DEBUG 10224 --- [main] com.kh.spring14.PocketmonSelectTest01    : Running with Spring Boot v3.2.4, Spring v6.1.5
+2024-03-29T10:41:40.461+09:00  INFO 10224 --- [main] com.kh.spring14.PocketmonSelectTest01    : No active profile set, falling back to 1 default profile: "default"
+2024-03-29T10:41:41.049+09:00  WARN 10224 --- [main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.kh.spring14]' package. Please check your configuration.
+2024-03-29T10:41:42.187+09:00  INFO 10224 --- [main] com.kh.spring14.PocketmonSelectTest01    : Started PocketmonSelectTest01 in 2.034 seconds (process running for 2.878)
+2024-03-29T10:42:26.250+09:00  INFO 16372 --- [restartedMain] c.k.spring14.Spring14mybatisApplication  : Starting Spring14mybatisApplication using Java 17.0.9 with PID 16372 (C:\Users\user1\git\kh13\spring14mybatis\target\classes started by user1 in C:\Users\user1\git\kh13\spring14mybatis)
+2024-03-29T10:42:26.251+09:00 DEBUG 16372 --- [restartedMain] c.k.spring14.Spring14mybatisApplication  : Running with Spring Boot v3.2.4, Spring v6.1.5
+2024-03-29T10:42:26.251+09:00  INFO 16372 --- [restartedMain] c.k.spring14.Spring14mybatisApplication  : No active profile set, falling back to 1 default profile: "default"
+2024-03-29T10:42:26.376+09:00  WARN 16372 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.kh.spring14]' package. Please check your configuration.
+2024-03-29T10:42:26.594+09:00  INFO 16372 --- [restartedMain] c.k.spring14.Spring14mybatisApplication  : Started Spring14mybatisApplication in 0.363 seconds (process running for 154.732)
+2024-03-29T10:42:29.028+09:00  INFO 3180 --- [main] com.kh.spring14.PocketmonSelectTest01    : Starting PocketmonSelectTest01 using Java 17.0.9 with PID 3180 (started by user1 in C:\Users\user1\git\kh13\spring14mybatis)
+2024-03-29T10:42:29.029+09:00 DEBUG 3180 --- [main] com.kh.spring14.PocketmonSelectTest01    : Running with Spring Boot v3.2.4, Spring v6.1.5
+2024-03-29T10:42:29.030+09:00  INFO 3180 --- [main] com.kh.spring14.PocketmonSelectTest01    : No active profile set, falling back to 1 default profile: "default"
+2024-03-29T10:42:29.618+09:00  WARN 3180 --- [main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.kh.spring14]' package. Please check your configuration.
+2024-03-29T10:42:30.838+09:00  INFO 3180 --- [main] com.kh.spring14.PocketmonSelectTest01    : Started PocketmonSelectTest01 in 2.13 seconds (process running for 2.97)
+2024-03-29T10:42:31.812+09:00 DEBUG 3180 --- [main] com.kh.spring14.PocketmonSelectTest01    : 결과 수 : 5
