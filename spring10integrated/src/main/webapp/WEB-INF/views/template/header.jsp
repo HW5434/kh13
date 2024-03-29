@@ -172,8 +172,5 @@
 		        </li>
 		    </ul>
 		</div>
-        <div class="section">
-<!--             <div class="aside"></div> -->
-            <div class="article">
 
 		
