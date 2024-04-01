@@ -122,7 +122,7 @@
 				</when>
 			</choose>
 			
-			<!-- 회원등급 - 여러 개 선택 가능하도록 구현 (memberLevelList) -->
+			<!-- 회원등급 - 여러 개 선택 가능하도록 구현 (memberLevelList)  -->
 			<if test="memberLevelList != null and memberLevelList.size() > 0">
 			and member_level in 
 			<foreach collection="memberLevelList" item="memberLevel" 
