@@ -37,5 +37,22 @@
 		order by ${column} asc, member_id asc
 		</if>
 	</select>
+	
+	<!--
+		복잡한[복합] 검색(complex search)
+		- 테이블의 각 항목별로 특징에 맞게 검색하도록 구현
+		- 유사검색, 일치검색, 구간검색 중 적절한 것을 선택
+	-->
+	<select id="complex" resultType="MemberDto">
+		select * from member
+		<where>
+			<if test="memberId != null">
+				and member_id like #{memberId} || '%'
+			</if>
+			<if test= "memberNick != null">
+				and instr(member_nick, #{memberNick}) > 0
+			</if>
+		</where>
+	</select>
 
 </mapper>
