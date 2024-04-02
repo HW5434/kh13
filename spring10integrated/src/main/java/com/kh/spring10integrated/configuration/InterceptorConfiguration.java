@@ -37,7 +37,7 @@ public class InterceptorConfiguration implements WebMvcConfigurer {
 //		registry에다가 인터셉터를 주소와 함께 등록
 //		registry.addInterceptor(인터셉터객체).addPathPatterns(주소);
 //		registry.addInterceptor(testInterceptor)
-//					.addPathPatterns("/pocketmon/list", "/emp/list");
+//					.addPathPatterns("/**");
 
 //		지정한 페이지만 허용하도록 설정
 //		registry.addInterceptor(memberInterceptor)

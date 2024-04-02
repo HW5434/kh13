@@ -30,7 +30,7 @@ public class SecretMemberController {
 		return "redirect:join";
 	}
 	
-	
+	 
 	//로그인
 	@GetMapping("/login")
 	public String login() {
