@@ -25,5 +25,4 @@ public class EncryptTest02 {
 		log.debug("암호화 결과 = {}", buffer);
 		
 	}
-	
 }
