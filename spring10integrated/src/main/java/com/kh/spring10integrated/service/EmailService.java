@@ -56,6 +56,17 @@ public class EmailService {
 		sc.close();
 		
 		Document document = Jsoup.parse(buffer.toString());
+		//배경이미지 설정
+		Element wrapper = document.getElementById("email-wrapper");
+		String backgroundImageUrl = ServletUriComponentsBuilder
+				.fromCurrentContextPath()
+				.path("/image/test.png")
+				.build().toUriString();
+		String originStyle = wrapper.attr("style");
+		originStyle += ";";
+		originStyle += "background-image : url(" + backgroundImageUrl + ");";
+		wrapper.attr("style", originStyle);
+		
 		Element who = document.getElementById("who");
 		who.text(memberDto.getMemberNick());
 		
@@ -72,11 +83,9 @@ public class EmailService {
 		//이미지 배경설정
 		Element image = document.getElementById("background-img");
 		image.attr("src", ServletUriComponentsBuilder
-				.fromCurrentContextPath()
-				.path("/image/test.png")
-				.build().toUriString());
-		
-
+												.fromCurrentContextPath()
+												.path("/image/test.png")
+												.build().toUriString());
 		
 		//마임메세지 생성
 		MimeMessage message = sender.createMimeMessage();
