@@ -15,6 +15,7 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.kh.spring10integrated.dao.CertDao;
 import com.kh.spring10integrated.dao.MemberDao;
@@ -59,7 +60,21 @@ public class EmailService {
 		who.text(memberDto.getMemberNick());
 		
 		Element link = document.getElementById("login-link");
-		link.attr("href", "로그인페이지주소");
+		//link.attr("href", "http://localhost:8080/member/login"); 내 PC에서만 가능 [서버PC]
+		//link.attr("href", "http://192.168.30.200:8080/member/login"); //강의장에서만 
+		
+		//주소를 상황에 맞게 생성하는 도구 - ServletUriComponentsBuilder
+		link.attr("href", ServletUriComponentsBuilder
+												.fromCurrentContextPath()
+												.path("/member/login")
+												.build().toUriString());
+		
+		Element image = document.getElementById("background-img");
+		image.attr("src", ServletUriComponentsBuilder
+				.fromCurrentContextPath()
+				.path("/image/test.png")
+				.build().toUriString());
+		
 		
 		//마임메세지 생성
 		MimeMessage message = sender.createMimeMessage();

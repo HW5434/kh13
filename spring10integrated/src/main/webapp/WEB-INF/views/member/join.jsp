@@ -153,7 +153,7 @@
 		});
 		//이메일 입력을 마친 상황일때 잘못 입력된 경우만큼은 상태를 갱신
 	    $("[name=memberEmail]").blur(function(){
-	        var regex = /^[a-z0-9]{8,20}@[a-z0-9\.]{1,20}$/;
+	        var regex = /^[a-z0-9]{7,20}@[a-z0-9\.]{1,20}$/;
 	        var value = $(this).val();
 	        
 	        var isValid = regex.test(value);
