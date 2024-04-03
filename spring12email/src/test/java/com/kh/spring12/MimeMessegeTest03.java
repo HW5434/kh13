@@ -4,6 +4,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,7 +20,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @SpringBootTest
-public class MimeMessegeTest02 {
+public class MimeMessegeTest03 {
 
 	@Autowired
 	private JavaMailSender sender;
@@ -38,7 +41,7 @@ public class MimeMessegeTest02 {
 		//helper.setText("<h1>다시 이거 가능?</h1>", true);//HTML 허용 설정
 		
 		//내용을 외부 파일에서 불러와 전송하도록 구현
-		ClassPathResource resource = new ClassPathResource("templates/email-template.html");
+		ClassPathResource resource = new ClassPathResource("templates/email-template2.html");
 		File target = resource.getFile(); //파일 추출
 		
 		StringBuffer buffer = new StringBuffer(); //문자열 합성 도구 생성
@@ -48,7 +51,16 @@ public class MimeMessegeTest02 {
 		}
 		sc.close();
 
-		helper.setText(buffer.toString(),true); //읽은 내용을 전송
+		//읽은 내용을 HTML로 해석해서 필요한 정보를 교체한 뒤 전송
+		//-Jsoup 필요함 [중요!!]
+		Document document = Jsoup.parse(buffer.toString());
+		Element receiver = document.getElementById("receiver");//#receiver 탐색
+		receiver.text("피카츄님"); //글자 설정
+		
+		Element link = document.getElementById("move-link"); //#move-link 탐색
+		link.attr("href", "https://www.google.com");
+		
+		helper.setText(document.toString(), true); //변환된 내용을 본문으로 설정
 		
 		//전송
 		sender.send(message);
