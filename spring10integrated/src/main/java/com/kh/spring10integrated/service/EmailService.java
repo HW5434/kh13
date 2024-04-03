@@ -69,12 +69,14 @@ public class EmailService {
 												.path("/member/login")
 												.build().toUriString());
 		
+		//이미지 배경설정
 		Element image = document.getElementById("background-img");
 		image.attr("src", ServletUriComponentsBuilder
 				.fromCurrentContextPath()
 				.path("/image/test.png")
 				.build().toUriString());
 		
+
 		
 		//마임메세지 생성
 		MimeMessage message = sender.createMimeMessage();
