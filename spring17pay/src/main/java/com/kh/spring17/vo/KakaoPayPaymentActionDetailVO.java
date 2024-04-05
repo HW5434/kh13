@@ -13,7 +13,6 @@ import lombok.NoArgsConstructor;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
-
 @Data @Builder @NoArgsConstructor @AllArgsConstructor
 
 public class KakaoPayPaymentActionDetailVO {
