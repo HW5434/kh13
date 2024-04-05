@@ -128,35 +128,7 @@ public class Pay3Controller {
 		PurchaseListVO vo = (PurchaseListVO) session.getAttribute("vo");
 		session.removeAttribute("vo");
 		
-		//DB에 결제 완료된 내역을 저장
-		// - 결제 대표 정보(payment) = 번호생성 후 등록
-		int paymentNo = paymentDao.paymentSequence();
-		PaymentDto paymentDto = PaymentDto.builder()
-					.paymentNo(paymentNo)//시퀀스
-					.paymentName(responseVO.getItemName())//대표 결제명
-					.paymentTotal(responseVO.getAmount().getTotal())//결제총금액
-					.paymentRemain(responseVO.getAmount().getTotal())//잔여금액(결제총금액과 동일)
-					.memberId(responseVO.getPartnerUserId())//구매자ID
-					.paymentTid(responseVO.getTid())//거래번호
-				.build();
-		paymentDao.insertPayment(paymentDto);
-		
-		// - 결제 상세 내역(payment_detail) - 목록 개수만큼 반복적으로 등록
-		for(PurchaseVO purchaseVO : vo.getPurchase()) {
-			ProductDto productDto = productDao.selectOne(purchaseVO.getNo());//상품정보 조회
-			
-			int paymentDetailNo = paymentDao.paymentDetailSequence();
-			PaymentDetailDto paymentDetailDto = PaymentDetailDto.builder()
-						.paymentDetailNo(paymentDetailNo)//시퀀스
-						.paymentDetailProduct(productDto.getNo())//상품번호
-						.paymentDetailQty(purchaseVO.getQty())//수량
-						.paymentDetailName(productDto.getName())//상품명
-						.paymentDetailPrice(productDto.getPrice())//상품가격
-						.paymentDetailStatus("승인")
-						.paymentNo(paymentNo)//결제대표번호
-					.build();
-			paymentDao.insertPaymentDetail(paymentDetailDto);//등록
-		}
+		kakaoPayService.insertPayment(vo, responseVO);
 		
 		return "redirect:successComplete";
 	}
