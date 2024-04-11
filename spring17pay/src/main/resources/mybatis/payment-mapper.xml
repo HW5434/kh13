@@ -75,12 +75,12 @@
 	
 	<!-- payment_detail 상태를 취소로 변경 [전체취소] -->
 	<update id="paymentDetailCancelAll">
-		update payment_detail
-		set payment_detail_status = '취소'
-		where payment_detail_no = #{paymentNo} 
-		<!-- 성능 향상을 위해 추가한 최적화 구문 -->
-		and payment_detail_status = '승인'
-	</update>
+        update payment_detail 
+        set payment_detail_status = '취소'
+        where payment_no = #{paymentNo} 
+        <!-- 성능 향상을 위해 추가한 구문 -->
+        and payment_detail_status='승인'<!--대표번호로 취소   -->
+    </update>
 	
 	
 </mapper>

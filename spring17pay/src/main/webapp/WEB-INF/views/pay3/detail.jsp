@@ -33,7 +33,7 @@
 	<li>소계 : ${paymentDetailDto.totalPrice}원</li>
 	
 </ul>
-<c:if test="${paymentDetailDto.paymentDetailStatus == '승인'}">
+<c:if test="${paymentDetailDto.paymentDetailStatus == '승인' }">
 <h2><a href="cancelItem?paymentDetailNo=${paymentDetailDto.paymentDetailNo}">↑↑↑항목 취소↑↑↑</a></h2>
 </c:if>
 
