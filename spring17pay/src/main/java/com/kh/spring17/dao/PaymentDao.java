@@ -57,6 +57,10 @@ public class PaymentDao {
 		return sqlSession.update("payment.paymentDetailCancel", paymentDetailNo) > 0;
 	}
 	
+	public boolean paymentDetailCancelAll(int paymentNo) {
+		return sqlSession.update("payment.paymentDetailCancelAll", paymentNo) > 0;
+	}
+	
 }
 
 
