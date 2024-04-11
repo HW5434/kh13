@@ -4,7 +4,8 @@
 
 <h1>결제 상세 정보</h1>
 
-${paymentDto}
+<h2><a href="cancelAll?paymentNo=${paymentDto.paymentNo}">전체 취소</a></h2>
+
 <ul>
 	<li>결제고유번호 : ${paymentDto.paymentNo}</li>
 	<li>결제일 : ${paymentDto.paymentTime}</li>
@@ -16,7 +17,6 @@ ${paymentDto}
 </ul>
 
 <hr>
-${detailList}
 
 <c:forEach var="paymentDetailDto" items="${detailList}">
 <ul>
@@ -28,7 +28,12 @@ ${detailList}
 	<li>결제상태 : ${paymentDetailDto.paymentDetailStatus}</li>
 <%-- 	<li>소계 : ${paymentDetailDto.getTotalPrice()}원</li> --%>
 	<li>소계 : ${paymentDetailDto.totalPrice}원</li>
+	
 </ul>
+<c:if test="${paymentDetailDto.paymentDetailStatus == '승인'}">
+<h2><a href="cancelItem?paymentDetailNo=${paymentDetailDto.paymentDetailNo}">↑↑↑항목 취소↑↑↑</a></h2>
+</c:if>
+
 </c:forEach>
 
 <hr>
@@ -40,3 +45,5 @@ ${detailList}
 	<li>금액 : ${paymentActionDetailVO.amount} 원</li>
 </c:forEach>
 </ul>
+
+${responseVO}
