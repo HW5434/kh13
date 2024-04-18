@@ -10,35 +10,33 @@ import com.kh.spring19.dto.EmpDto;
 
 @Repository
 public class EmpDao {
-
 	@Autowired
 	private SqlSession sqlSession;
-	
-	//목록조회
+
 	public List<EmpDto> selectList() {
 		return sqlSession.selectList("emp.list");
-	}
-
-	//사원등록
-	public void insert(EmpDto empDto) {
-		sqlSession.insert("emp.save", empDto);
 	}
 
 	public EmpDto selectOne(int empNo) {
 		return sqlSession.selectOne("emp.find", empNo);
 	}
+	
+	public int sequence() {
+		return sqlSession.selectOne("emp.sequence");
+	}
+	public void insert(EmpDto empDto) {
+		sqlSession.insert("emp.save", empDto);
+	}
+
+	public boolean editAll(EmpDto empDto) {
+		return sqlSession.update("emp.editAll", empDto) > 0;
+	}
+	public boolean editUnit(EmpDto empDto) {
+		return sqlSession.update("emp.editUnit", empDto) > 0;
+	}
+
+	public boolean delete(int empNo) {
+		return sqlSession.delete("emp.delete", empNo) > 0;
+	}
+	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-

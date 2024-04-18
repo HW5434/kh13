@@ -5,11 +5,15 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.kh.spring19.dao.EmpDao;
 import com.kh.spring19.dto.EmpDto;
 
@@ -87,8 +91,41 @@ public class EmpRestController {
 	
 	
 	@PostMapping("/")
-	public void inset(@RequestBody EmpDto empDto) {
-		empDao.insert(empDto);
+	public EmpDto save(@RequestBody EmpDto empDto) {
+		int sequence = empDao.sequence();//번호생성
+		empDto.setEmpNo(sequence);//번호설정
+		empDao.insert(empDto);//등록
+		return empDao.selectOne(sequence); //등록된 결과를 조회하여 변환
+	}
+	
+	// 조회되지 않는 사원(존재하지 않는 사원)은 404번으로 반환
+	
+	@PutMapping("/")
+	public ResponseEntity<?> editAll(@RequestBody EmpDto empDto){
+		boolean result = empDao.editAll(empDto);
+		if(result == false) {
+			return ResponseEntity.status(404).build();
+		}
+		return ResponseEntity.ok().build();
+	}
+	
+	@PatchMapping("/")
+	public ResponseEntity<?> editUnit(@RequestBody EmpDto empDto){
+		boolean result = empDao.editAll(empDto);
+		if(result == false) {
+			return ResponseEntity.status(404).build();
+		}
+		return ResponseEntity.ok().build();
+	}
+	
+	//@Operation(작업에 대한 설명)
+	@DeleteMapping("/{empNo}")
+	public ResponseEntity<Void> delete(@PathVariable int empNo){
+		boolean result = empDao.delete(empNo);
+		if(result == false) {
+			return ResponseEntity.notFound().build();
+		}
+		return ResponseEntity.ok().build();
 	}
 	
 }

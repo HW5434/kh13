@@ -7,8 +7,8 @@
 <mapper namespace="emp">
 
 	<!-- 사원등록 -->
-	<select id="sequence" resultType="EmpDto">
-		select * from emp 
+	<select id="sequence" resultType="int">
+		select emp_seq.nextval from dual
 	</select>
 	<insert id="save">
 		insert into emp(
@@ -19,8 +19,6 @@
 		)
 	</insert>
 
-	<!-- Read -->
-	
 	<!-- 목록조회 -->
 	<select id="list" resultType="EmpDto">
 		select * from emp order by emp_no asc
@@ -39,8 +37,8 @@
 	<update id="editAll">
 		update emp
 		set
-			emp_name=#{empName},
-			emp_dept=#{empDept},
+			emp_name = #{empName},
+			emp_dept = #{empDept},
 			emp_date = #{empDate},
 			emp_sal = #{empSal}
 		where emp_no = #{empNo}
@@ -51,13 +49,15 @@
 			<if test="empName != null">emp_name=#{empName},</if>
 			<if test="empName != null">emp_dept=#{empDept},</if>
 			<if test="empName != null">emp_date = #{empDate},</if>
-			<if test="empSal > 0">emp_sal = #{empSal},</if>
+			<if test="empSal > 0">emp_sal = #{empSal}</if>
 		</set>
 		where emp_no = #{empNo}
 	</update>
 
 	<!-- Delete -->
-	<delete id=""></delete>
+	<delete id="delete">
+		delete emp where emp_no = #{empNo}
+	</delete>
 
 </mapper>
 

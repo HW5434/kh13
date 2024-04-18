@@ -1,7 +1,5 @@
 package com.kh.spring19.dto;
 
-import java.sql.Date;
-
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
