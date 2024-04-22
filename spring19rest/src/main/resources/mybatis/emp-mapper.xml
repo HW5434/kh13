@@ -47,8 +47,8 @@
 		update emp
 		<set>
 			<if test="empName != null">emp_name=#{empName},</if>
-			<if test="empName != null">emp_dept=#{empDept},</if>
-			<if test="empName != null">emp_date = #{empDate},</if>
+			<if test="empDept != null">emp_dept=#{empDept},</if>
+			<if test="empDate != null">emp_date = #{empDate},</if>
 			<if test="empSal > 0">emp_sal = #{empSal}</if>
 		</set>
 		where emp_no = #{empNo}

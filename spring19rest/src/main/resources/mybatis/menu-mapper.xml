@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+ <mapper namespace="menu">
+ 
+	<!-- Create -->
+	<select id="">
+	
+	</select>
+	<!-- 시퀀스 -->
+	<select id="sequence" resultType="int">
+		select menu_seq.nextval from dual
+	</select>
+	<select id="save">
+		insert into menu(
+			menu_no, menu_name_kor, menu_name_eng, menu_type, menu_price
+		)
+		values(
+			#{menuNo}, #{menuNameKor}, #{menuNameEng}, #{menuType}, #{menuPrice}
+		)
+	</select>
+ 	<!-- 목록 -->
+ 	<select id="list" resultType="MenuDto">
+ 		select * from menu order by menu_no asc
+ 	</select>
+ 	
+ 	<!-- 검색 -->
+ 	<select id="find" resultType="MenuDto">
+ 		select * from menu where menu_no = #{menuNo}
+ 	</select>
+
+ 	<!-- 수정 [All]-->
+ 	<update id="editAll">
+ 		update menu 
+ 		set
+ 			menu_name_kor = #{menuNameKor}, 
+ 			menu_name_eng = #{menuNameEng}, 
+ 			menu_type = #{menuType}, 
+ 			menu_price = #{menuPrice}
+ 		where menu_no = #{menuNo}
+ 	</update>
+ 	
+ 	<!-- 수정 [Unit]-->
+ 	<update id="editUnit">
+ 		update menu 
+ 		<set>
+ 			<if test="menuNameKor != null">menu_name_kor = #{menuNameKor}, </if>
+ 			<if test="menuNameEng != null">menu_name_eng = #{menuNameEng},</if>
+ 			<if test="menuType != null">menu_type = #{menuType}, </if>
+ 			<if test="menuPrice != null">menu_price = #{menuPrice}</if>
+ 		</set>
+ 		where menu_no = #{menuNo}
+ 	</update>
+ 	
+ 	
+ 	<!-- 삭제 -->
+ 	<delete id="delete">
+ 		delete menu where menu_no = #{menuNo}
+ 	</delete>
+ 	
+ </mapper>
