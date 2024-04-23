@@ -1,0 +1,17 @@
+{"properties": [
+  {
+    "name": "custom.jwt.key-str",
+    "type": "java.lang.String",
+    "description": "A description for 'custom.jwt.key-str'"
+  },
+  {
+    "name": "custom.jwt.expire-hour",
+    "type": "java.lang.String",
+    "description": "A description for 'custom.jwt.expire-hour'"
+  },
+  {
+    "name": "custom.jwt.issuer",
+    "type": "java.lang.String",
+    "description": "A description for 'custom.jwt.issuer'"
+  }
+]}

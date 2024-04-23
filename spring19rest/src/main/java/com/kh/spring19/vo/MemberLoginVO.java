@@ -10,4 +10,5 @@ import lombok.NoArgsConstructor;
 public class MemberLoginVO {
 	private String memberId;
 	private String memberLevel;
+	private String token;
 }

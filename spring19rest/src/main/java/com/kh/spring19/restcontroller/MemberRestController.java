@@ -10,12 +10,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.kh.spring19.dao.MemberDao;
 import com.kh.spring19.dto.MemberDto;
+import com.kh.spring19.service.JwtService;
 import com.kh.spring19.vo.MemberLoginVO;
 
 @CrossOrigin
 @RestController
 @RequestMapping("/member")
 public class MemberRestController {
+	
+	@Autowired
+	private JwtService jwtService;
 	
 	@Autowired
 	private MemberDao memberDao;
@@ -33,9 +37,12 @@ public class MemberRestController {
 		boolean isValid = findDto.getMemberPw().equals(memberDto.getMemberPw()); 
 		
 		if(isValid) { //성공
+			String token = jwtService.create(findDto);
+			
 			return ResponseEntity.ok().body(MemberLoginVO.builder()
-						.memberId(findDto.getMemberId())
-						.memberLevel(findDto.getMemberLevel())
+						.memberId(findDto.getMemberId())//회원아이디
+						.memberLevel(findDto.getMemberLevel())//회원등급
+						.token(token) //JWT 토큰
 					.build()); //200
 		}
 		else { //실패

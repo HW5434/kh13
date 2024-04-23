@@ -1,10 +1,17 @@
 package com.kh.spring19.dto;
 
 import java.sql.Date;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @ToString(exclude = {"memberPw"})
 public class MemberDto {
 	private String memberId;//회원아이디
