@@ -32,7 +32,7 @@ public class MenuRestController {
 		menuDto.setMenuNo(sequence);
 		menuDao.insert(menuDto);
 		return menuDao.selectOne(sequence);
-  }
+	}
 	
 	//상세
 	@GetMapping("/{menuNo}")
