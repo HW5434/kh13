@@ -3,10 +3,8 @@ package com.kh.spring19.interceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.HandlerInterceptor;
-
 import com.kh.spring19.service.JwtService;
 import com.kh.spring19.vo.MemberLoginVO;
-
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
@@ -29,6 +27,15 @@ public class MemberInterceptor implements HandlerInterceptor{
 		//		- 유효하지 않은 토큰인 경우 (차단)
 		// - 비로그인 사용자는 헤더에 Authorization이라는 항목이 없음 (차단)
 	
+		//(+추가) options 요청은 통과시켜야 함
+		//- options는 불확실한 환경일 때 통신이 가능한 지 확인하기 위한 선발대
+		//- CORS 상황이거나 GET, HEAD, POST 방식이 아니면 발생한다
+		//- 지금은 CORS 상황이기 때문에 options 통신이 발생하며 이를 통과시켜야함
+		String method = request.getMethod();
+		if(method.toLowerCase().equals("options")) {
+			return true;
+		}
+		
 		String token = request.getHeader("Authorization");
 		if(token == null) {//헤더가 없으면 비회원[401]이라는 뜻 권한없으면 [403]
 			response.sendError(401);
